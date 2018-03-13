@@ -177,35 +177,38 @@ class HeaderView {
         this.layer.add(this.scrollRightButtonText);
     }
 
-    relocateAt(newOffsetX, newOffsetY) {
+    relocateAt(newX, newY) {
         
-        this.secNameRect.setX(newOffsetX + this.secNameRect.x());
-        this.secNameRect.setY(newOffsetY + this.secNameRect.y());
-        this.secNameText.setX(newOffsetX + this.secNameText.x());
-        this.secNameText.setY(newOffsetY + this.secNameText.y());
+        this.secNameRect.setX(newX + (this.secNameRect.x() - this.x));
+        this.secNameRect.setY(newY + (this.secNameRect.y() - this.y));
+        this.secNameText.setX(newX + (this.secNameText.x() - this.x));
+        this.secNameText.setY(newY + (this.secNameText.y() - this.y));
 
-        this.addButtonRect.setX(newOffsetX + this.addButtonRect.x());
-        this.addButtonRect.setY(newOffsetY + this.addButtonRect.y());
-        this.addButtonText.setX(newOffsetX + this.addButtonText.x());
-        this.addButtonText.setY(newOffsetY + this.addButtonText.y());
+        this.addButtonRect.setX(newX + (this.addButtonRect.x() - this.x));
+        this.addButtonRect.setY(newY + (this.addButtonRect.y() - this.y));
+        this.addButtonText.setX(newX + (this.addButtonText.x() - this.x));
+        this.addButtonText.setY(newY + (this.addButtonText.y() - this.y));
         
-        this.deleteButtonRect.setX(newOffsetX + this.deleteButtonRect.x());
-        this.deleteButtonRect.setY(newOffsetY + this.deleteButtonRect.y());
-        this.deleteButtonText.setX(newOffsetX + this.deleteButtonText.x());
-        this.deleteButtonText.setY(newOffsetY + this.deleteButtonText.y());
+        this.deleteButtonRect.setX(newX + (this.deleteButtonRect.x() - this.x));
+        this.deleteButtonRect.setY(newY + (this.deleteButtonRect.y() - this.y));
+        this.deleteButtonText.setX(newX + (this.deleteButtonText.x() - this.x));
+        this.deleteButtonText.setY(newY + (this.deleteButtonText.y() - this.y));
         
-        this.scrollLeftButtonRect.setX(newOffsetX + this.scrollLeftButtonRect.x());
-        this.scrollLeftButtonRect.setY(newOffsetY + this.scrollLeftButtonRect.y());
-        this.scrollLeftButtonText.setX(newOffsetX + this.scrollLeftButtonText.x());
-        this.scrollLeftButtonText.setY(newOffsetY + this.scrollLeftButtonText.y());
+        this.scrollLeftButtonRect.setX(newX + (this.scrollLeftButtonRect.x() - this.x));
+        this.scrollLeftButtonRect.setY(newY + (this.scrollLeftButtonRect.y() - this.y));
+        this.scrollLeftButtonText.setX(newX + (this.scrollLeftButtonText.x() - this.x));
+        this.scrollLeftButtonText.setY(newY + (this.scrollLeftButtonText.y() - this.y));
 
-        this.scrollBar.setX(newOffsetX + this.scrollBar.x());
-        this.scrollBar.setY(newOffsetY + this.scrollBar.y());
+        this.scrollBar.setX(newX + (this.scrollBar.x() - this.x));
+        this.scrollBar.setY(newY + (this.scrollBar.y() - this.y));
 
-        this.scrollRightButtonRect.setX(newOffsetX + this.scrollRightButtonRect.x());
-        this.scrollRightButtonRect.setY(newOffsetY + this.scrollRightButtonRect.y());
-        this.scrollRightButtonText.setX(newOffsetX + this.scrollRightButtonText.x());
-        this.scrollRightButtonText.setY(newOffsetY + this.scrollRightButtonText.y());
+        this.scrollRightButtonRect.setX(newX + (this.scrollRightButtonRect.x() - this.x));
+        this.scrollRightButtonRect.setY(newY + (this.scrollRightButtonRect.y() - this.y));
+        this.scrollRightButtonText.setX(newX + (this.scrollRightButtonText.x() - this.x));
+        this.scrollRightButtonText.setY(newY + (this.scrollRightButtonText.y() - this.y));
+
+        this.x = newX;
+        this.y = newY;
     }
 
     makeVisible(isVisible) {

@@ -41,20 +41,30 @@ class BoardView {
         // Calculate #boards that can be displayed in a view & store in maxNoBoards
         // Now create that many KonvaRect & KonvaText objects that represent 'a-board' in a loop
         // and store in boardCollection object. Make them not-visible for now.
-        var bvW = (SectionSettings.skeleton.w * (SectionSettings.boardView.wPct / 100));
-        var bvH = (SectionSettings.skeleton.h * (SectionSettings.boardView.hPct / 100));
+        var bvMaxX = this.x + (SectionSettings.skeleton.w * (SectionSettings.boardView.wPct / 100));
+        var bvMaxY = this.y + (SectionSettings.skeleton.h * (SectionSettings.boardView.hPct / 100));
+        var currBX = this.x;
+        var currBY = this.y;
+        var currBMaxX = currBX + SectionSettings.board.w;
+        var currBMaxY = currBY + SectionSettings.board.h;
 
+        for (var boardID = 0; (currBMaxX <= bvMaxX) && (currBMaxY <= bvMaxY); ++boardID) {
 
-        for (var i = 0, boardID = 0; (i + 1) * SectionSettings.board.w <= bvW; ++i) {
-            for (var j = 0; (j + 1) * SectionSettings.board.h <= bvH; ++j) {
+            this.boardCollection[boardID] = new Board();
+            this.boardCollection[boardID].init(this.layer, currBX, currBY);
+            ++this.maxNoBoards;
 
-                this.boardCollection[boardID] = new Board();
+            currBX = currBMaxX;
+            currBY = currBY;
+            currBMaxX = currBX + SectionSettings.board.w;
+            currBMaxY = currBY + SectionSettings.board.h;
 
-                var bX = this.x + (j * SectionSettings.board.w);
-                var bY = this.y + (i * SectionSettings.board.h);
-                this.boardCollection[boardID].init(this.layer, bX, bY);
-                ++this.maxNoBoards;
-                ++boardID;
+            if (currBMaxX > bvMaxX) {
+                currBX = this.x;
+                currBY = currBY + SectionSettings.board.h;
+                
+                currBMaxX = currBX + SectionSettings.board.w;
+                currBMaxY = currBY + SectionSettings.board.h;
             }
         }
     }
@@ -62,7 +72,7 @@ class BoardView {
     displayNoteAt(boardID, newNoteID, newNoteText) {
         // Basically we are overwriting the note on this board
         this.boardCollection[boardID].attachNote(newNoteID, newNoteText);
-        this.boardCollection[boardID].makeVisible(this.isVisible && true);
+        this.boardCollection[boardID].makeVisible(true);
     }
 
     displayNoteAtStart(newNoteID, newNoteText) {
@@ -85,7 +95,7 @@ class BoardView {
             for (var i = this.noOfNotes - 1; i >= 0; --i) {
                 var currNote = this.boardCollection[i].getNote();
                 this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.noteText);
-                this.boardCollection[i + 1].makeVisible(this.isVisible && true);
+                this.boardCollection[i + 1].makeVisible(true);
             }
             this.displayNoteAt(0, newNoteID, newNoteText);
             ++this.noOfNotes;
@@ -97,7 +107,7 @@ class BoardView {
                 // Attach the note only if there is an adjacent board available 
                 if (this.boardCollection[i + 1]) {
                     this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.noteText);
-                    this.boardCollection[i + 1].makeVisible(this.isVisible && true);
+                    this.boardCollection[i + 1].makeVisible(true);
                 }
             }
             this.displayNoteAt(0, newNoteID, newNoteText);
@@ -120,12 +130,12 @@ class BoardView {
             this.displayNoteAt(this.noOfNotes, newNoteID, newNoteText);
             ++this.noOfNotes;
 
-        } else {
+        } else if (this.noOfNotes === this.maxNoBoards) {
             // 3. All boards are filled 
             for (var i = 0; i < this.noOfNotes - 1; ++i) {
                 var nextNote = this.boardCollection[i + 1].getNote();
                 this.boardCollection[i].attachNote(nextNote.noteID, nextNote.noteText);
-                this.boardCollection[i].makeVisible(this.isVisible && true);
+                this.boardCollection[i].makeVisible(true);
             }
             this.displayNoteAt(this.noOfNotes - 1, newNoteID, newNoteText);
         }
@@ -136,7 +146,7 @@ class BoardView {
 
         // 1. Unattach the note from the board
         this.boardCollection[boardID].unattachNote();
-        this.boardCollection[boardID].makeVisible(this.isVisible && false);
+        this.boardCollection[boardID].makeVisible(false);
 
         // 2. Move the empty note board to the end by shifting the notes present (if any) one by one
         for (var i = boardID; i < this.noOfNotes - 1; ++i) {
@@ -147,10 +157,10 @@ class BoardView {
             --nextNote.noteID;
 
             this.boardCollection[i].attachNote(nextNote.noteID, nextNote.noteText);
-            this.boardCollection[i].makeVisible(this.isVisible && true);
+            this.boardCollection[i].makeVisible(true);
 
             this.boardCollection[i + 1].unattachNote();
-            this.boardCollection[i + 1].makeVisible(this.isVisible && false);
+            this.boardCollection[i + 1].makeVisible(false);
         }
 
         // 3. Decrement the noOfNotes by 1 as the note is deleted now
@@ -187,19 +197,22 @@ class BoardView {
         }
     }
 
-    relocateAt(newOffsetX, newOffsetY) {
+    relocateAt(newX, newY) {
 
-        this.boardViewRect.setX(newOffsetX + this.boardViewRect.x());
-        this.boardViewRect.setY(newOffsetY + this.boardViewRect.y());
-        
+        this.boardViewRect.setX(newX + (this.boardViewRect.x() - this.x));
+        this.boardViewRect.setY(newY + (this.boardViewRect.y() - this.y));
+
         for (var i = 0; i < this.maxNoBoards; ++i) {
 
-            this.boardCollection[i].konvaRect.setX(newOffsetX + this.boardCollection[i].konvaRect.x());
-            this.boardCollection[i].konvaRect.setY(newOffsetY + this.boardCollection[i].konvaRect.y());
+            this.boardCollection[i].konvaRect.setX(newX + (this.boardCollection[i].konvaRect.x() - this.x));
+            this.boardCollection[i].konvaRect.setY(newY + (this.boardCollection[i].konvaRect.y() - this.y));
 
-            this.boardCollection[i].konvaText.setX(newOffsetX + this.boardCollection[i].konvaText.x());
-            this.boardCollection[i].konvaText.setY(newOffsetY + this.boardCollection[i].konvaText.y());
+            this.boardCollection[i].konvaText.setX(newX + (this.boardCollection[i].konvaText.x() - this.x));
+            this.boardCollection[i].konvaText.setY(newY + (this.boardCollection[i].konvaText.y() - this.y));
         }
+
+        this.x = newX;
+        this.y = newY;
     }
 
     makeVisible(isVisible) {

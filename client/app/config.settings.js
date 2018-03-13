@@ -1,62 +1,170 @@
+// Templates: [{
+//     "title": "User Type",
+//     "lines": [{
+//             "element": [{
+//                     "type": "LABEL",
+//                     "value": "My name is "
+//                 },
+//                 {
+//                     "type": "VALUE-CHARSTRING",
+//                     "value": "Enter your name"
+//                 }
+//             ]
+//         },
+//         {
+//             "element": [{
+//                     "type": "LABEL",
+//                     "value": "Choose city"
+//                 },
+//                 {
+//                     "type": "VALUE-LIST",
+//                     "value": [
+//                         "BLR",
+//                         "CEN",
+//                         "DEL"
+//                     ]
+//                 }
+//             ]
+//         }
+//     ]
+
+// },
+// {
+//     "title": "Performance",
+//     "lines": [{
+//             "element": {
+//                 "type": "LABEL",
+//                 "value": "Time not gt than:"
+//             }
+//         },
+//         {
+//             "element": {
+//                 "type": "VALUE-NUMSTRING",
+//                 "value": "10"
+//             }
+//         }
+//     ]
+// }
+// ]
+
 const configSettings = {
-    levelTemplate:
-        [
-            {
-                secName: "User Type",
-                noteTemplate:
-                    [
-                        {
-                            element:
-                                [
-                                    {
-                                        type: "LABEL",
-                                        value: "My name is "
-                                    },
-                                    {
-                                        type: "VALUE-CHARSTRING",
-                                        value: "Enter your name"
-                                    }
-                                ]
-                        },
-                        {
-                            element:
-                                [
-                                    {
-                                        type: "LABEL",
-                                        value: "Choose city"
-                                    },
-                                    {
-                                        type: "VALUE-LIST",
-                                        value: [
-                                            "BLR",
-                                            "CEN",
-                                            "DEL"
-                                        ]
-                                    }
-                                ]
-                        }
-                    ]
-            },
-            {
-                secName: "Performance",
-                noteTemplate:
-                    [
-                        {
-                            element:
-                                [
-                                    {
-                                        type: "LABEL",
-                                        value: "Time not gt than:"
-                                    },
-                                    {
-                                        type: "VALUE-NUMSTRING",
-                                        value: "10"
-                                    }
-                                ]
-                        }
-                    ]
-            }
-        ],
+    levelTemplate: {
+        number: "L0",
+        name: "User",
+        section:
+            [
+                {
+                    name: "User Type",
+                    lines:
+                        [
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                            },
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                            }
+                        ]
+                },
+                {
+                    name: "Performance",
+                    lines:
+                        [
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
+                            }
+                        ]
+                },
+                {
+                    name: "Environment",
+                    lines:
+                        [
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                            },
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                            }
+                        ]
+                },
+                {
+                    name: "Performance",
+                    lines:
+                        [
+                            {
+                                element:
+                                    [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
+                            }
+                        ]
+                }
+            ]
+    },
     levelValue:
         [
             {
@@ -68,7 +176,19 @@ const configSettings = {
             {
                 name: "Performance",
                 value: [
-                    { noteText: "Note 1" }
+                    { noteText: "Note 2" }
+                ]
+            },
+            {
+                name: "Environment",
+                value: [
+                    { noteText: "Note 3" }
+                ]
+            },
+            {
+                name: "Performance",
+                value: [
+                    { noteText: "Note 4" }
                 ]
             }
         ],
@@ -334,8 +454,8 @@ const configSettings = {
                     hPct: 80
                 },
                 board: {
-                    w: 150,     //  (300 * (100 / 100)) / 2,
-                    h: 160      //  (400 * (80 / 100)) / 2,
+                    w: 175,
+                    h: 100
                 }
             }
         }
