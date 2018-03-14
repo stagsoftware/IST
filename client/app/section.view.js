@@ -11,11 +11,8 @@ class SectionView {
     init(layer, x, y, secName) {
 
         // Init HeaderView part of SectionView
-        this.headerView = new HeaderView();
+        this.headerView = new SectionHeaderView();
         this.headerView.init(layer, x, y, secName);
-
-        // Init Boardview part of SectionView
-        this.boardView = new BoardView();
 
         // Calculate the (x,y) for BoardView
         var bvX = x;
@@ -23,6 +20,8 @@ class SectionView {
             + (SectionSettings.skeleton.h * (SectionSettings.secNameRect.hPct / 100))
             + (SectionSettings.skeleton.h * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
+        // Init Boardview part of SectionView
+        this.boardView = new SectionBoardView();
         this.boardView.init(layer, bvX, bvY);
     }
 

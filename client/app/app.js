@@ -18,8 +18,14 @@ stage.add(layer);
 var x = 0;
 var y = 0;
 
-var templateJSON = configSettings.levelTemplate;
-var valueJSON = configSettings.levelValue;
+var projectName = projectJSON.name;
+//var workspaceName = "RECON";
+var workspaceName = "SEARCH";
+var valueJSON = projectJSON.value;
 
-var level = new Level();
-level.init(layer, x, y, templateJSON, valueJSON);
+var workspace = new Workspace();
+workspace.init(layer, x, y, workspaceName, templateJSON, valueJSON);
+
+//var workspaceName = "SEARCH";
+//var workspace = new Workspace();
+//workspace.init(layer, x, y, workspaceName, templateJSON, valueJSON);

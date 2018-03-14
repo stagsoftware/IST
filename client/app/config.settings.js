@@ -48,309 +48,173 @@
 // ]
 
 const configSettings = {
-    levelTemplate: {
-        number: "L0",
-        name: "User",
-        section:
-            [
-                {
-                    name: "User Type",
-                    lines:
-                        [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "My name is "
-                                        },
-                                        {
-                                            type: "VALUE-CHARSTRING",
-                                            value: "Enter your name"
-                                        }
-                                    ]
-                            },
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Choose city"
-                                        },
-                                        {
-                                            type: "VALUE-LIST",
-                                            value: [
-                                                "BLR",
-                                                "CEN",
-                                                "DEL"
-                                            ]
-                                        }
-                                    ]
-                            }
-                        ]
-                },
-                {
-                    name: "Performance",
-                    lines:
-                        [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                },
-                {
-                    name: "Environment",
-                    lines:
-                        [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "My name is "
-                                        },
-                                        {
-                                            type: "VALUE-CHARSTRING",
-                                            value: "Enter your name"
-                                        }
-                                    ]
-                            },
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Choose city"
-                                        },
-                                        {
-                                            type: "VALUE-LIST",
-                                            value: [
-                                                "BLR",
-                                                "CEN",
-                                                "DEL"
-                                            ]
-                                        }
-                                    ]
-                            }
-                        ]
-                },
-                {
-                    name: "Performance",
-                    lines:
-                        [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                }
-            ]
-    },
-    levelValue:
-        [
-            {
-                name: "User Type",
-                value: [
-                    { noteText: "Note 1" }
-                ]
-            },
-            {
-                name: "Performance",
-                value: [
-                    { noteText: "Note 2" }
-                ]
-            },
-            {
-                name: "Environment",
-                value: [
-                    { noteText: "Note 3" }
-                ]
-            },
-            {
-                name: "Performance",
-                value: [
-                    { noteText: "Note 4" }
-                ]
-            }
-        ],
     UI: {
         Styles: {
             Level: {
-                levelViewRect: {
+                boardViewRect: {
                     fill: "white",
-                    stroke: 'red',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollLeftButtonRect: {
-                    fill: 'purple',
-                    stroke: 'red',
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollLeftButtonText: {
-                    fontSize: 26,
-                    fontFamily: 'Calibri',
-                    fill: 'red',
-                    align: 'center'
+                    fontSize: 10,
+                    fontFamily: 'Verdana',
+                    fill: 'black',
+                    align: 'center',
+                    fontStyle: 'bold'
                 },
                 scrollRightButtonRect: {
-                    fill: 'purple',
-                    stroke: 'red',
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollRightButtonText: {
-                    fontSize: 26,
-                    fontFamily: 'Calibri',
-                    fill: 'red',
+                    fontSize: 10,
+                    fontStyle: 'bold',
+                    fontFamily: 'Verdana',
+                    fill: 'black',
                     align: 'center'
                 },
                 levelIDRect: {
                     fill: "#ccc",
-                    stroke: 'red',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 levelIDText: {
-                    fontSize: 36,
-                    fontFamily: 'Calibri',
+                    fontSize: 18,
+                    fontFamily: 'Verdana',
                     fill: '#555',
                     align: 'center'
                 },
                 levelNameRect: {
                     fill: "#ccc",
-                    stroke: 'red',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 levelNameText: {
-                    fontSize: 36,
-                    fontFamily: 'Calibri',
+                    fontSize: 14,
+                    fontFamily: 'Verdana',
                     fill: '#555',
                     align: 'center'
                 }
             },
             Section: {
                 secNameRect: {
-                    fill: "#ccc",
-                    stroke: 'red',
+                    fill: "#E4F4D8",
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
+
                 },
                 secNameText: {
-                    fontSize: 36,
-                    fontFamily: 'Calibri',
+                    fontSize: 10,
+                    fontFamily: 'Verdana',
                     fill: '#555',
+                    fontStyle: 'bold',
                     align: 'center'
                 },
                 addButtonRect: {
-                    fill: 'blue',
-                    stroke: 'red',
+
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 addButtonText: {
-                    fontSize: 36,
-                    fontFamily: 'Calibri',
+                    fontSize: 12,
+                    fontFamily: 'Verdana',
                     fill: '#555',
-                    align: 'center'
+                    align: 'center',
+                    fontStyle: 'bold'
                 },
                 deleteButtonRect: {
-                    fill: 'green',
-                    stroke: 'red',
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 deleteButtonText: {
-                    fontSize: 46,
-                    fontFamily: 'Calibri',
+                    fontSize: 12,
+                    fontFamily: 'Verdana',
                     fill: '#555',
-                    align: 'center'
+                    align: 'center',
+                    fontStyle: 'bold'
                 },
                 scrollLeftButtonRect: {
-                    fill: 'purple',
-                    stroke: 'red',
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
-                    shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollLeftButtonText: {
-                    fontSize: 26,
-                    fontFamily: 'Calibri',
-                    fill: 'red',
+                    fontSize: 10,
+                    fontStyle: 'bold',
+                    fontFamily: 'Verdana',
+                    shadowblur: 5,
+                    fill: 'black',
                     align: 'center'
                 },
                 scrollBar: {
-                    fill: 'orange',
-                    stroke: 'red',
+                    fill: 'hsl(4, 3%, 76%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
-                    shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollRightButtonRect: {
-                    fill: 'purple',
-                    stroke: 'red',
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
-                    shadowblur: 5,
                     strokeWidth: 2
                 },
                 scrollRightButtonText: {
-                    fontSize: 26,
-                    fontFamily: 'Calibri',
-                    fill: 'red',
+                    fontSize: 10,
+                    fontStyle: 'bold',
+                    fontFamily: 'Verdana',
+                    shadowblur: 5,
+                    fill: 'black',
                     align: 'center'
                 },
                 boardView: {
-                    fill: 'yellow',
-                    stroke: 'white',
+                    fill: 'rgb(240, 240, 240)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 konvaRect: {
-                    fill: 'red',
-                    stroke: 'white',
+                    fill: 'hsl(29, 95%, 76%)',
+
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
                 },
                 konvaText: {
-                    fontSize: 12,
-                    fontFamily: 'Calibri',
+                    fontSize: 10,
+                    fontFamily: 'Verdana',
                     fill: '#555',
                     align: 'center'
                 },
                 selectedKonvaRect: {
-                    fill: 'orange',
-                    stroke: 'red',
+                    fill: 'hsl(9, 1%, 69%)',
+                    stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
@@ -360,102 +224,102 @@ const configSettings = {
         Properties: {
             Level: {
                 skeleton: {
-                    w: 1200,
-                    h: 400
+                    w: 1280,
+                    h: 100
                 },
-                levelViewRect: {
-                    wPct: 75,
+                boardViewRect: {
+                    wPct: 90,
                     hPct: 100
                 },
                 scrollLeftButtonRect: {
-                    wPct: 5,
+                    wPct: 2,
                     hPct: 50
                 },
                 scrollLeftButtonText: {
-                    wPct: 5,
+                    wPct: 2,
                     hPct: 50
                 },
                 scrollRightButtonRect: {
-                    wPct: 5,
+                    wPct: 2,
                     hPct: 50
                 },
                 scrollRightButtonText: {
-                    wPct: 5,
+                    wPct: 2,
                     hPct: 50
                 },
                 levelIDRect: {
-                    wPct: 20,
+                    wPct: 8,
                     hPct: 20
                 },
                 levelIDText: {
-                    wPct: 20,
+                    wPct: 8,
                     hPct: 20
                 },
                 levelNameRect: {
-                    wPct: 20,
+                    wPct: 8,
                     hPct: 80
                 },
                 levelNameText: {
-                    wPct: 20,
+                    wPct: 8,
                     hPct: 80
                 }
             },
             Section: {
                 skeleton: {
-                    w: 300,
-                    h: 400
+                    w: 230,
+                    h: 100
                 },
                 secNameRect: {
-                    wPct: 80,
-                    hPct: 10
+                    wPct: 84,
+                    hPct: 15
                 },
                 secNameText: {
-                    wPct: 80,
-                    hPct: 10
+                    wPct: 84,
+                    hPct: 15
                 },
                 addButtonRect: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 addButtonText: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 deleteButtonRect: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 deleteButtonText: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 scrollLeftButtonRect: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 scrollLeftButtonText: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 scrollBar: {
-                    wPct: 80,
-                    hPct: 10
+                    wPct: 84,
+                    hPct: 15
                 },
                 scrollRightButtonRect: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 scrollRightButtonText: {
-                    wPct: 10,
-                    hPct: 10
+                    wPct: 8,
+                    hPct: 15
                 },
                 boardView: {
                     wPct: 100,
-                    hPct: 80
+                    hPct: 70
                 },
                 board: {
-                    w: 175,
-                    h: 100
+                    w: 50,     //  (300 * (100 / 100)) / 2,
+                    h: 15    //  (400 * (80 / 100)) / 2,
                 }
             }
         }
@@ -470,3 +334,374 @@ const configSettings = {
 
 const SectionSettings = configSettings.UI.Properties.Section;
 const LevelSettings = configSettings.UI.Properties.Level;
+
+const templateJSON = [
+    // LEVEL 9
+    {
+        number: "L9",
+        name: "LEVEL 9",
+        section: {
+            "RECON": [
+                {
+                    name: "User Type",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "My name is "
+                                    },
+                                    {
+                                        type: "VALUE-CHARSTRING",
+                                        value: "Enter your name"
+                                    }
+                                ]
+                        },
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Choose city"
+                                    },
+                                    {
+                                        type: "VALUE-LIST",
+                                        value: [
+                                            "BLR",
+                                            "CEN",
+                                            "DEL"
+                                        ]
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    name: "Performance",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Time not gt than:"
+                                    },
+                                    {
+                                        type: "VALUE-NUMSTRING",
+                                        value: "10"
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    name: "Environment",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "My name is "
+                                    },
+                                    {
+                                        type: "VALUE-CHARSTRING",
+                                        value: "Enter your name"
+                                    }
+                                ]
+                        },
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Choose city"
+                                    },
+                                    {
+                                        type: "VALUE-LIST",
+                                        value: [
+                                            "BLR",
+                                            "CEN",
+                                            "DEL"
+                                        ]
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    name: "User Type 1",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Time not gt than:"
+                                    },
+                                    {
+                                        type: "VALUE-NUMSTRING",
+                                        value: "10"
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    name: "User Type 2",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Time not gt than:"
+                                    },
+                                    {
+                                        type: "VALUE-NUMSTRING",
+                                        value: "10"
+                                    }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    name: "User Type 3",
+                    lines: [
+                        {
+                            element:
+                                [
+                                    {
+                                        type: "LABEL",
+                                        value: "Time not gt than:"
+                                    },
+                                    {
+                                        type: "VALUE-NUMSTRING",
+                                        value: "10"
+                                    }
+                                ]
+                        }
+                    ]
+                }
+            ],
+            "SEARCH": [
+                {
+                    name: "User Type",
+                    lines: [
+                        {
+                            element: [
+                                {
+                                    type: "LABEL",
+                                    value: "My name is "
+                                },
+                                {
+                                    type: "VALUE-CHARSTRING",
+                                    value: "Enter your name"
+                                }
+                            ]
+                        },
+                        {
+                            element: [
+                                {
+                                    type: "LABEL",
+                                    value: "Choose city"
+                                },
+                                {
+                                    type: "VALUE-LIST",
+                                    value: [
+                                        "BLR",
+                                        "CEN",
+                                        "DEL"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    // LEVEL 8
+    {
+        number: "L8",
+        name: "LEVEL 8",
+        section: {
+            "RECON": [
+                {
+                    name: "User Type",
+                    lines: [
+                        {
+                            element: [
+                                {
+                                    type: "LABEL",
+                                    value: "My name is "
+                                },
+                                {
+                                    type: "VALUE-CHARSTRING",
+                                    value: "Enter your name"
+                                }
+                            ]
+                        },
+                        {
+                            element: [
+                                {
+                                    type: "LABEL",
+                                    value: "Choose city"
+                                },
+                                {
+                                    type: "VALUE-LIST",
+                                    value: [
+                                        "BLR",
+                                        "CEN",
+                                        "DEL"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Performance",
+                    lines: [
+                        {
+                            element: [
+                                {
+                                    type: "LABEL",
+                                    value: "Time not gt than:"
+                                },
+                                {
+                                    type: "VALUE-NUMSTRING",
+                                    value: "10"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Environment",
+                    lines:
+                        [
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "My name is "
+                                    },
+                                    {
+                                        type: "VALUE-CHARSTRING",
+                                        value: "Enter your name"
+                                    }
+                                ]
+                            },
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "Choose city"
+                                    },
+                                    {
+                                        type: "VALUE-LIST",
+                                        value: [
+                                            "BLR",
+                                            "CEN",
+                                            "DEL"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                }
+            ],
+            "SEARCH": [
+
+            ]
+        }
+    }
+];
+
+const projectJSON = {
+    name: "project 1",
+    value: [
+        // LEVEL 9
+        {
+            name: "LEVEL 9",
+            value: {
+                "RECON": [
+                    {
+                        name: "User Type",
+                        value: [
+                            { noteText: "Note 1" }
+                        ]
+                    },
+                    {
+                        name: "Performance",
+                        value: [
+                            { noteText: "Note 2" }
+                        ]
+                    },
+                    {
+                        name: "Environment",
+                        value: [
+                            { noteText: "Note 3" }
+                        ]
+                    },
+                    {
+                        name: "User Type 1",
+                        value: [
+                            { noteText: "Note 4" }
+                        ]
+                    },
+                    {
+                        name: "User Type 2",
+                        value: [
+                            { noteText: "Note 4" }
+                        ]
+                    },
+                    {
+                        name: "User Type 3",
+                        value: [
+                            { noteText: "Note 4" }
+                        ]
+                    }
+                ],
+                "SEARCH": [
+                    {
+                        name: "User Type",
+                        value: [
+                        ]
+                    }
+                ]
+            }
+        },
+        // LEVEL 8
+        {
+            name: "LEVEL 8",
+            value: {
+                "RECON": [
+                    {
+                        name: "User Type",
+                        value: [
+                            { noteText: "Note 1" }
+                        ]
+                    },
+                    {
+                        name: "Performance",
+                        value: [
+                            { noteText: "Note 2" }
+                        ]
+                    },
+                    {
+                        name: "Environment",
+                        value: [
+                            { noteText: "Note 3" }
+                        ]
+                    }
+                ],
+                "SEARCH": [
+
+                ]
+            }
+        }
+    ]
+};

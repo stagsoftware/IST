@@ -1,5 +1,5 @@
 
-class HeaderView {
+class SectionHeaderView {
     constructor() {
 
         this.layer;

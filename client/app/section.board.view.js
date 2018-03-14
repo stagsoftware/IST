@@ -1,5 +1,5 @@
 
-class BoardView {
+class SectionBoardView {
     constructor() {
 
         this.layer;

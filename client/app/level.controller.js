@@ -14,11 +14,11 @@ class LevelController {
         this.view = view;
 
         // Set the startSectionID and endSectionID based on the model and the view in-sync
-        if (this.view.noOfSectionAreas < this.view.noOfSections) {
+        if (this.view.boardView.noOfSectionAreas < this.view.boardView.noOfSections) {
             // If there are any sections in the model 
             // then initialize the startSectionID and endSectionID
             this.startSectionID = 0;
-            this.endSectionID = this.startSectionID + (this.view.noOfSectionAreas - 1);
+            this.endSectionID = this.startSectionID + (this.view.boardView.noOfSectionAreas - 1);
         }
     }
 
@@ -33,17 +33,17 @@ class LevelController {
 
         // It scrolls left iff any section is available on the left
         // NOTE: scroll left condition check
-        if (this.view.noOfSectionAreas < this.view.noOfSections) {
+        if (this.view.boardView.noOfSectionAreas < this.view.boardView.noOfSections) {
             if (this.startSectionID > 0) {
 
                 // 1. Decrement the startSectionID
                 --this.startSectionID;
 
                 // 2. Update the view by relocating the section at the start
-                this.view.displaySectionAtStart(this.startSectionID);
+                this.view.boardView.displaySectionAtStart(this.startSectionID);
 
                 // 3. Update the endSectionID
-                this.endSectionID = this.startSectionID + (this.view.noOfSectionAreas - 1);
+                this.endSectionID = this.startSectionID + (this.view.boardView.noOfSectionAreas - 1);
             }
         }
     }
@@ -57,17 +57,17 @@ class LevelController {
 
         // It scrolls right iff any section is available on the right
         // NOTE: scroll right condition check
-        if (this.view.noOfSectionAreas < this.view.noOfSections) {
+        if (this.view.boardView.noOfSectionAreas < this.view.boardView.noOfSections) {
             if (this.endSectionID < this.model.sectionCollection.length - 1) {
 
                 // 1. Increment the endNoteID
                 ++this.endSectionID;
 
                 // 2. Update the view by relocating the section at the end
-                this.view.displaySectionAtEnd(this.endSectionID);
+                this.view.boardView.displaySectionAtEnd(this.endSectionID);
 
                 // 3. Update the startSectionID
-                this.startSectionID = this.endSectionID - (this.view.noOfSectionAreas - 1);
+                this.startSectionID = this.endSectionID - (this.view.boardView.noOfSectionAreas - 1);
             }
         }
     }
