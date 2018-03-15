@@ -50,6 +50,49 @@
 const configSettings = {
     UI: {
         Styles: {
+            Session: {
+                scrollLeftButtonRect: {
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
+                    shadowColor: 'black',
+                    shadowblur: 5,
+                    strokeWidth: 2
+                },
+                scrollLeftButtonText: {
+                    fontSize: 10,
+                    fontFamily: 'Verdana',
+                    fill: 'black',
+                    align: 'center',
+                    fontStyle: 'bold'
+                },
+                wsNameRect: {
+                    fill: "#ccc",
+                    stroke: 'hsl(165, 53%, 81%)',
+                    shadowColor: 'black',
+                    shadowblur: 5,
+                    strokeWidth: 2
+                },
+                wsNameText: {
+                    fontSize: 14,
+                    fontFamily: 'Verdana',
+                    fill: '#555',
+                    align: 'center'
+                },
+                scrollRightButtonRect: {
+                    fill: 'hsl(59, 100%, 77%)',
+                    stroke: 'hsl(165, 53%, 81%)',
+                    shadowColor: 'black',
+                    shadowblur: 5,
+                    strokeWidth: 2
+                },
+                scrollRightButtonText: {
+                    fontSize: 10,
+                    fontStyle: 'bold',
+                    fontFamily: 'Verdana',
+                    fill: 'black',
+                    align: 'center'
+                }
+            },
             Level: {
                 boardViewRect: {
                     fill: "white",
@@ -192,7 +235,7 @@ const configSettings = {
                     fill: 'black',
                     align: 'center'
                 },
-                boardView: {
+                boardViewRect: {
                     fill: 'rgb(240, 240, 240)',
                     stroke: 'hsl(165, 53%, 81%)',
                     shadowColor: 'black',
@@ -201,7 +244,6 @@ const configSettings = {
                 },
                 konvaRect: {
                     fill: 'hsl(29, 95%, 76%)',
-
                     shadowColor: 'black',
                     shadowblur: 5,
                     strokeWidth: 2
@@ -222,6 +264,36 @@ const configSettings = {
             }
         },
         Properties: {
+            Session: {
+                skeleton: {
+                    w: window.innerWidth,
+                    h: window.innerHeight
+                },
+                scrollLeftButtonRect: {
+                    wPct: 10,
+                    hPct: 2
+                },
+                scrollLeftButtonText: {
+                    wPct: 10,
+                    hPct: 2
+                },
+                wsNameRect: {
+                    wPct: 80,
+                    hPct: 2
+                },
+                wsNameText: {
+                    wPct: 80,
+                    hPct: 2
+                },
+                scrollRightButtonRect: {
+                    wPct: 10,
+                    hPct: 2
+                },
+                scrollRightButtonText: {
+                    wPct: 10,
+                    hPct: 2
+                }
+            },
             Level: {
                 skeleton: {
                     w: 1280,
@@ -313,13 +385,13 @@ const configSettings = {
                     wPct: 8,
                     hPct: 15
                 },
-                boardView: {
+                boardViewRect: {
                     wPct: 100,
                     hPct: 70
                 },
                 board: {
-                    w: 50,     //  (300 * (100 / 100)) / 2,
-                    h: 15    //  (400 * (80 / 100)) / 2,
+                    w: 50,
+                    h: 15
                 }
             }
         }
@@ -329,11 +401,20 @@ const configSettings = {
     },
     getLevelUIConfig: function (manualConfig, styleConfigID) {
         return Object.assign({}, manualConfig, this.UI.Styles.Level[styleConfigID]);
+    },
+    getSessionUIConfig: function(manualConfig, styleConfigID) {
+        return Object.assign({}, manualConfig, this.UI.Styles.Session[styleConfigID]);
     }
 }
 
 const SectionSettings = configSettings.UI.Properties.Section;
 const LevelSettings = configSettings.UI.Properties.Level;
+const SessionSettings = configSettings.UI.Properties.Session;
+
+//const MinWSWidth = 800;
+//const MinWSHeight = 600;
+//const WorkspaceWidth = (window.innerWidth > MinWSWidth) ? window.innerWidth : MinWSWidth;
+//const WorkspaceHeight = (window.innerHeight > MinWSHeight) ? window.innerHeight : MinWSHeight;
 
 const templateJSON = [
     // LEVEL 9

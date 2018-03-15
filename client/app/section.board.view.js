@@ -30,10 +30,10 @@ class SectionBoardView {
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SectionSettings.skeleton.w * (SectionSettings.boardView.wPct / 100)),
-            height: (SectionSettings.skeleton.h * (SectionSettings.boardView.hPct / 100))
+            width: (SectionSettings.skeleton.w * (SectionSettings.boardViewRect.wPct / 100)),
+            height: (SectionSettings.skeleton.h * (SectionSettings.boardViewRect.hPct / 100))
         };
-        var config = configSettings.getSectionUIConfig(manualConfig, "boardView");
+        var config = configSettings.getSectionUIConfig(manualConfig, "boardViewRect");
         this.boardViewRect = new Konva.Rect(config);
 
         this.layer.add(this.boardViewRect);
@@ -41,8 +41,8 @@ class SectionBoardView {
         // Calculate #boards that can be displayed in a view & store in maxNoBoards
         // Now create that many KonvaRect & KonvaText objects that represent 'a-board' in a loop
         // and store in boardCollection object. Make them not-visible for now.
-        var bvMaxX = this.x + (SectionSettings.skeleton.w * (SectionSettings.boardView.wPct / 100));
-        var bvMaxY = this.y + (SectionSettings.skeleton.h * (SectionSettings.boardView.hPct / 100));
+        var bvMaxX = this.x + (SectionSettings.skeleton.w * (SectionSettings.boardViewRect.wPct / 100));
+        var bvMaxY = this.y + (SectionSettings.skeleton.h * (SectionSettings.boardViewRect.hPct / 100));
         var currBX = this.x;
         var currBY = this.y;
         var currBMaxX = currBX + SectionSettings.board.w;
@@ -177,7 +177,7 @@ class SectionBoardView {
             var config = configSettings.getSectionUIConfig({}, "selectedKonvaRect");
             this.boardCollection[boardID].konvaRect.fill(config.fill);
             this.boardCollection[boardID].konvaRect.stroke(config.stroke);
-            this.layer.draw();
+            this.layer.batchDraw();
         }
     }
 
@@ -190,7 +190,7 @@ class SectionBoardView {
             var config = configSettings.getSectionUIConfig({}, "konvaRect");
             this.boardCollection[this.selectedBoardID].konvaRect.fill(config.fill);
             this.boardCollection[this.selectedBoardID].konvaRect.stroke(config.stroke);
-            this.layer.draw();
+            this.layer.batchDraw();
 
             // Set the board as unselected
             this.selectedBoardID = -1; // => no note
@@ -230,7 +230,7 @@ class SectionBoardView {
             this.boardCollection[i].makeVisible(isVisible && isBoardVisible);
         }
 
-        this.layer.draw();
+        this.layer.batchDraw();
         this.isVisible = isVisible;
     }
 

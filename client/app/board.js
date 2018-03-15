@@ -66,7 +66,7 @@ class Board {
             this.konvaRect.hide();
             this.konvaText.hide();
         }
-        this.layer.draw();
+        this.layer.batchDraw();
         this.isVisible = isVisible;
     }
 }

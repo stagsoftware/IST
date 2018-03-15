@@ -8,12 +8,12 @@ class LevelView {
         this.isVisible = false;
     }
 
-    init(layer, x, y, workspaceName, levelNumber, levelName, templateJSON, valueJSON) {
+    init(layer, x, y, wsName, levelNumber, levelName, templateJSON, valueJSON) {
 
-        switch (workspaceName) {
+        switch (wsName) {
             case "RECON":
                 this.boardView = new LevelBoardView();
-                this.boardView.init(layer, x, y, templateJSON, valueJSON);
+                this.boardView.init(layer, x, y, wsName, templateJSON, valueJSON);
 
                 // Calculate the (x,y) for headerView
                 var hvX = x
@@ -21,12 +21,12 @@ class LevelView {
                 var hvY = y;
 
                 this.headerView = new LevelHeaderView();
-                this.headerView.init(layer, hvX, hvY, workspaceName, levelNumber, levelName);
+                this.headerView.init(layer, hvX, hvY, wsName, levelNumber, levelName);
                 break;
 
             case "SEARCH":
                 this.headerView = new LevelHeaderView();
-                this.headerView.init(layer, x, y, workspaceName, levelNumber, levelName);
+                this.headerView.init(layer, x, y, wsName, levelNumber, levelName);
 
                 // Calculate the (x,y) for BoardView
                 var bvX = x
@@ -35,7 +35,7 @@ class LevelView {
                 var bvY = y;
 
                 this.boardView = new LevelBoardView();
-                this.boardView.init(layer, bvX, bvY, templateJSON, valueJSON);
+                this.boardView.init(layer, bvX, bvY, wsName, templateJSON, valueJSON);
                 break;
         }
 

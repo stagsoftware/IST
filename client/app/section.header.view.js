@@ -251,7 +251,7 @@ class SectionHeaderView {
             this.scrollRightButtonRect.hide();
             this.scrollRightButtonText.hide();
         }
-        this.layer.draw();
+        this.layer.batchDraw();
         this.isVisible = isVisible;
     }
 }

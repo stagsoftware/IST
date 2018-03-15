@@ -16,7 +16,7 @@ class LevelBoardView {
         this.isVisible = false;
     }
 
-    init(layer, x, y, templateJSON, valueJSON) {
+    init(layer, x, y, wsName, templateJSON, valueJSON) {
         // Draw the outer box for BoardView (Konva Rect)
         // Calculate #sectionAreas that can be created in a view & store in #noOfSectionAreas
         // Now create that many sectionAreas that represent 'a-section' coordinates in a loop
@@ -42,16 +42,16 @@ class LevelBoardView {
         // Calculate #sectionAreas that can be created in a view & store in #noOfSectionAreas
         // Now create that many sectionAreas that represent 'a-section' coordinates in a loop
         var secAreaMaxW = this.x + (LevelSettings.skeleton.w * (LevelSettings.boardViewRect.wPct / 100));
-        var secAreaX = this.x;
-        var secAreaY = this.y;
-        var sectionID = -1;
+        var newSecAreaX = this.x;
+        var newSecAreaY = this.y;
+        var newSectionID = -1;
 
-        for (var i = 0; (secAreaX + SectionSettings.skeleton.w) <= secAreaMaxW; ++i) {
+        for (var i = 0; (newSecAreaX + SectionSettings.skeleton.w) <= secAreaMaxW; ++i) {
 
             this.sectionAreaCollection[i] = new SectionArea();
-            this.sectionAreaCollection[i].init(secAreaX, secAreaY, sectionID);
+            this.sectionAreaCollection[i].init(newSecAreaX, newSecAreaY, newSectionID);
 
-            secAreaX = secAreaX + SectionSettings.skeleton.w;
+            newSecAreaX = newSecAreaX + SectionSettings.skeleton.w;
 
             ++this.noOfSectionAreas;
         }
@@ -69,37 +69,74 @@ class LevelBoardView {
             ++this.noOfSections;
         }
 
-        // Populate the sectionCollection in the section area based on noOfSectionAreas available
-        if (this.noOfSectionAreas <= this.noOfSections) {
+        switch (wsName) {
+            case "RECON":
+                // Populate the sectionCollection in the section area based on noOfSectionAreas available
+                if (this.noOfSectionAreas <= this.noOfSections) {
 
-            for (var i = 0; i < this.noOfSectionAreas; ++i) {
+                    for (var i = 0; i < this.noOfSectionAreas; ++i) {
 
-                var newX = this.sectionAreaCollection[i].x;
-                var newY = this.sectionAreaCollection[i].y;
+                        var newX = this.sectionAreaCollection[i].x;
+                        var newY = this.sectionAreaCollection[i].y;
 
-                // NOTE: Hide the section from the view that before relocate
-                this.sectionCollection[i].view.makeVisible(false);
-                this.sectionCollection[i].view.relocateAt(newX, newY);
-                this.sectionCollection[i].view.makeVisible(true);
+                        // NOTE: Hide the section from the view that before relocate
+                        this.sectionCollection[i].view.makeVisible(false);
+                        this.sectionCollection[i].view.relocateAt(newX, newY);
+                        this.sectionCollection[i].view.makeVisible(true);
 
-                this.sectionAreaCollection[i].sectionID = i;
-            }
-        } else {
+                        this.sectionAreaCollection[i].sectionID = i;
+                    }
+                } else {
 
-            for (var i = 0; i < this.noOfSections; ++i) {
+                    for (var i = 0; i < this.noOfSections; ++i) {
 
-                var secAreaID = (this.noOfSectionAreas - this.noOfSections) + i;
-                var newX = this.sectionAreaCollection[secAreaID].x;
-                var newY = this.sectionAreaCollection[secAreaID].y;
+                        var secAreaID = (this.noOfSectionAreas - this.noOfSections) + i;
+                        var newX = this.sectionAreaCollection[secAreaID].x;
+                        var newY = this.sectionAreaCollection[secAreaID].y;
 
-                // NOTE: Hide the section from the view that before relocate
-                this.sectionCollection[i].view.makeVisible(false);
-                this.sectionCollection[i].view.relocateAt(newX, newY);
-                this.sectionCollection[i].view.makeVisible(true);
+                        // NOTE: Hide the section from the view that before relocate
+                        this.sectionCollection[i].view.makeVisible(false);
+                        this.sectionCollection[i].view.relocateAt(newX, newY);
+                        this.sectionCollection[i].view.makeVisible(true);
 
-                this.sectionAreaCollection[secAreaID].sectionID = i;
-            }
+                        this.sectionAreaCollection[secAreaID].sectionID = i;
+                    }
+                }
+                break;
+            case "SEARCH":
+                // Populate the sectionCollection in the section area based on noOfSectionAreas available
+                if (this.noOfSectionAreas <= this.noOfSections) {
+
+                    for (var i = 0; i < this.noOfSectionAreas; ++i) {
+
+                        var newX = this.sectionAreaCollection[i].x;
+                        var newY = this.sectionAreaCollection[i].y;
+
+                        // NOTE: Hide the section from the view that before relocate
+                        this.sectionCollection[i].view.makeVisible(false);
+                        this.sectionCollection[i].view.relocateAt(newX, newY);
+                        this.sectionCollection[i].view.makeVisible(true);
+
+                        this.sectionAreaCollection[i].sectionID = i;
+                    }
+                } else {
+
+                    for (var i = 0; i < this.noOfSections; ++i) {
+
+                        var newX = this.sectionAreaCollection[i].x;
+                        var newY = this.sectionAreaCollection[i].y;
+
+                        // NOTE: Hide the section from the view that before relocate
+                        this.sectionCollection[i].view.makeVisible(false);
+                        this.sectionCollection[i].view.relocateAt(newX, newY);
+                        this.sectionCollection[i].view.makeVisible(true);
+
+                        this.sectionAreaCollection[i].sectionID = i;
+                    }
+                }
+                break;
         }
+
     }
 
     displaySectionAt(secAreaID, newSectionID) {
@@ -210,7 +247,7 @@ class LevelBoardView {
             }
         }
 
-        this.layer.draw();
+        this.layer.batchDraw();
         this.isVisible = isVisible;
     }
 

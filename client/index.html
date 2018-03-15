@@ -10,36 +10,39 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="description" content="A cli for Angular 1.5">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <!-- Dependencies -->
     <script src="..\node_modules\angular\angular.js"></script>
     <script src="..\node_modules\konva\konva.js"></script>
+    
     <!-- Google Font Roboto -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font awesome mian css-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Font awesome min css-->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <!--custom css-->
-    <link rel="stylesheet" href="assets/css/custom-main.css">
+    <link href="assets/css/custom-main.css" rel="stylesheet">
     <!-- CSS -->
     <link href="..\client\assets\css\style.css" rel="stylesheet">
-    <!-- <link rel="icon" href="favicon.jpg"> -->
+
+    <link href="..\client\assets\css\main.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <div class="col-sm-12 col-md-12 col-lg-12">
-        <button><</button>
-        <h3> Reconnaissance workspace </h3>
-        <button>></button>
-    </div> -->
-
     <div>
-        <div id="note" style="width:500px;height:200px;background:#ccc;position: absolute; z-index: 100;left: 15%;top:28%;display: none;"></div>
-
+        <div id="note"></div>
         <div id="container"></div>
     </div>
+    
     <!-- JS files -->
     <script src="..\client\app\config.settings.js"></script>
+
+    <script src="..\client\app\session.js"></script>
+    <script src="..\client\app\session.view.js"></script>
+    <script src="..\client\app\session.header.view.js"></script>
+    <script src="..\client\app\session.board.view.js"></script>
+    <script src="..\client\app\session.controller.js"></script>
 
     <script src="..\client\app\workspace.js"></script>
 

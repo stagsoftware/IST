@@ -8,9 +8,14 @@ class Level {
         this.model;
         this.view;
         this.controller;
+
+        this.levelNumber;
+        this.levelName;
+        this.sectionTemplates;
+        this.sectionCollection;
     }
 
-    init(layer, x, y, workspaceName, templateJSON, valueJSON) {
+    init(layer, x, y, wsName, templateJSON, valueJSON) {
 
         this.layer = layer;
         this.x = x;
@@ -18,8 +23,8 @@ class Level {
 
         this.levelNumber = templateJSON.number;
         this.levelName = templateJSON.name;
-        this.sectionTemplates = templateJSON.section[workspaceName];
-        this.sectionCollection = valueJSON.value[workspaceName];
+        this.sectionTemplates = templateJSON.section[wsName];
+        this.sectionCollection = valueJSON.value[wsName];
 
         // 1. Create level model and load it up
         this.model = new LevelModel();
@@ -28,7 +33,7 @@ class Level {
 
         // 2. Create the view and populate sectionCollection
         this.view = new LevelView();
-        this.view.init(layer, x, y, workspaceName, this.levelNumber, this.levelName, this.sectionTemplates, this.sectionCollection);
+        this.view.init(layer, x, y, wsName, this.levelNumber, this.levelName, this.sectionTemplates, this.sectionCollection);
 
         // 3. Setup the controller to mediate between 'model' and 'view'
         this.controller = new LevelController();
