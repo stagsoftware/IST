@@ -23,8 +23,8 @@ class Level {
 
         this.levelNumber = templateJSON.number;
         this.levelName = templateJSON.name;
-        this.sectionTemplates = templateJSON.section[wsName];
-        this.sectionCollection = valueJSON.value[wsName];
+        this.sectionTemplates = templateJSON.sections;
+        this.sectionCollection = valueJSON.value;
 
         // 1. Create level model and load it up
         this.model = new LevelModel();
@@ -46,6 +46,19 @@ class Level {
         // 5. Display the view
         this.view.makeVisible(true);
 
+    }
+
+    save() {
+
+        var updatedSectionCollection = [];
+        for (var i = 0; i < this.view.boardView.noOfSections; ++i) {
+            updatedSectionCollection[i] = this.view.boardView.sectionCollection[i].save();
+        }
+
+        return {
+            name: this.levelName,
+            value: updatedSectionCollection
+        };
     }
 
 }

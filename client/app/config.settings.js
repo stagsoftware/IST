@@ -398,14 +398,14 @@ const UISettings = {
 }
 
 const templateJSON = {
-    version: "1.0", 
-    workspace: [
-        // LEVEL 9
-        {
-            number: "L9",
-            name: "LEVEL 9",
-            section: {
-                "RECON": [
+    version: "1.0",
+    workspace: {
+        "RECON": [
+            // LEVEL 9
+            {
+                number: "L9",
+                name: "LEVEL 9",
+                sections: [
                     {
                         name: "User Type",
                         lines: [
@@ -549,50 +549,13 @@ const templateJSON = {
                             }
                         ]
                     }
-                ],
-                "SEARCH": [
-                    {
-                        name: "User Type",
-                        lines: [
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "My name is "
-                                    },
-                                    {
-                                        type: "VALUE-CHARSTRING",
-                                        value: "Enter your name"
-                                    }
-                                ]
-                            },
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Choose city"
-                                    },
-                                    {
-                                        type: "VALUE-LIST",
-                                        value: [
-                                            "BLR",
-                                            "CEN",
-                                            "DEL"
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
                 ]
-            }
-        },
-        // LEVEL 8
-        {
-            number: "L8",
-            name: "LEVEL 8",
-            section: {
-                "RECON": [
+            },
+            // LEVEL 8
+            {
+                number: "L8",
+                name: "LEVEL 8",
+                sections: [
                     {
                         name: "User Type",
                         lines: [
@@ -677,22 +640,152 @@ const templateJSON = {
                                 }
                             ]
                     }
-                ],
-                "SEARCH": [
-
                 ]
             }
-        }
-    ]
+        ],
+        "SEARCH": [
+            // LEVEL 9
+            {
+                number: "L9",
+                name: "LEVEL 9",
+                sections: [
+                    {
+                        name: "User Type",
+                        lines: [
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "My name is "
+                                    },
+                                    {
+                                        type: "VALUE-CHARSTRING",
+                                        value: "Enter your name"
+                                    }
+                                ]
+                            },
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "Choose city"
+                                    },
+                                    {
+                                        type: "VALUE-LIST",
+                                        value: [
+                                            "BLR",
+                                            "CEN",
+                                            "DEL"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            // LEVEL 8
+            {
+                number: "L8",
+                name: "LEVEL 8",
+                sections: [
+                    {
+                        name: "User Type",
+                        lines: [
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "My name is "
+                                    },
+                                    {
+                                        type: "VALUE-CHARSTRING",
+                                        value: "Enter your name"
+                                    }
+                                ]
+                            },
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "Choose city"
+                                    },
+                                    {
+                                        type: "VALUE-LIST",
+                                        value: [
+                                            "BLR",
+                                            "CEN",
+                                            "DEL"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Performance",
+                        lines: [
+                            {
+                                element: [
+                                    {
+                                        type: "LABEL",
+                                        value: "Time not gt than:"
+                                    },
+                                    {
+                                        type: "VALUE-NUMSTRING",
+                                        value: "10"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: "Environment",
+                        lines:
+                            [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                                },
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                    }
+                ]
+            }
+        ]
+    }
 };
 
 const projectJSON = {
-    workspace: [
-        // LEVEL 9
-        {
-            name: "LEVEL 9",
-            value: {
-                "RECON": [
+    workspace: {
+        "RECON": [
+            // LEVEL 9
+            {
+                name: "LEVEL 9",
+                value: [
                     {
                         name: "User Type",
                         value: [
@@ -729,21 +822,12 @@ const projectJSON = {
                             { noteText: "Note 4" }
                         ]
                     }
-                ],
-                "SEARCH": [
-                    {
-                        name: "User Type",
-                        value: [
-                        ]
-                    }
                 ]
-            }
-        },
-        // LEVEL 8
-        {
-            name: "LEVEL 8",
-            value: {
-                "RECON": [
+            },
+            // LEVEL 8
+            {
+                name: "LEVEL 8",
+                value: [
                     {
                         name: "User Type",
                         value: [
@@ -762,13 +846,45 @@ const projectJSON = {
                             { noteText: "Note 3" }
                         ]
                     }
-                ],
-                "SEARCH": [
+                ]
 
+            }
+        ],
+        "SEARCH": [
+            // LEVEL 9
+            {
+                name: "LEVEL 9",
+                value: [
+                    {
+                        name: "User Type",
+                        value: [
+                        ]
+                    }
+                ]
+            },
+            // LEVEL 8
+            {
+                name: "LEVEL 8",
+                value: [
+                    {
+                        name: "User Type",
+                        value: [
+                        ]
+                    },
+                    {
+                        name: "Performance",
+                        value: [
+                        ]
+                    },
+                    {
+                        name: "Environment",
+                        value: [
+                        ]
+                    }
                 ]
             }
-        }
-    ],
+        ]
+    },
     jottings: [
         "Text 1",
         "Text 2"

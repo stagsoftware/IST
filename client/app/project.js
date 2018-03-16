@@ -19,6 +19,11 @@ class Project {
     }
 
     save() {
-
+        return {
+            "workspace": this.session.save(),
+            "jottings": this.jottings,
+            "notes": this.notes,
+            "questions": this.questions
+        };    
     }
 }

@@ -51,7 +51,13 @@ class Session {
 
         // 5. Display the view
         this.view.makeVisible(true);
-
     }
 
+    save() {
+        var updatedWorkspaceCollection = {};
+        for (var i = 0; i < this.view.boardView.noOfWorkspaces; ++i) {
+            updatedWorkspaceCollection[this.view.boardView.wsNames[i]] = this.view.boardView.workspaceCollection[i].save();
+        }
+        return updatedWorkspaceCollection;
+    }
 }

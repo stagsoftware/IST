@@ -27,7 +27,7 @@ class SessionBoardView {
         // Create all the workspaces and hide them
         for (var i = 0; i < this.noOfWorkspaces; ++i) {
             this.workspaceCollection[i] = new Workspace();
-            this.workspaceCollection[i].init(layer, x, y, this.wsNames[i], templateJSON, valueJSON);
+            this.workspaceCollection[i].init(layer, x, y, this.wsNames[i], templateJSON[this.wsNames[i]], valueJSON[this.wsNames[i]]);
             this.workspaceCollection[i].makeVisible(false);
         }
 

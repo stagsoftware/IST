@@ -35,6 +35,15 @@ class Workspace {
         }
     }
 
+    save() {
+  
+        var updatedLevelCollection = [];
+        for (var i = 0; i < this.noOfLevels; ++i) {
+            updatedLevelCollection[i] = this.levelCollection[i].save();
+        }
+        return updatedLevelCollection;
+    }
+
     makeVisible(isVisible) {
 
         for (var i = 0; i < this.noOfLevels; ++i) {
