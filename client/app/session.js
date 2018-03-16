@@ -10,18 +10,16 @@ class Session {
         this.view;
         this.controller;
 
-        this.projectName;
         this.projectTemplates;
         this.projectDetails;
 
         this.currentWorkspaceID = -1;
     }
 
-    init(wsName, templateJSON, valueJSON) {
+    init(wsName, templateJSON, projectJSON) {
 
-        this.projectName = projectJSON.name;
         this.projectTemplates = templateJSON;
-        this.projectDetails = projectJSON.value;
+        this.projectDetails = projectJSON;
 
         // 1. Create the stage for canvas display
         this.stage = new Konva.Stage({

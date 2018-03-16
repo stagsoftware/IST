@@ -1,4 +1,4 @@
 var wsName = "SEARCH";
 
-var session = new Session();
-session.init(wsName, templateJSON, projectJSON);
+var project = new Project();
+project.init(wsName, templateJSON, projectJSON);
