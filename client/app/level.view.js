@@ -17,7 +17,7 @@ class LevelView {
 
                 // Calculate the (x,y) for headerView
                 var hvX = x
-                    + (LevelSettings.skeleton.w * (LevelSettings.boardViewRect.wPct / 100));
+                    + (LevelWidth * (LevelSettings.boardViewRect.wPct / 100));
                 var hvY = y;
 
                 this.headerView = new LevelHeaderView();
@@ -30,8 +30,8 @@ class LevelView {
 
                 // Calculate the (x,y) for BoardView
                 var bvX = x
-                    + (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100))
-                    + (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100));
+                    + (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100))
+                    + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100));
                 var bvY = y;
 
                 this.boardView = new LevelBoardView();

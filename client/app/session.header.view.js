@@ -30,20 +30,20 @@ class SessionHeaderView {
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.scrollLeftButtonRect.hPct / 100))
+            width: (SessionWidth * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.scrollLeftButtonRect.hPct / 100))
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "scrollLeftButtonRect");
+        var config = UISettings.getSessionConfig(manualConfig, "scrollLeftButtonRect");
         this.scrollLeftButtonRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonText.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.scrollLeftButtonText.hPct / 100)),
+            width: (SessionWidth * (SessionSettings.scrollLeftButtonText.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.scrollLeftButtonText.hPct / 100)),
             text: '<'
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "scrollLeftButtonText");
+        var config = UISettings.getSessionConfig(manualConfig, "scrollLeftButtonText");
         this.scrollLeftButtonText = new Konva.Text(config);
 
         this.layer.add(this.scrollLeftButtonRect);
@@ -52,23 +52,23 @@ class SessionHeaderView {
         //  Setup wsName display object in Konva
         var manualConfig = {
             x: this.x
-                + (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
+                + (SessionWidth * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.wsNameRect.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.wsNameRect.hPct / 100))
+            width: (SessionWidth * (SessionSettings.wsNameRect.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.wsNameRect.hPct / 100))
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "wsNameRect");
+        var config = UISettings.getSessionConfig(manualConfig, "wsNameRect");
         this.wsNameRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x
-                + (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
+                + (SessionWidth * (SessionSettings.scrollLeftButtonRect.wPct / 100)),
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.wsNameText.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.wsNameText.hPct / 100)),
+            width: (SessionWidth * (SessionSettings.wsNameText.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.wsNameText.hPct / 100)),
             text: wsName
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "wsNameText");
+        var config = UISettings.getSessionConfig(manualConfig, "wsNameText");
         this.wsNameText = new Konva.Text(config);
 
         this.layer.add(this.wsNameRect);
@@ -77,25 +77,25 @@ class SessionHeaderView {
         //  Setup scrollRightButton display object in Konva
         var manualConfig = {
             x: this.x
-                + (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonRect.wPct / 100))
-                + (SessionSettings.skeleton.w * (SessionSettings.wsNameRect.wPct / 100)),
+                + (SessionWidth * (SessionSettings.scrollLeftButtonRect.wPct / 100))
+                + (SessionWidth * (SessionSettings.wsNameRect.wPct / 100)),
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.scrollRightButtonRect.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.scrollRightButtonRect.hPct / 100))
+            width: (SessionWidth * (SessionSettings.scrollRightButtonRect.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.scrollRightButtonRect.hPct / 100))
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "scrollRightButtonRect");
+        var config = UISettings.getSessionConfig(manualConfig, "scrollRightButtonRect");
         this.scrollRightButtonRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x
-                + (SessionSettings.skeleton.w * (SessionSettings.scrollLeftButtonRect.wPct / 100))
-                + (SessionSettings.skeleton.w * (SessionSettings.wsNameRect.wPct / 100)),
+                + (SessionWidth * (SessionSettings.scrollLeftButtonRect.wPct / 100))
+                + (SessionWidth * (SessionSettings.wsNameRect.wPct / 100)),
             y: this.y,
-            width: (SessionSettings.skeleton.w * (SessionSettings.scrollRightButtonText.wPct / 100)),
-            height: (SessionSettings.skeleton.h * (SessionSettings.scrollRightButtonText.hPct / 100)),
+            width: (SessionWidth * (SessionSettings.scrollRightButtonText.wPct / 100)),
+            height: (SessionHeight * (SessionSettings.scrollRightButtonText.hPct / 100)),
             text: '>'
         };
-        var config = configSettings.getSessionUIConfig(manualConfig, "scrollRightButtonText");
+        var config = UISettings.getSessionConfig(manualConfig, "scrollRightButtonText");
         this.scrollRightButtonText = new Konva.Text(config);
 
         this.layer.add(this.scrollRightButtonRect);

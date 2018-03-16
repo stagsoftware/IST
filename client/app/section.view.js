@@ -17,8 +17,8 @@ class SectionView {
         // Calculate the (x,y) for BoardView
         var bvX = x;
         var bvY = y
-            + (SectionSettings.skeleton.h * (SectionSettings.secNameRect.hPct / 100))
-            + (SectionSettings.skeleton.h * (SectionSettings.scrollLeftButtonRect.hPct / 100));
+            + (SectionHeight * (SectionSettings.secNameRect.hPct / 100))
+            + (SectionHeight * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
         // Init Boardview part of SectionView
         this.boardView = new SectionBoardView();
@@ -30,8 +30,8 @@ class SectionView {
 
         var newBvX = newX;
         var newBvY = newY
-            + (SectionSettings.skeleton.h * (SectionSettings.secNameRect.hPct / 100))
-            + (SectionSettings.skeleton.h * (SectionSettings.scrollLeftButtonRect.hPct / 100));
+            + (SectionHeight * (SectionSettings.secNameRect.hPct / 100))
+            + (SectionHeight * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
         this.boardView.relocateAt(newBvX, newBvY);
     }

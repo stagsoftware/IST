@@ -33,20 +33,20 @@ class LevelHeaderView {
                 var manualConfig = {
                     x: this.x,
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100))
+                    width: (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollLeftButtonRect");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonRect");
                 this.scrollLeftButtonRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x,
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonText.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollLeftButtonText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100)),
                     text: '<'
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollLeftButtonText");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonText");
                 this.scrollLeftButtonText = new Konva.Text(config);
 
                 this.layer.add(this.scrollLeftButtonRect);
@@ -56,22 +56,22 @@ class LevelHeaderView {
                 var manualConfig = {
                     x: this.x,
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollRightButtonRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollRightButtonRect.hPct / 100))
+                        + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollRightButtonRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollRightButtonRect");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonRect");
                 this.scrollRightButtonRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x,
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollRightButtonText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollRightButtonText.hPct / 100)),
+                        + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollRightButtonText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100)),
                     text: '>'
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollRightButtonText");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonText");
                 this.scrollRightButtonText = new Konva.Text(config);
 
                 this.layer.add(this.scrollRightButtonRect);
@@ -80,23 +80,23 @@ class LevelHeaderView {
                 //  Setup levelID display object in Konva
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100))
+                    width: (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelIDRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelIDRect");
+                var config = UISettings.getLevelConfig(manualConfig, "levelIDRect");
                 this.levelIDRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelIDText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelIDText.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelIDText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelIDText.hPct / 100)),
                     text: levelNumber
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelIDText");
+                var config = UISettings.getLevelConfig(manualConfig, "levelIDText");
                 this.levelIDText = new Konva.Text(config);
 
                 this.layer.add(this.levelIDRect);
@@ -105,25 +105,25 @@ class LevelHeaderView {
                 //  Setup levelName display object in Konva
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelNameRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelNameRect.hPct / 100))
+                        + (LevelHeight * (LevelSettings.levelIDRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelNameRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelNameRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelNameRect");
+                var config = UISettings.getLevelConfig(manualConfig, "levelNameRect");
                 this.levelNameRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelNameText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelNameText.hPct / 100)),
+                        + (LevelHeight * (LevelSettings.levelIDRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelNameText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelNameText.hPct / 100)),
                     text: levelName
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelNameText");
+                var config = UISettings.getLevelConfig(manualConfig, "levelNameText");
                 this.levelNameText = new Konva.Text(config);
 
                 this.layer.add(this.levelNameRect);
@@ -135,20 +135,20 @@ class LevelHeaderView {
                 var manualConfig = {
                     x: this.x,
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100))
+                    width: (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelIDRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelIDRect");
+                var config = UISettings.getLevelConfig(manualConfig, "levelIDRect");
                 this.levelIDRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x,
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelIDText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelIDText.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelIDText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelIDText.hPct / 100)),
                     text: levelNumber
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelIDText");
+                var config = UISettings.getLevelConfig(manualConfig, "levelIDText");
                 this.levelIDText = new Konva.Text(config);
 
                 this.layer.add(this.levelIDRect);
@@ -158,22 +158,22 @@ class LevelHeaderView {
                 var manualConfig = {
                     x: this.x,
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelNameRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelNameRect.hPct / 100))
+                        + (LevelHeight * (LevelSettings.levelIDRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelNameRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelNameRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelNameRect");
+                var config = UISettings.getLevelConfig(manualConfig, "levelNameRect");
                 this.levelNameRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x,
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.levelIDRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.levelNameText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.levelNameText.hPct / 100)),
+                        + (LevelHeight * (LevelSettings.levelIDRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.levelNameText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.levelNameText.hPct / 100)),
                     text: levelName
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "levelNameText");
+                var config = UISettings.getLevelConfig(manualConfig, "levelNameText");
                 this.levelNameText = new Konva.Text(config);
 
                 this.layer.add(this.levelNameRect);
@@ -182,23 +182,23 @@ class LevelHeaderView {
                 //  Setup scrollLeftButton display object in Konva
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100))
+                    width: (LevelWidth * (LevelSettings.scrollLeftButtonRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollLeftButtonRect");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonRect");
                 this.scrollLeftButtonRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
                     y: this.y,
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollLeftButtonText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonText.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollLeftButtonText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100)),
                     text: '<'
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollLeftButtonText");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonText");
                 this.scrollLeftButtonText = new Konva.Text(config);
 
                 this.layer.add(this.scrollLeftButtonRect);
@@ -207,25 +207,25 @@ class LevelHeaderView {
                 //  Setup scrollRightButton display object in Konva
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollRightButtonRect.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollRightButtonRect.hPct / 100))
+                        + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollRightButtonRect.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonRect.hPct / 100))
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollRightButtonRect");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonRect");
                 this.scrollRightButtonRect = new Konva.Rect(config);
 
                 var manualConfig = {
                     x: this.x
-                        + (LevelSettings.skeleton.w * (LevelSettings.levelIDRect.wPct / 100)),
+                        + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
                     y: this.y
-                        + (LevelSettings.skeleton.h * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
-                    width: (LevelSettings.skeleton.w * (LevelSettings.scrollRightButtonText.wPct / 100)),
-                    height: (LevelSettings.skeleton.h * (LevelSettings.scrollRightButtonText.hPct / 100)),
+                        + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
+                    width: (LevelWidth * (LevelSettings.scrollRightButtonText.wPct / 100)),
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100)),
                     text: '>'
                 };
-                var config = configSettings.getLevelUIConfig(manualConfig, "scrollRightButtonText");
+                var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonText");
                 this.scrollRightButtonText = new Konva.Text(config);
 
                 this.layer.add(this.scrollRightButtonRect);

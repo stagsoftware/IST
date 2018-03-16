@@ -17,7 +17,7 @@ class SessionView {
         // Calculate the (x,y) for BoardView
         var bvX = x;
         var bvY = y
-            + (SessionSettings.skeleton.h * (SessionSettings.scrollLeftButtonRect.hPct / 100));
+            + (SessionHeight * (SessionSettings.scrollLeftButtonRect.hPct / 100));
 
         this.boardView = new SessionBoardView();
         this.boardView.init(layer, bvX, bvY, wsName, templateJSON, valueJSON);

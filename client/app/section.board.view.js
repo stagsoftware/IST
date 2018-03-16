@@ -30,10 +30,10 @@ class SectionBoardView {
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SectionSettings.skeleton.w * (SectionSettings.boardViewRect.wPct / 100)),
-            height: (SectionSettings.skeleton.h * (SectionSettings.boardViewRect.hPct / 100))
+            width: (SectionWidth * (SectionSettings.boardViewRect.wPct / 100)),
+            height: (SectionHeight * (SectionSettings.boardViewRect.hPct / 100))
         };
-        var config = configSettings.getSectionUIConfig(manualConfig, "boardViewRect");
+        var config = UISettings.getSectionConfig(manualConfig, "boardViewRect");
         this.boardViewRect = new Konva.Rect(config);
 
         this.layer.add(this.boardViewRect);
@@ -41,8 +41,8 @@ class SectionBoardView {
         // Calculate #boards that can be displayed in a view & store in maxNoBoards
         // Now create that many KonvaRect & KonvaText objects that represent 'a-board' in a loop
         // and store in boardCollection object. Make them not-visible for now.
-        var bvMaxX = this.x + (SectionSettings.skeleton.w * (SectionSettings.boardViewRect.wPct / 100));
-        var bvMaxY = this.y + (SectionSettings.skeleton.h * (SectionSettings.boardViewRect.hPct / 100));
+        var bvMaxX = this.x + (SectionWidth * (SectionSettings.boardViewRect.wPct / 100));
+        var bvMaxY = this.y + (SectionHeight * (SectionSettings.boardViewRect.hPct / 100));
         var currBX = this.x;
         var currBY = this.y;
         var currBMaxX = currBX + SectionSettings.board.w;
@@ -174,7 +174,7 @@ class SectionBoardView {
 
         if (this.selectedBoardID !== -1) {
             // Now hightlight the 'board' i.e. decorate the outer KonvaRect to highlight selection
-            var config = configSettings.getSectionUIConfig({}, "selectedKonvaRect");
+            var config = UISettings.getSectionConfig({}, "selectedKonvaRect");
             this.boardCollection[boardID].konvaRect.fill(config.fill);
             this.boardCollection[boardID].konvaRect.stroke(config.stroke);
             this.layer.batchDraw();
@@ -187,7 +187,7 @@ class SectionBoardView {
         if (this.selectedBoardID !== -1) {
 
             // Now un-decorate the board to restore it to its defaults
-            var config = configSettings.getSectionUIConfig({}, "konvaRect");
+            var config = UISettings.getSectionConfig({}, "konvaRect");
             this.boardCollection[this.selectedBoardID].konvaRect.fill(config.fill);
             this.boardCollection[this.selectedBoardID].konvaRect.stroke(config.stroke);
             this.layer.batchDraw();

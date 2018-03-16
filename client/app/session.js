@@ -27,8 +27,8 @@ class Session {
         this.stage = new Konva.Stage({
             // id of container <div>
             container: 'container',
-            width: SessionSettings.skeleton.w,
-            height: SessionSettings.skeleton.h
+            width: CanvasWidth,
+            height: CanvasHeight
         });
 
         // 2. then create layer
@@ -36,8 +36,8 @@ class Session {
         this.stage.add(this.layer);
 
         // 3. Set (x,y) for the workspace to be displayed 
-        this.x = 0;
-        this.y = 0;
+        this.x = CanvasX;
+        this.y = CanvasY;
 
         // 4. Create the view and populate workspaceCollection
         this.view = new SessionView();

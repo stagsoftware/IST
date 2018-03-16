@@ -29,7 +29,7 @@ class Workspace {
             this.levelCollection[i] = new Level();
 
             var levelX = this.x;
-            var levelY = this.y + (i * LevelSettings.skeleton.h);
+            var levelY = this.y + (i * LevelHeight);
 
             this.levelCollection[i].init(layer, levelX, levelY, wsName, templateJSON[i], valueJSON[i]);
         }

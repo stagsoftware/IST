@@ -31,27 +31,27 @@ class LevelBoardView {
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (LevelSettings.skeleton.w * (LevelSettings.boardViewRect.wPct / 100)),
-            height: (LevelSettings.skeleton.h * (LevelSettings.boardViewRect.hPct / 100))
+            width: (LevelWidth * (LevelSettings.boardViewRect.wPct / 100)),
+            height: (LevelHeight * (LevelSettings.boardViewRect.hPct / 100))
         };
-        var config = configSettings.getLevelUIConfig(manualConfig, "boardViewRect");
+        var config = UISettings.getLevelConfig(manualConfig, "boardViewRect");
         this.boardViewRect = new Konva.Rect(config);
 
         this.layer.add(this.boardViewRect);
 
         // Calculate #sectionAreas that can be created in a view & store in #noOfSectionAreas
         // Now create that many sectionAreas that represent 'a-section' coordinates in a loop
-        var secAreaMaxW = this.x + (LevelSettings.skeleton.w * (LevelSettings.boardViewRect.wPct / 100));
+        var secAreaMaxW = this.x + (LevelWidth * (LevelSettings.boardViewRect.wPct / 100));
         var newSecAreaX = this.x;
         var newSecAreaY = this.y;
         var newSectionID = -1;
 
-        for (var i = 0; (newSecAreaX + SectionSettings.skeleton.w) <= secAreaMaxW; ++i) {
+        for (var i = 0; (newSecAreaX + SectionWidth) <= secAreaMaxW; ++i) {
 
             this.sectionAreaCollection[i] = new SectionArea();
             this.sectionAreaCollection[i].init(newSecAreaX, newSecAreaY, newSectionID);
 
-            newSecAreaX = newSecAreaX + SectionSettings.skeleton.w;
+            newSecAreaX = newSecAreaX + SectionWidth;
 
             ++this.noOfSectionAreas;
         }
@@ -61,7 +61,7 @@ class LevelBoardView {
 
             this.sectionCollection[i] = new Section();
 
-            var secX = this.x + (i * SectionSettings.skeleton.w);
+            var secX = this.x + (i * SectionWidth);
             var secY = this.y;
             var isVisible = false;
 
