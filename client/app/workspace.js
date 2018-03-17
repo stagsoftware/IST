@@ -7,6 +7,8 @@ class Workspace {
         this.y;
 
         this.wsName;
+        this.levelTemplates;
+        this.levelDetails;
 
         this.levelCollection = [];
         this.noOfLevels = 0;
@@ -21,8 +23,10 @@ class Workspace {
         this.y = y;
 
         this.wsName = wsName;
+        this.levelTemplates = templateJSON.levels;
+        this.levelDetails = valueJSON.value;
 
-        this.noOfLevels = templateJSON.length;
+        this.noOfLevels = templateJSON.levels.length;
 
         for (var i = 0; i < this.noOfLevels; ++i) {
 
@@ -31,17 +35,22 @@ class Workspace {
             var levelX = this.x;
             var levelY = this.y + (i * LevelHeight);
 
-            this.levelCollection[i].init(layer, levelX, levelY, wsName, templateJSON[i], valueJSON[i]);
+            this.levelCollection[i].init(layer, levelX, levelY, wsName, this.levelTemplates[i], this.levelDetails[i]);
         }
     }
 
     save() {
   
+        var wsName = this.wsName;
         var updatedLevelCollection = [];
         for (var i = 0; i < this.noOfLevels; ++i) {
             updatedLevelCollection[i] = this.levelCollection[i].save();
         }
-        return updatedLevelCollection;
+        
+        return {
+            name: wsName,
+            value: updatedLevelCollection
+        };
     }
 
     makeVisible(isVisible) {

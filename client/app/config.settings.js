@@ -163,7 +163,6 @@ const UISettings = {
                 shadowColor: 'black',
                 shadowblur: 5,
                 strokeWidth: 2
-
             },
             secNameText: {
                 fontSize: 10,
@@ -173,7 +172,6 @@ const UISettings = {
                 align: 'center'
             },
             addButtonRect: {
-
                 fill: 'hsl(59, 100%, 77%)',
                 stroke: 'hsl(165, 53%, 81%)',
                 shadowColor: 'black',
@@ -182,8 +180,8 @@ const UISettings = {
             },
             addButtonText: {
                 fontSize: 12,
+                fontStyle: 'bold',
                 fontFamily: 'Verdana',
-                fill: '#555',
                 align: 'center',
                 fontStyle: 'bold'
             },
@@ -196,8 +194,8 @@ const UISettings = {
             },
             deleteButtonText: {
                 fontSize: 12,
+                fontStyle: 'bold',
                 fontFamily: 'Verdana',
-                fill: '#555',
                 align: 'center',
                 fontStyle: 'bold'
             },
@@ -397,219 +395,171 @@ const UISettings = {
     }
 }
 
-const templateJSON = {
+const projectTemplateJSON = {
     version: "1.0",
-    workspace: {
-        "RECON": [
-            // LEVEL 9
-            {
-                number: "L9",
-                name: "LEVEL 9",
-                sections: [
-                    {
-                        name: "User Type",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "My name is "
-                                        },
-                                        {
-                                            type: "VALUE-CHARSTRING",
-                                            name: "id_name",
-                                            value: "Enter your name"
-                                        }
-                                    ]
-                            },
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Choose city"
-                                        },
-                                        {
-                                            type: "VALUE-LIST",
-                                            value: [
-                                                "BLR",
-                                                "CEN",
-                                                "DEL"
-                                            ]
-                                        }
-                                    ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "My name is "
-                                        },
-                                        {
-                                            type: "VALUE-CHARSTRING",
-                                            value: "Enter your name"
-                                        }
-                                    ]
-                            },
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Choose city"
-                                        },
-                                        {
-                                            type: "VALUE-LIST",
-                                            value: [
-                                                "BLR",
-                                                "CEN",
-                                                "DEL"
-                                            ]
-                                        }
-                                    ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "User Type 1",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "User Type 2",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "User Type 3",
-                        lines: [
-                            {
-                                element:
-                                    [
-                                        {
-                                            type: "LABEL",
-                                            value: "Time not gt than:"
-                                        },
-                                        {
-                                            type: "VALUE-NUMSTRING",
-                                            value: "10"
-                                        }
-                                    ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            // LEVEL 8
-            {
-                number: "L8",
-                name: "LEVEL 8",
-                sections: [
-                    {
-                        name: "User Type",
-                        lines: [
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "My name is "
-                                    },
-                                    {
-                                        type: "VALUE-CHARSTRING",
-                                        value: "Enter your name"
-                                    }
-                                ]
-                            },
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Choose city"
-                                    },
-                                    {
-                                        type: "VALUE-LIST",
-                                        value: [
-                                            "BLR",
-                                            "CEN",
-                                            "DEL"
+    workspaces: [
+        {
+            name: "RECON",
+            description: "Reconnaissance Workspace",
+            levels: [
+                // LEVEL 9
+                {
+                    number: "L9",
+                    name: "LEVEL 9",
+                    sections: [
+                        {
+                            name: "User Type",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "My name is "
+                                            },
+                                            {
+                                                type: "VALUE-CHARSTRING",
+                                                name: "id_name",
+                                                value: "Enter your name"
+                                            }
                                         ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        lines: [
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Time not gt than:"
-                                    },
-                                    {
-                                        type: "VALUE-NUMSTRING",
-                                        value: "10"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        lines:
-                            [
+                                },
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Choose city"
+                                            },
+                                            {
+                                                type: "VALUE-LIST",
+                                                value: [
+                                                    "BLR",
+                                                    "CEN",
+                                                    "DEL"
+                                                ]
+                                            }
+                                        ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Performance",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Time not gt than:"
+                                            },
+                                            {
+                                                type: "VALUE-NUMSTRING",
+                                                value: "10"
+                                            }
+                                        ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "My name is "
+                                            },
+                                            {
+                                                type: "VALUE-CHARSTRING",
+                                                value: "Enter your name"
+                                            }
+                                        ]
+                                },
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Choose city"
+                                            },
+                                            {
+                                                type: "VALUE-LIST",
+                                                value: [
+                                                    "BLR",
+                                                    "CEN",
+                                                    "DEL"
+                                                ]
+                                            }
+                                        ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "User Type 1",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Time not gt than:"
+                                            },
+                                            {
+                                                type: "VALUE-NUMSTRING",
+                                                value: "10"
+                                            }
+                                        ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "User Type 2",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Time not gt than:"
+                                            },
+                                            {
+                                                type: "VALUE-NUMSTRING",
+                                                value: "10"
+                                            }
+                                        ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "User Type 3",
+                            lines: [
+                                {
+                                    element:
+                                        [
+                                            {
+                                                type: "LABEL",
+                                                value: "Time not gt than:"
+                                            },
+                                            {
+                                                type: "VALUE-NUMSTRING",
+                                                value: "10"
+                                            }
+                                        ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                // LEVEL 8
+                {
+                    number: "L8",
+                    name: "LEVEL 8",
+                    sections: [
+                        {
+                            name: "User Type",
+                            lines: [
                                 {
                                     element: [
                                         {
@@ -639,110 +589,74 @@ const templateJSON = {
                                     ]
                                 }
                             ]
-                    }
-                ]
-            }
-        ],
-        "SEARCH": [
-            // LEVEL 9
-            {
-                number: "L9",
-                name: "LEVEL 9",
-                sections: [
-                    {
-                        name: "User Type",
-                        lines: [
-                            {
-                                element: [
+                        },
+                        {
+                            name: "Performance",
+                            lines: [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            lines:
+                                [
                                     {
-                                        type: "LABEL",
-                                        value: "My name is "
+                                        element: [
+                                            {
+                                                type: "LABEL",
+                                                value: "My name is "
+                                            },
+                                            {
+                                                type: "VALUE-CHARSTRING",
+                                                value: "Enter your name"
+                                            }
+                                        ]
                                     },
                                     {
-                                        type: "VALUE-CHARSTRING",
-                                        value: "Enter your name"
-                                    }
-                                ]
-                            },
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Choose city"
-                                    },
-                                    {
-                                        type: "VALUE-LIST",
-                                        value: [
-                                            "BLR",
-                                            "CEN",
-                                            "DEL"
+                                        element: [
+                                            {
+                                                type: "LABEL",
+                                                value: "Choose city"
+                                            },
+                                            {
+                                                type: "VALUE-LIST",
+                                                value: [
+                                                    "BLR",
+                                                    "CEN",
+                                                    "DEL"
+                                                ]
+                                            }
                                         ]
                                     }
                                 ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            // LEVEL 8
-            {
-                number: "L8",
-                name: "LEVEL 8",
-                sections: [
-                    {
-                        name: "User Type",
-                        lines: [
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "My name is "
-                                    },
-                                    {
-                                        type: "VALUE-CHARSTRING",
-                                        value: "Enter your name"
-                                    }
-                                ]
-                            },
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Choose city"
-                                    },
-                                    {
-                                        type: "VALUE-LIST",
-                                        value: [
-                                            "BLR",
-                                            "CEN",
-                                            "DEL"
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        lines: [
-                            {
-                                element: [
-                                    {
-                                        type: "LABEL",
-                                        value: "Time not gt than:"
-                                    },
-                                    {
-                                        type: "VALUE-NUMSTRING",
-                                        value: "10"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        lines:
-                            [
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "SEARCH",
+            description: "Search Workspace",
+            levels: [
+                // LEVEL 9
+                {
+                    number: "L9",
+                    name: "LEVEL 9",
+                    sections: [
+                        {
+                            name: "User Type",
+                            lines: [
                                 {
                                     element: [
                                         {
@@ -772,119 +686,217 @@ const templateJSON = {
                                     ]
                                 }
                             ]
-                    }
-                ]
-            }
-        ]
-    }
+                        }
+                    ]
+                },
+                // LEVEL 8
+                {
+                    number: "L8",
+                    name: "LEVEL 8",
+                    sections: [
+                        {
+                            name: "User Type",
+                            lines: [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                                },
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Performance",
+                            lines: [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            lines:
+                                [
+                                    {
+                                        element: [
+                                            {
+                                                type: "LABEL",
+                                                value: "My name is "
+                                            },
+                                            {
+                                                type: "VALUE-CHARSTRING",
+                                                value: "Enter your name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        element: [
+                                            {
+                                                type: "LABEL",
+                                                value: "Choose city"
+                                            },
+                                            {
+                                                type: "VALUE-LIST",
+                                                value: [
+                                                    "BLR",
+                                                    "CEN",
+                                                    "DEL"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 };
 
-const projectJSON = {
-    workspace: {
-        "RECON": [
-            // LEVEL 9
-            {
-                name: "LEVEL 9",
-                value: [
-                    {
-                        name: "User Type",
-                        value: [
-                            { noteText: "Note 1" }
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        value: [
-                            { noteText: "Note 2" }
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        value: [
-                            { noteText: "Note 3" }
-                        ]
-                    },
-                    {
-                        name: "User Type 1",
-                        value: [
-                            { noteText: "Note 4" }
-                        ]
-                    },
-                    {
-                        name: "User Type 2",
-                        value: [
-                            { noteText: "Note 4" }
-                        ]
-                    },
-                    {
-                        name: "User Type 3",
-                        value: [
-                            { noteText: "Note 4" }
-                        ]
-                    }
-                ]
-            },
-            // LEVEL 8
-            {
-                name: "LEVEL 8",
-                value: [
-                    {
-                        name: "User Type",
-                        value: [
-                            { noteText: "Note 1" }
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        value: [
-                            { noteText: "Note 2" }
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        value: [
-                            { noteText: "Note 3" }
-                        ]
-                    }
-                ]
+const projectValueJSON = {
+    workspaces: [
+        {
+            name: "RECON",
+            value: [
+                // LEVEL 9
+                {
+                    name: "LEVEL 9",
+                    value: [
+                        {
+                            name: "User Type",
+                            value: [
+                                { noteText: "Note 1" }
+                            ]
+                        },
+                        {
+                            name: "Performance",
+                            value: [
+                                { noteText: "Note 2" }
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            value: [
+                                { noteText: "Note 3" }
+                            ]
+                        },
+                        {
+                            name: "User Type 1",
+                            value: [
+                                { noteText: "Note 4" }
+                            ]
+                        },
+                        {
+                            name: "User Type 2",
+                            value: [
+                                { noteText: "Note 4" }
+                            ]
+                        },
+                        {
+                            name: "User Type 3",
+                            value: [
+                                { noteText: "Note 4" }
+                            ]
+                        }
+                    ]
+                },
+                // LEVEL 8
+                {
+                    name: "LEVEL 8",
+                    value: [
+                        {
+                            name: "User Type",
+                            value: [
+                                { noteText: "Note 1" }
+                            ]
+                        },
+                        {
+                            name: "Performance",
+                            value: [
+                                { noteText: "Note 2" }
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            value: [
+                                { noteText: "Note 3" }
+                            ]
+                        }
+                    ]
 
-            }
-        ],
-        "SEARCH": [
-            // LEVEL 9
-            {
-                name: "LEVEL 9",
-                value: [
-                    {
-                        name: "User Type",
-                        value: [
-                        ]
-                    }
-                ]
-            },
-            // LEVEL 8
-            {
-                name: "LEVEL 8",
-                value: [
-                    {
-                        name: "User Type",
-                        value: [
-                        ]
-                    },
-                    {
-                        name: "Performance",
-                        value: [
-                        ]
-                    },
-                    {
-                        name: "Environment",
-                        value: [
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
+                }
+            ]
+        },
+        {
+            name: "SEARCH",
+            value: [
+                // LEVEL 9
+                {
+                    name: "LEVEL 9",
+                    value: [
+                        {
+                            name: "User Type",
+                            value: [
+                            ]
+                        }
+                    ]
+                },
+                // LEVEL 8
+                {
+                    name: "LEVEL 8",
+                    value: [
+                        {
+                            name: "User Type",
+                            value: [
+                            ]
+                        },
+                        {
+                            name: "Performance",
+                            value: [
+                            ]
+                        },
+                        {
+                            name: "Environment",
+                            value: [
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     jottings: [
         "Text 1",
         "Text 2"
@@ -894,8 +906,14 @@ const projectJSON = {
         "Note 2"
     ],
     questions: [
-        "How does ..",
-        "Why does .."
+        {
+            text: "How does ..",
+            isChecked: true
+        },
+        {
+            text: "Why does ..",
+            isChecked: false
+        }
     ]
 };
 

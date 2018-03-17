@@ -23,93 +23,109 @@
   <link href="..\client\assets\css\footer.css" rel="stylesheet">
 </head>
 
-<body>
-  <div>
+<body ng-app="ist">
+  <div ng-controller="MainController">
     <div id="note"></div>
     <div id="container"></div>
 
-    <div ng-app="todoApp" class="footer">
+    <div class="footer">
       <div class="container-fluid">
         <div class="row">
-          <div class="dropup col-md-4 col-style hoverHeader">
-            <span id="jottingsDropDown" class="dropdown-toggle col-text-style" data-toggle="dropdown">Jottings
-              <span class="fa fa-angle-up" style="font-size:19px"></span>
-            </span>
-            <ul id="jottingsMenu" class="dropdown-menu col-md-12 menu-style" role="menu" aria-labelledby="menu1">
-              <li class="dropdown-header menu-header-style" id="jottingsDropUp">Jottings
-                <span class="fa fa-angle-down" style="font-size:19px"></span>
-              </li>
-              <div ng-controller="TodoListController as todoList2" class="menu-dimension-style">
-                <form id="jottingsForm" ng-submit="todoList2.addTodo2()" class="menu-form-style">
-                  <input class="menu-form-input-style" type="text" ng-model="todoList2.todoText2" size="38">
+
+          <div class="jottings-dropup dropup col-md-4">
+
+            <div class="jottings-up">
+              <span>Jottings</span>
+              <span class="jottings-up-icon fa fa-angle-up"></span>
+            </div>
+
+            <div class="footer-menu dropdown-menu col-md-12">
+
+              <div class="jottings-dropdown-header dropdown-header">
+                <span>Jottings</span>
+                <span class="jottings-down-icon fa fa-angle-down"></span>
+              </div>
+
+              <div class="footer-menu-content">
+                <form ng-submit="addJotting()">
+                  <input type="text" ng-model="jotting" size="38">
                   <input class="btn btn-info" type="submit" value="Add">
                 </form>
-                <ul class="menu-list-style">
-                  <li ng-repeat="todo in todoList2.todos2" class="menu-sub-style">
 
-                    <span class="done-{{todo.done}}">{{todo.text}}</span>
-
+                <ul>
+                  <li ng-repeat="jotting in project.jottings track by $index">
+                    <span>{{jotting}}</span>
                   </li>
                 </ul>
-
               </div>
-            </ul>
+
+            </div>
+
           </div>
 
-          <div class="dropup col-md-4 col-style hoverHeader">
-            <span id="notesDropDown" class="dropdown-toggle col-text-style" data-toggle="dropdown">Notes
-              <span class="fa fa-angle-up" style="font-size:19px"></span>
-            </span>
-            <ul id="notesMenu" class="dropdown-menu col-md-12 menu-style" role="menu" aria-labelledby="menu1">
-              <li class="dropdown-header menu-header-style" id="notesDropUp">Notes
-                <span class="fa fa-angle-down" style="font-size:19px"></span>
-              </li>
-              <div ng-controller="TodoListController as todoList1" class="menu-dimension-style">
+          <div class="notes-dropup dropup col-md-4">
 
-                <form id="notesForm" ng-submit="todoList1.addTodo1()" class="menu-form-style">
-                  <input class="menu-form-input-style" type="text" ng-model="todoList1.todoText1" size="38">
-                  <input class="btn btn-info" type="submit" value="add">
+            <div class="notes-up">
+              <span>Notes</span>
+              <span class="notes-up-icon fa fa-angle-up"></span>
+            </div>
+
+            <div class="footer-menu dropdown-menu col-md-12">
+
+              <div class="notes-dropdown-header dropdown-header">
+                <span>Notes</span>
+                <span class="notes-down-icon fa fa-angle-down"></span>
+              </div>
+
+              <div class="footer-menu-content">
+                <form ng-submit="addNote()">
+                  <input type="text" ng-model="note" size="38">
+                  <input class="btn btn-info" type="submit" value="Add">
                 </form>
 
-                <ul class="menu-list-style">
-                  <li ng-repeat="todo in todoList1.todos1" class="menu-sub-style">
-
-                    {{todo.counter}}.
-                    <span class="done-{{todo.done}}">{{todo.text}}</span>
-
+                <ol>
+                  <li ng-repeat="note in project.notes track by $index">
+                    <span>{{note}}</span>
                   </li>
-                </ul>
-
+                </ol>
               </div>
-            </ul>
-          </div>
-          <div class="dropup col-md-4 col-style hoverHeader">
-            <span id="questionsDropDown" class="dropdown-toggle col-text-style" data-toggle="dropdown">Questions
-              <span class="fa fa-angle-up" style="font-size:19px"></span>
-            </span>
-            <ul id="questionsMenu" class="dropdown-menu col-md-12 menu-style" role="menu" aria-labelledby="menu1">
-              <li class="dropdown-header menu-header-style" id="questionsDropUp" style="text-align:left;background-color:black;color:white;font-family:Verdana;font-size:12px;cursor:pointer;">Questions
-                <span class="fa fa-angle-down" style="font-size:19px"></span>
-              </li>
 
-              <div ng-controller="TodoListController as todoList" class="menu-dimension-style">
-                <form id="questionsForm" ng-submit="todoList.addTodo()" class="menu-form-style">
-                  <input class="menu-form-input-style" type="text" ng-model="todoList.todoText" size="43" placeholder="add your questions here">
-                  <input class="btn btn-info" type="submit" value="add">
+            </div>
+
+          </div>
+
+          <div class="questions-dropup dropup col-md-4">
+
+            <div class="questions-up">
+              <span>Questions</span>
+              <span class="questions-up-icon fa fa-angle-up"></span>
+            </div>
+
+            <div class="footer-menu dropdown-menu col-md-12">
+
+              <div class="questions-dropdown-header dropdown-header">
+                <span>Questions</span>
+                <span class="questions-down-icon fa fa-angle-down"></span>
+              </div>
+
+              <div class="footer-menu-content">
+                <form ng-submit="addQuestion()">
+                  <input type="text" ng-model="question" size="38">
+                  <input class="btn btn-info" type="submit" value="Add">
                 </form>
 
-                <ul class="unstyled menu-list-style">
-                  <li ng-repeat="todo in todoList.todos" class="menu-sub-style">
-
-                    <input id="checkBox" style="font-family:Verdana;" type="checkbox" ng-model="todo.done">{{todo.counter}}.
-                    <span id="text_display" class="done-{{todo.done}}">{{todo.text}}</span>
-
+                <ol>        
+                  <li ng-repeat="question in project.questions track by $index">
+                    <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
+                    <input type="checkbox" ng-model="question.isChecked">
                   </li>
-                </ul>
-
+                </ol>
               </div>
-            </ul>
+
+            </div>
+
           </div>
+
         </div>
       </div>
     </div>
@@ -130,7 +146,6 @@
   <script src="..\client\app\workspace.js"></script>
 
   <script src="..\client\app\level.js"></script>
-  <script src="..\client\app\level.model.js"></script>
   <script src="..\client\app\level.view.js"></script>
   <script src="..\client\app\level.header.view.js"></script>
   <script src="..\client\app\level.board.view.js"></script>

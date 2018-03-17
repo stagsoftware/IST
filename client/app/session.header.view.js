@@ -15,16 +15,20 @@ class SessionHeaderView {
         this.scrollRightButtonRect;
         this.scrollRightButtonText;
 
-        this.wsNames = ["Reconnaissance Workspace", "Search Workspace"];
+        this.workspaceID = -1;
+        this.wsDescriptions;
 
         this.isVisible = false;
     }
 
-    init(layer, x, y, wsName) {
+    init(layer, x, y, currWsName, wsNames, wsDescriptions) {
 
         this.layer = layer;
         this.x = x;
         this.y = y;
+
+        this.workspaceID = wsNames.findIndex(wsName => wsName === currWsName);
+        this.wsDescriptions = wsDescriptions;
 
         //  Setup scrollLeftButton display object in Konva
         var manualConfig = {
@@ -66,7 +70,7 @@ class SessionHeaderView {
             y: this.y,
             width: (SessionWidth * (SessionSettings.wsNameText.wPct / 100)),
             height: (SessionHeight * (SessionSettings.wsNameText.hPct / 100)),
-            text: wsName
+            text: this.wsDescriptions[this.workspaceID]
         };
         var config = UISettings.getSessionConfig(manualConfig, "wsNameText");
         this.wsNameText = new Konva.Text(config);
@@ -103,7 +107,7 @@ class SessionHeaderView {
     }
 
     setWorkspaceName(workspaceID) {
-        this.wsNameText.setText(this.wsNames[workspaceID]);
+        this.wsNameText.setText(this.wsDescriptions[workspaceID]);
         this.layer.batchDraw();
     }
 

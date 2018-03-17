@@ -7,16 +7,14 @@ class SessionBoardView {
         this.y;
 
         this.workspaceCollection = [];
-        // NOTE: There are only 2 workspaces for each session
-        this.noOfWorkspaces = 2;
-        this.wsNames = ["RECON", "SEARCH"];
+        this.noOfWorkspaces = 0;
 
         this.workspaceID = -1;
 
         this.isVisible = false;
     }
 
-    init(layer, x, y, wsName, templateJSON, valueJSON) {
+    init(layer, x, y, currWsName, wsNames, templateJSON, valueJSON) {
         // Create all the workspaces(store in workspaceCollection object) and hide them
         // Set the workspaceID based on the wsName
         // Display the workspace based on the wsName specified
@@ -25,17 +23,17 @@ class SessionBoardView {
         this.y = y;
 
         // Create all the workspaces and hide them
-        for (var i = 0; i < this.noOfWorkspaces; ++i) {
+        for (var i = 0; i < templateJSON.length; ++i) {
             this.workspaceCollection[i] = new Workspace();
-            this.workspaceCollection[i].init(layer, x, y, this.wsNames[i], templateJSON[this.wsNames[i]], valueJSON[this.wsNames[i]]);
+            this.workspaceCollection[i].init(layer, x, y, wsNames[i], templateJSON[i], valueJSON[i]);
             this.workspaceCollection[i].makeVisible(false);
+            ++this.noOfWorkspaces;
         }
 
         // Set the workspaceID based on the wsName
         // Display the workspace based on the wsName specified
-        this.workspaceID = this.wsNames.findIndex(name => name === wsName);
+        this.workspaceID = wsNames.findIndex(wsName => wsName === currWsName);
         this.workspaceCollection[this.workspaceID].makeVisible(true);
-
     }
 
     displayWorkspace(newWorkspaceID) {
@@ -47,7 +45,6 @@ class SessionBoardView {
         this.workspaceID = newWorkspaceID;
     }
 
-
     makeVisible(isVisible) {
         // Make all the workspaces not-visible
         for (var i = 0; i < this.noOfSections; ++i) {
@@ -57,6 +54,5 @@ class SessionBoardView {
         this.workspaceCollection[this.workspaceID].makeVisible(isVisible);
         this.isVisible = isVisible;
     }
-
 
 }

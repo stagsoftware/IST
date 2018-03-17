@@ -8,19 +8,19 @@ class Project {
         this.questions;
     }
 
-    init(wsName, templateJSON, projectJSON) {
+    init(currWsName, templateJSON, valueJSON) {
 
         this.session = new Session();
-        this.session.init(wsName, templateJSON.workspace, projectJSON.workspace);
+        this.session.init(currWsName, templateJSON.workspaces, valueJSON.workspaces);
 
-        this.jottings = projectJSON.jottings;
-        this.notes = projectJSON.notes;
-        this.questions = projectJSON.questions;
+        this.jottings = valueJSON.jottings;
+        this.notes = valueJSON.notes;
+        this.questions = valueJSON.questions;
     }
 
     save() {
         return {
-            "workspace": this.session.save(),
+            "workspaces": this.session.save(),
             "jottings": this.jottings,
             "notes": this.notes,
             "questions": this.questions

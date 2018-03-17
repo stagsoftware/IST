@@ -10,16 +10,20 @@ class Session {
         this.view;
         this.controller;
 
-        this.projectTemplates;
-        this.projectDetails;
+        this.wsNames;
+        this.wsDescriptions;
+        this.wsTemplates;
+        this.wsDetails;
 
         this.currentWorkspaceID = -1;
     }
 
-    init(wsName, templateJSON, projectJSON) {
+    init(currWsName, templateJSON, valueJSON) {
 
-        this.projectTemplates = templateJSON;
-        this.projectDetails = projectJSON;
+        this.wsNames = templateJSON.map(wsTemplate => wsTemplate.name);
+        this.wsDescriptions = templateJSON.map(wsTemplate => wsTemplate.description);
+        this.wsTemplates = templateJSON;
+        this.wsDetails = valueJSON;
 
         // 1. Create the stage for canvas display
         this.stage = new Konva.Stage({
@@ -39,7 +43,7 @@ class Session {
 
         // 4. Create the view and populate workspaceCollection
         this.view = new SessionView();
-        this.view.init(this.layer, this.x, this.y, wsName, this.projectTemplates, this.projectDetails);
+        this.view.init(this.layer, this.x, this.y, currWsName, this.wsNames, this.wsDescriptions, this.wsTemplates, this.wsDetails);
 
         // 5. Setup the controller
         this.controller = new SessionController();
@@ -54,9 +58,10 @@ class Session {
     }
 
     save() {
-        var updatedWorkspaceCollection = {};
+
+        var updatedWorkspaceCollection = [];
         for (var i = 0; i < this.view.boardView.noOfWorkspaces; ++i) {
-            updatedWorkspaceCollection[this.view.boardView.wsNames[i]] = this.view.boardView.workspaceCollection[i].save();
+            updatedWorkspaceCollection[i] = this.view.boardView.workspaceCollection[i].save();
         }
         return updatedWorkspaceCollection;
     }

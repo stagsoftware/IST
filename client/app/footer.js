@@ -1,62 +1,27 @@
 
 $(document).ready(function () {
 
-    $("#questionsDropUp").click(function () {
-        $("#questionsMenu").slideUp("slow");
+    $(".jottings-up").click(function () {
+        $(".jottings-dropup .dropdown-menu").slideDown("slow");
     });
 
-    $("#jottingsDropUp").click(function () {
-        $("#jottingsMenu").slideUp("slow");
+    $(".jottings-dropdown-header").click(function () {
+        $(".jottings-dropup .dropdown-menu").slideUp("slow");
     });
 
-    $("#notesDropUp").click(function () {
-        $("#notesMenu").slideUp("slow");
+    $(".notes-up").click(function () {
+        $(".notes-dropup .dropdown-menu").slideDown("slow");
     });
 
-    $("#notesDropDown").click(function () {
-        $("#notesMenu").slideDown("slow");
+    $(".notes-dropdown-header").click(function () {
+        $(".notes-dropup .dropdown-menu").slideUp("slow");
     });
 
-    $("#jottingsDropDown").click(function () {
-        $("#jottingsMenu").slideDown("slow");
+    $(".questions-up").click(function () {
+        $(".questions-dropup .dropdown-menu").slideDown("slow");
     });
 
-    $("#questionsDropDown").click(function () {
-        $("#questionsMenu").slideDown("slow");
+    $(".questions-dropdown-header").click(function () {
+        $(".questions-dropup .dropdown-menu").slideUp("slow");
     });
 });
-
-angular.module('todoApp', [])
-    .controller('TodoListController', function ($scope) {
-        var counter = 0;
-        var counter1 = 0;
-
-        var todoList = this;
-        var todoList1 = this;
-        var todoList2 = this;
-        console.log(todoList);
-        todoList.todos = [];
-        todoList1.todos1 = [];
-        todoList2.todos2 = [];
-        //  {text:'learn AngularJS', done:true},
-        //  {text:'build an AngularJS app', done:false}];
-
-        todoList.addTodo = function () {
-            $scope.counter = counter++;
-            todoList.todos.push({ text: todoList.todoText, done: false, counter: counter });
-            console.log(todoList.todos)
-            todoList.todoText = '';
-        };
-
-        todoList1.addTodo1 = function () {
-            $scope.counter1 = counter1++;
-            todoList1.todos1.push({ text: todoList1.todoText1, done: false, counter: counter1 });
-            todoList1.todoText1 = '';
-        };
-
-        todoList2.addTodo2 = function () {
-            todoList2.todos2.push({ text: todoList2.todoText2, done: false });
-            todoList2.todoText2 = '';
-        };
-
-    });
