@@ -24,7 +24,7 @@
 </head>
 
 <body ng-app="ist">
-  <div ng-controller="MainController">
+  <div ng-controller="ProjectController">
     <div id="note"></div>
     <div id="container"></div>
 
@@ -114,7 +114,7 @@
                   <input class="btn btn-info" type="submit" value="Add">
                 </form>
 
-                <ol>        
+                <ol>
                   <li ng-repeat="question in project.questions track by $index">
                     <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
                     <input type="checkbox" ng-model="question.isChecked">
@@ -133,7 +133,6 @@
   </div>
 
   <!-- JS files -->
-  <script src="..\client\app\config.settings.js"></script>
 
   <script src="..\client\app\project.js"></script>
 
@@ -161,9 +160,12 @@
   <script src="..\client\app\note.form.js"></script>
   <script src="..\client\app\section.controller.js"></script>
 
-  <script src="..\client\app\app.js"></script>
-
   <script src="..\client\app\footer.js"></script>
+
+  <script src="..\client\app\app.js"></script>
+  <script src="..\client\app\project.controller.js"></script>
+  <script src="..\client\app\project.service.js"></script>
+
 </body>
 
 </html>
