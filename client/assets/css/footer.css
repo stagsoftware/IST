@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.jottings-up-icon, .notes-up-icon, .questions-up-icon {
+.up-icon, .down-icon {
   font-size: 20px;
 }
 
@@ -36,10 +36,6 @@
   font-family: Verdana;
   cursor: pointer;
   font-size: 12px;
-}
-
-.jottings-down-icon, .notes-down-icon, .questions-down-icon {
-  font-size: 20px;
 }
 
 .footer-menu {
@@ -62,6 +58,7 @@
 
 .footer-menu-content form input[type="text"] {
   font-family: Verdana;
+  width: 80%;
 }
 
 .footer-menu-content ul {

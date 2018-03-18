@@ -18,7 +18,10 @@ ist.controller('MainController', function ($scope) {
 
     $scope.jotting = "";
     $scope.note = "";
-    $scope.question = "";
+    $scope.question = {
+        text: "",
+        isChecked: false
+    };
 
     $scope.addJotting = function () {
         if ($scope.jotting !== "") {
@@ -36,9 +39,12 @@ ist.controller('MainController', function ($scope) {
 
     $scope.addQuestion = function () {
         if ($scope.question !== "") {
-            $scope.project.questions.push({ text: $scope.question, isChecked: false });
+            $scope.project.questions.push($scope.question);
         }
-        $scope.question = "";
+        $scope.question = {
+            text: "",
+            isChecked: false
+        };
     };
 
 });

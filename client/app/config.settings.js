@@ -411,35 +411,33 @@ const projectTemplateJSON = {
                             name: "User Type",
                             lines: [
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "My name is "
-                                            },
-                                            {
-                                                type: "VALUE-CHARSTRING",
-                                                name: "id_name",
-                                                value: "Enter your name"
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            name: "id_name",
+                                            value: "Enter your name"
+                                        }
+                                    ]
                                 },
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "Choose city"
-                                            },
-                                            {
-                                                type: "VALUE-LIST",
-                                                value: [
-                                                    "BLR",
-                                                    "CEN",
-                                                    "DEL"
-                                                ]
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -447,17 +445,16 @@ const projectTemplateJSON = {
                             name: "Performance",
                             lines: [
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "Time not gt than:"
-                                            },
-                                            {
-                                                type: "VALUE-NUMSTRING",
-                                                value: "10"
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -465,34 +462,32 @@ const projectTemplateJSON = {
                             name: "Environment",
                             lines: [
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "My name is "
-                                            },
-                                            {
-                                                type: "VALUE-CHARSTRING",
-                                                value: "Enter your name"
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
                                 },
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "Choose city"
-                                            },
-                                            {
-                                                type: "VALUE-LIST",
-                                                value: [
-                                                    "BLR",
-                                                    "CEN",
-                                                    "DEL"
-                                                ]
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -500,17 +495,16 @@ const projectTemplateJSON = {
                             name: "User Type 1",
                             lines: [
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "Time not gt than:"
-                                            },
-                                            {
-                                                type: "VALUE-NUMSTRING",
-                                                value: "10"
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -536,17 +530,16 @@ const projectTemplateJSON = {
                             name: "User Type 3",
                             lines: [
                                 {
-                                    element:
-                                        [
-                                            {
-                                                type: "LABEL",
-                                                value: "Time not gt than:"
-                                            },
-                                            {
-                                                type: "VALUE-NUMSTRING",
-                                                value: "10"
-                                            }
-                                        ]
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Time not gt than:"
+                                        },
+                                        {
+                                            type: "VALUE-NUMSTRING",
+                                            value: "10"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -609,37 +602,36 @@ const projectTemplateJSON = {
                         },
                         {
                             name: "Environment",
-                            lines:
-                                [
-                                    {
-                                        element: [
-                                            {
-                                                type: "LABEL",
-                                                value: "My name is "
-                                            },
-                                            {
-                                                type: "VALUE-CHARSTRING",
-                                                value: "Enter your name"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        element: [
-                                            {
-                                                type: "LABEL",
-                                                value: "Choose city"
-                                            },
-                                            {
-                                                type: "VALUE-LIST",
-                                                value: [
-                                                    "BLR",
-                                                    "CEN",
-                                                    "DEL"
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
+                            lines: [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                                },
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -746,37 +738,36 @@ const projectTemplateJSON = {
                         },
                         {
                             name: "Environment",
-                            lines:
-                                [
-                                    {
-                                        element: [
-                                            {
-                                                type: "LABEL",
-                                                value: "My name is "
-                                            },
-                                            {
-                                                type: "VALUE-CHARSTRING",
-                                                value: "Enter your name"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        element: [
-                                            {
-                                                type: "LABEL",
-                                                value: "Choose city"
-                                            },
-                                            {
-                                                type: "VALUE-LIST",
-                                                value: [
-                                                    "BLR",
-                                                    "CEN",
-                                                    "DEL"
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
+                            lines: [
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "My name is "
+                                        },
+                                        {
+                                            type: "VALUE-CHARSTRING",
+                                            value: "Enter your name"
+                                        }
+                                    ]
+                                },
+                                {
+                                    element: [
+                                        {
+                                            type: "LABEL",
+                                            value: "Choose city"
+                                        },
+                                        {
+                                            type: "VALUE-LIST",
+                                            value: [
+                                                "BLR",
+                                                "CEN",
+                                                "DEL"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -932,10 +923,13 @@ UISettings.getSectionConfig = function (manualConfig, styleConfigID) {
 const CanvasX = 0;
 const CanvasY = 0;
 
-const CanvasMinWidth = 1000;
-const CanvasMinHeight = 800;
-const CanvasWidth = (window.innerWidth > CanvasMinWidth) ? window.innerWidth : CanvasMinWidth;
-const CanvasHeight = (window.innerHeight > CanvasMinHeight) ? window.innerHeight : CanvasMinHeight;
+//const CanvasMinWidth = 1000;
+//const CanvasMinHeight = 800;
+//const CanvasWidth = (window.innerWidth > CanvasMinWidth) ? window.innerWidth : CanvasMinWidth;
+//const CanvasHeight = (window.innerHeight > CanvasMinHeight) ? window.innerHeight : CanvasMinHeight;
+
+const CanvasWidth = window.screen.availWidth; // - (window.outerWidth - window.innerWidth);
+const CanvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight);
 
 const SessionSettings = UISettings.Properties.Session;
 const LevelSettings = UISettings.Properties.Level;

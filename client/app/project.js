@@ -19,8 +19,10 @@ class Project {
     }
 
     save() {
+        
+        var updatedSession = this.session.save();
         return {
-            "workspaces": this.session.save(),
+            "workspaces": updatedSession,
             "jottings": this.jottings,
             "notes": this.notes,
             "questions": this.questions
