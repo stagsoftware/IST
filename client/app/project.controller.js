@@ -103,7 +103,7 @@ ist.controller('ProjectController', function ($scope, ProjectService) {
     };
 
     $scope.addQuestion = function () {
-        if ($scope.question !== "") {
+        if ($scope.question.text !== "") {
             $scope.project.questions.push($scope.question);
         }
         $scope.question = {
