@@ -8,11 +8,10 @@ class SessionView {
         this.isVisible = false;
     }
 
-    init(layer, x, y, wsName, templateJSON, valueJSON) {
-
+    init(layer, x, y, currWsName, wsNames, wsDescriptions, templateJSON, valueJSON) {
 
         this.headerView = new SessionHeaderView();
-        this.headerView.init(layer, x, y, wsName);
+        this.headerView.init(layer, x, y, currWsName, wsNames, wsDescriptions);
 
         // Calculate the (x,y) for BoardView
         var bvX = x;
@@ -20,7 +19,7 @@ class SessionView {
             + (SessionHeight * (SessionSettings.scrollLeftButtonRect.hPct / 100));
 
         this.boardView = new SessionBoardView();
-        this.boardView.init(layer, bvX, bvY, wsName, templateJSON, valueJSON);
+        this.boardView.init(layer, bvX, bvY, currWsName, wsNames, templateJSON, valueJSON);
     }
 
     makeVisible(isVisible) {

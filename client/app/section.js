@@ -51,4 +51,12 @@ class Section {
         // 5. Display the view
         this.view.makeVisible(isVisible);
     }
+
+    save() {
+        this.model.insertNote({noteText: "new note"}, 0);
+        return {
+            name: this.secName,
+            value: this.model.noteCollection
+        };
+    }
 }

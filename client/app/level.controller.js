@@ -58,7 +58,7 @@ class LevelController {
         // It scrolls right iff any section is available on the right
         // NOTE: scroll right condition check
         if (this.view.boardView.noOfSectionAreas < this.view.boardView.noOfSections) {
-            if (this.endSectionID < this.model.sectionCollection.length - 1) {
+            if (this.endSectionID < this.view.boardView.noOfSections - 1) {
 
                 // 1. Increment the endNoteID
                 ++this.endSectionID;

@@ -1,4 +1,3 @@
-var wsName = "SEARCH";
 
-var session = new Session();
-session.init(wsName, templateJSON, projectJSON);
+// Angular IST Application
+var ist = angular.module('ist', []);

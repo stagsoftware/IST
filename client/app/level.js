@@ -12,7 +12,7 @@ class Level {
         this.levelNumber;
         this.levelName;
         this.sectionTemplates;
-        this.sectionCollection;
+        this.sectionDetails;
     }
 
     init(layer, x, y, wsName, templateJSON, valueJSON) {
@@ -23,17 +23,12 @@ class Level {
 
         this.levelNumber = templateJSON.number;
         this.levelName = templateJSON.name;
-        this.sectionTemplates = templateJSON.section[wsName];
-        this.sectionCollection = valueJSON.value[wsName];
-
-        // 1. Create level model and load it up
-        this.model = new LevelModel();
-        // Load up the JSON from the persistent source.
-        this.model.init(this.sectionCollection); // levelJSON === emptyArray => new Workspace
+        this.sectionTemplates = templateJSON.sections;
+        this.sectionDetails = valueJSON.value;
 
         // 2. Create the view and populate sectionCollection
         this.view = new LevelView();
-        this.view.init(layer, x, y, wsName, this.levelNumber, this.levelName, this.sectionTemplates, this.sectionCollection);
+        this.view.init(layer, x, y, wsName, this.levelNumber, this.levelName, this.sectionTemplates, this.sectionDetails);
 
         // 3. Setup the controller to mediate between 'model' and 'view'
         this.controller = new LevelController();
@@ -46,6 +41,19 @@ class Level {
         // 5. Display the view
         this.view.makeVisible(true);
 
+    }
+
+    save() {
+
+        var updatedSectionCollection = [];
+        for (var i = 0; i < this.view.boardView.noOfSections; ++i) {
+            updatedSectionCollection[i] = this.view.boardView.sectionCollection[i].save();
+        }
+
+        return {
+            name: this.levelName,
+            value: updatedSectionCollection
+        };
     }
 
 }
