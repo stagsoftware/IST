@@ -35,44 +35,6 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
   $scope.isProjectOpen = false;
 
-  $(document).ready(function () {
-
-    $("#logout").click(function () {
-      var Name = $cookies.remove('UserName');
-      if ($scope.project) {
-        $scope.value = $scope.project.save();
-      }
-      $location.path('/');
-      console.log("logged out");
-      $("#myModal").modal("hide");
-    });
-
-    $(".jottings-up").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".jottings-dropdown-header").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".notes-up").click(function () {
-      $(".notes-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".notes-dropdown-header").click(function () {
-      $(".notes-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".questions-up").click(function () {
-      $(".questions-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".questions-dropdown-header").click(function () {
-      $(".questions-dropup .dropdown-menu").slideUp("slow");
-    });
-
-  });
-
   $scope.Name = $cookies.getObject('UserName');
 
   $scope.openNav = function () {
@@ -94,13 +56,13 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     $scope.value;
     $scope.project;
 
-    ProjectService.getTemplate.then(function (response) {
+    ProjectService.getTemplate().then(function (response) {
       $scope.template = response.data;
 
-      ProjectService.getValue.then(function (response) {
+      ProjectService.getValue().then(function (response) {
         $scope.value = response.data;
 
-        ProjectService.getUISettings.then(function (response) {
+        ProjectService.getUISettings().then(function (response) {
           UISettings = response.data;
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
@@ -153,8 +115,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
           $scope.project = new Project();
           $scope.project.init(currWsName, $scope.template, $scope.value);
-        })
-
+        });
       });
     });
 
@@ -198,4 +159,43 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       };
     };
   };
+
+  $(document).ready(function () {
+
+    $("#logout").click(function () {
+      var Name = $cookies.remove('UserName');
+      if ($scope.project) {
+        $scope.value = $scope.project.save();
+      }
+      $location.path('/');
+      console.log("logged out");
+      $("#myModal").modal("hide");
+    });
+
+    $(".jottings-up").click(function () {
+      $(".jottings-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".jottings-dropdown-header").click(function () {
+      $(".jottings-dropup .dropdown-menu").slideUp("slow");
+    });
+
+    $(".notes-up").click(function () {
+      $(".notes-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".notes-dropdown-header").click(function () {
+      $(".notes-dropup .dropdown-menu").slideUp("slow");
+    });
+
+    $(".questions-up").click(function () {
+      $(".questions-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".questions-dropdown-header").click(function () {
+      $(".questions-dropup .dropdown-menu").slideUp("slow");
+    });
+
+  });
+  
 });
