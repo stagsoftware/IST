@@ -10,8 +10,8 @@ ist.config(function ($routeProvider, $locationProvider) {
     }).otherwise({ redirectTo: '/' });
     $locationProvider.hashPrefix('');
     $locationProvider.html5Mode(true);
-    // $locationProvider.html5Mode({
-    //     enabled: true,
-    //     requireBase: false
-    // });
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 });

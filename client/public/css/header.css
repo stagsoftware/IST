@@ -1,0 +1,114 @@
+.left-navbar
+{
+    padding-top: 5px;
+}
+.hamburger-menu
+{
+    font-size:30px;
+    cursor:pointer;
+    position: absolute;
+    top: -25px;
+    left: -10px;
+}
+.user-image
+{
+    width:35px; 
+    height:35px; 
+    margin-left: 30px;
+    top: 6px;
+}
+.project-name
+{
+    display:inline-block;
+}
+.side-navbar
+{
+    margin-top: -99px;
+    width: 550px;
+    left: -307px;
+}
+.side-close-button
+{
+    border-bottom: 1px solid lightgrey;
+}
+.side-menu-dropdown
+{
+    margin-left:-30px;
+    margin-top: 16px
+}
+.side-submenu-firstlevel
+{
+    border-bottom: 1px solid lightgrey;
+}
+.side-submenu-secondlevel
+{
+    color: #eb807b;
+    text-align: center;
+}
+.submenu-secondlevel-dropdown
+{
+    max-height:200px;
+    margin-left: 30px;
+    width:200px;
+    list-style:none;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.secondlevel-dropdown-list
+{
+    border: 1px solid lightgrey;
+    text-align:center; 
+    margin-left: -40px;
+    padding: 10px;
+    font-size: 17px;
+}
+.submenu-thirdlevel-dropdown
+{
+    max-height:250px;
+    margin-top: 1px;
+}
+.thirdlevel-dropdown-list
+{
+    width:200px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+.thirdlevel-dropdown-sublist
+{
+    width:200px;
+    margin-bottom: 15px;
+}
+.thirdlevel-sublist-dropdown
+{
+    width:200px;
+    margin-left: 30px;
+}
+.thirdlevel-textarea
+{
+    resize:none;
+    height:90px;
+    margin-left: 30px;
+    width: 200px;
+    margin-bottom: 6px;
+}
+.thirdlevel-save-button
+{
+    margin-left:100px;
+}
+.secondlevel-dropdown-sublist
+{
+    margin-left:40px;
+}
+.secondlevel-dropdown-okbtn
+{
+    margin-left:20px;
+}
+.firstlevel-sessions
+{
+    border-bottom: 1px solid lightgrey;
+}
+.sessions-secondlevel-startbutton
+{
+    margin-left: 50px;
+}
