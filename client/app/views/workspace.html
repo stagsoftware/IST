@@ -1,18 +1,18 @@
 <div class="wrapper-main">
   <header class="header-main">
     <div class="navbar">
-      <ul class="nav navbar-left" style="padding-top: 5px;">
+      <ul class="nav navbar-left left-navbar">
 
         <li>
-          <span style="font-size:30px;cursor:pointer;position: absolute;top: -25px;left: -10px;" ng-click="openNav()" data-toggle="modal"
-            data-target="#myModal">&#9776; </span>
+          <span class="hamburger-menu glyphicon glyphicon-menu-hamburger" ng-click="openNav()" data-toggle="modal"
+            data-target="#myModal"></span>
         </li>
         <li class="imageStyle">
-          <img src="./public/images/prfl-img.png" alt="User Image" style="width:35px; height:35px; margin-left: 30px;top: 6px;">
-          <span>{{userName}}</span>
+          <img class="user-image" src="./public/images/prfl-img.png" alt="User Image">
+          <span>{{Name}}</span>
         </li>
         <li>
-          <h4 style="display:inline-block;">(Project Name)</h4>
+          <h4 class = "project-name">(Project Name)</h4>
         </li>
       </ul>
       <ul class="nav navbar-top-links navbar-right">
@@ -147,39 +147,37 @@
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
-      <span id="mySidenav" class="sidenav" style=" margin-top: -99px;width: 550px;left: -307px;">
+      <span id="mySidenav" class="sidenav side-navbar">
 
-        <a href="javascript:void(0)" class="pull-left close closebtn" data-dismiss="modal" style="border-bottom: 1px solid lightgrey"
-          ng-click="closeNav()">&times;</a>
-        <ul class="nav  nav-menu navbar-nav  menu-style" style="margin-left:-30px;margin-top: 16px">
-          <li class="dropdown-submenu firstlevel" style="border-bottom: 1px solid lightgrey">
+        <a href="javascript:void(0)" class="pull-left close closebtn side-close-button" data-dismiss="modal" ng-click="closeNav()">&times;</a>
+        <ul class="nav  nav-menu navbar-nav  menu-style side-menu-dropdown">
+          <li class="dropdown-submenu firstlevel side-submenu-firstlevel">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>Project
             </a>
-
             <span class="dropdown-menu secondlevel">
-              <h4 style="color: #eb807b;text-align: center"> Projects </h4>
+              <h4 class="side-submenu-secondlevel"> Projects </h4>
+
               <div>
-                <ul class="project" style="max-height:200px;margin-left: 30px; width:200px;list-style:none;overflow-y:auto;overflow-x:hidden;">
-                  <li class="dropdown-submenu " style="border: 1px solid lightgrey;text-align:center; margin-left: -40px;padding: 10px;font-size: 17px"
-                    ng-repeat="project in projects">{{project.name}}
-                    <ul class="dropdown-menu secondlevel" style="max-height:300px;margin-top: 1px;">
+                <ul class="project submenu-secondlevel-dropdown">
+                  <li class="dropdown-submenu secondlevel-dropdown-list" ng-repeat="project in projects">{{project.name}}
+                    <ul class="dropdown-menu secondlevel submenu-thirdlevel-dropdown">
                       <li>
-                        <input type="text" ng-model="project.name" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
+                        <input type="text" ng-model="project.name" class="menu-text thirdlevel-dropdown-list"></input>
                       </li>
-                      <li class="text-center" style="width:200px;margin-bottom: 15px">
-                        <!--  <select class="menu-text" style="width:200px;margin-left: 30px">
-                          <option value="Default">Default</option>
+                          <li class="text-center thirdlevel-dropdown-sublist">
+                        <select class="menu-text thirdlevel-sublist-dropdown">
+<option value="Default">Default</option>
                           <option value="mobile">mobile</option>
                         </select> -->
                         <input type="text" ng-model="project.templateName" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
                       </li>
                       <li>
-                        <textarea placeholder="enter project description" class="menu-text" style="resize:none;height:90px;margin-left: 30px;width: 200px;margin-bottom: 6px">{{project.description}}</textarea>
+                        <textarea placeholder="enter project description" class="menu-text thirdlevel-textarea">{{project.description}}</textarea>
                       </li>
 
                       <li>
-                        <button class="buttonSecondLevel" style="margin-left:100px;"> Save </button>
+                        <button class="buttonSecondLevel thirdlevel-save-button"> Save </button>
                       </li>
                     </ul>
                   </li>
@@ -187,19 +185,19 @@
 
                 <br>
                 <div>
-                  <select class="menu-text" style="margin-left:40px;">
+                  <select class="menu-text secondlevel-dropdown-sublist">
                     <option value="volvo">New</option>
                     <option value="saab">Clone</option>
                     <option value="saab">Modify</option>
                     <option value="saab">Delete</option>
                   </select>
-                  <button class="buttonSecondLevel" style="margin-left:20px;"> Ok</button>
+                  <button class="buttonSecondLevel secondlevel-dropdown-okbtn"> Ok</button>
             </span>
           </li>
           </br>
 
 
-          <li class="dropdown-submenu firstlevel" style="border-bottom: 1px solid lightgrey">
+          <li class="dropdown-submenu firstlevel firstlevel-sessions">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-file-text padding-15" aria-hidden="true"></i>Sessions
             </a>
@@ -227,7 +225,7 @@
                 </select>
               </li>
               <br/>
-              <button class="buttonSecondLevel" style="margin-left: 50px;" ng-click="startSession()">Start</button>
+              <button class="buttonSecondLevel sessions-secondlevel-startbutton" ng-click="startSession()">Start</button>
               <button class="buttonSecondLevel">Cancel</button>
 
             </ul>
