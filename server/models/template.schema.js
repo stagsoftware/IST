@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var templateSchema = mongoose.Schema({
-    Name: String,
-    templateValue: Object
+    name: String,
+    value: String
 });
 
 module.exports = mongoose.model('Template', templateSchema);

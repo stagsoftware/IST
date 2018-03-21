@@ -11,9 +11,11 @@ var projectroute = require('./server/routes/project.routes.js');
 var templateroute = require('./server/routes/template.routes.js');
 var loginroute = require('./server/routes/routes.js');
 
+// Used for POSTMAN
 // app.use(bodyParser.urlencoded({
 // 	extended:true
 // }));
+// Used for APPLICATION
 app.use(bodyParser.json());
 
 app.use(logger('dev'));

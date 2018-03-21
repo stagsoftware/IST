@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var UISettingSchema = mongoose.Schema({
-    Name: String,
-    Value: Object
+    name: String,
+    value: String
 });
 
 module.exports = mongoose.model('UISetting', UISettingSchema);

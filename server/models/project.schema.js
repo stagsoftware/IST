@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var projectSchema = mongoose.Schema({
-    projectName: String,
-    projectDetails: Object,
-    projectDescription: String,
+    name: String,
+    description: String,
+    details: String,
     templateName: String
 });
 

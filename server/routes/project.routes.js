@@ -3,14 +3,13 @@ var router = express.Router();
 var Project = require('../models/project.schema.js');
 
 router.post('/AddProject', function (req, res) {
-    console.log("in here");
-    var NewProject = new Project({
-        projectName: req.body.projectName,
-        projectDetails: req.body.projectDetails,
-        projectDescription: req.body.projectDescription,
+    var newProject = new Project({
+        name: req.body.name,
+        description: req.body.description,
+        details: req.body.details,
         templateName: req.body.templateName
     });
-    NewProject.save(function (err, data) {
+    newProject.save(function (err, data) {
         if (err) {
             console.log("in");
             throw err;
@@ -22,40 +21,70 @@ router.post('/AddProject', function (req, res) {
 });
 
 router.get('/GetProject', function (req, res) {
-    Project.find({}, function (err, data) {
-        if (err) {
-            throw err;
-        } else {
-            res.json(data);
+    Project.find(
+        {
+
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.json(data);
+            }
         }
-    });
+    );
 });
 
 router.get('/SearchProject/:id', function (req, res) {
-    Project.find({
-        projectName: req.params.id
-    }, function (err, data) {
-        if (err) {
-            throw err;
-        } else {
-            res.json(data);
+    Project.find(
+        {
+            name: req.params.id
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.json(data);
+            }
         }
-    });
+    );
 });
 
 
 router.put('/UpdateProject/:id', function (req, res) {
-    Project.findOneAndUpdate({
-        projectName: req.params.id
-    }, {
-            projectDetails: projectDetails,
-            projectDescription: req.body.projectDescription,
-            templateName: templateName
-        }, function (err, data) {
+    Project.findOneAndUpdate(
+        {
+            name: req.params.id
+        },
+        {
+            name: req.body.name,
+            description: req.body.description,
+        },
+        function (err, data) {
             if (err) {
                 throw err;
             } else {
                 console.log('Data Updated Successfully');
+                res.end();
+            }
+        }
+    );
+});
+
+
+router.put('/SaveProject/:id', function (req, res) {
+    Project.findOneAndUpdate(
+        {
+            name: req.params.id
+        },
+        {
+            details: req.body.details
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                console.log('Data saved Successfully');
                 res.end();
             }
         });
@@ -63,15 +92,18 @@ router.put('/UpdateProject/:id', function (req, res) {
 
 
 router.delete('/DeleteProject/:id', function (req, res) {
-    Project.remove({
-        projectName: req.params.id
-    }, function (err, data) {
-        if (err) {
-            throw err;
-        } else {
-            console.log('the Project has been Removed Successfully');
+    Project.remove(
+        {
+            name: req.params.id
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                console.log('the Project has been Removed Successfully');
+            }
         }
-    });
+    );
 });
 
 
