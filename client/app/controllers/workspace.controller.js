@@ -2,40 +2,66 @@
 var ist = angular.module('ist');
 ist.controller('WorkspaceController', function ($scope, $http, $window, $location, $cookies, $controller, ProjectService) {
 
-  $scope.projectArray = [
-    {
-      projectName: "project 1",
-      projectDescription: "this is my firtst project",
-    },
-    {
-      projectName: "project 2",
-      projectDescription: "this is my second project",
-    },
-    {
-      projectName: "project 3",
-      projectDescription: "this is my third project",
-    },
-    {
-      projectName: "project 4",
-      projectDescription: "this is my fourth project",
-    },
-    {
-      projectName: "project 5",
-      projectDescription: "this is my fifth project",
-    },
-    {
-      projectName: "project 6",
-      projectDescription: "this is my sixth project",
-    },
-    {
-      projectName: "project 7",
-      projectDescription: "this is my seventh project",
-    }
-  ];
-
+  // NOTE: Model values used
+  $scope.projects;
+  $scope.selectedProject;
+  $scope.selectedSession;
+  $scope.selectedDuration;
   $scope.isProjectOpen = false;
+  $scope.userName;
+  $scope.template;
+  $scope.value;
+  $scope.project;
+  $scope.jotting;
+  $scope.note;
+  $scope.question;
 
-  $scope.Name = $cookies.getObject('UserName');
+  var load = function () {
+    ProjectService.getProjects().then(function (response) {
+      $scope.projects = response.data;
+      $scope.selectedProject = $scope.projects[0];
+      $scope.selectedSession = "RECON";
+      $scope.selectedDuration = "45";
+    });
+  }
+
+  $(document).ready(function () {
+
+    $("#logout").click(function () {
+      var userName = $cookies.remove('UserName');
+      saveProject();
+      $location.path('/');
+      console.log("logged out");
+      $("#myModal").modal("hide");
+    });
+
+    $(".jottings-up").click(function () {
+      $(".jottings-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".jottings-dropdown-header").click(function () {
+      $(".jottings-dropup .dropdown-menu").slideUp("slow");
+    });
+
+    $(".notes-up").click(function () {
+      $(".notes-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".notes-dropdown-header").click(function () {
+      $(".notes-dropup .dropdown-menu").slideUp("slow");
+    });
+
+    $(".questions-up").click(function () {
+      $(".questions-dropup .dropdown-menu").slideDown("slow");
+    });
+
+    $(".questions-dropdown-header").click(function () {
+      $(".questions-dropup .dropdown-menu").slideUp("slow");
+    });
+
+  });
+
+  $scope.userName = $cookies.getObject('UserName');
 
   $scope.openNav = function () {
     document.getElementById("mySidenav").style.width = "550px";
@@ -49,21 +75,16 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   };
 
   $scope.startSession = function () {
-    $scope.isProjectOpen = true;
-    var currWsName = "SEARCH";
 
-    $scope.template;
-    $scope.value;
-    $scope.project;
+    ProjectService.getValue($scope.selectedProject.name).then(function (response) {
+      $scope.value = JSON.parse(response.data[0].details);
+      var templateName = response.data[0].templateName;
 
-    ProjectService.getTemplate().then(function (response) {
-      $scope.template = response.data;
-
-      ProjectService.getValue().then(function (response) {
-        $scope.value = response.data;
+      ProjectService.getTemplate(templateName).then(function (response) {
+        $scope.template = JSON.parse(response.data[0].value);
 
         ProjectService.getUISettings().then(function (response) {
-          UISettings = response.data;
+          UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
             return Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
@@ -114,8 +135,11 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             * (SectionSettings.skeleton.hPct / 100);
 
           $scope.project = new Project();
-          $scope.project.init(currWsName, $scope.template, $scope.value);
+          $scope.project.init($scope.selectedSession, $scope.template, $scope.value);
+
+          $scope.isProjectOpen = true;
         });
+
       });
     });
 
@@ -160,42 +184,12 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     };
   };
 
-  $(document).ready(function () {
+  var saveProject = function () {
+    if ($scope.project) {
+      $scope.value = $scope.project.save();
+      ProjectService.saveProjectDetails($scope.selectedProject.name, $scope.value).then(function (response) { });
+    }
+  };
 
-    $("#logout").click(function () {
-      var Name = $cookies.remove('UserName');
-      if ($scope.project) {
-        $scope.value = $scope.project.save();
-      }
-      $location.path('/');
-      console.log("logged out");
-      $("#myModal").modal("hide");
-    });
-
-    $(".jottings-up").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".jottings-dropdown-header").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".notes-up").click(function () {
-      $(".notes-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".notes-dropdown-header").click(function () {
-      $(".notes-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".questions-up").click(function () {
-      $(".questions-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".questions-dropdown-header").click(function () {
-      $(".questions-dropup .dropdown-menu").slideUp("slow");
-    });
-
-  });
-  
+  load();
 });

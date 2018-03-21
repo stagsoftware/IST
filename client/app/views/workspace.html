@@ -9,7 +9,7 @@
         </li>
         <li class="imageStyle">
           <img src="./public/images/prfl-img.png" alt="User Image" style="width:35px; height:35px; margin-left: 30px;top: 6px;">
-          <span>{{Name}}</span>
+          <span>{{userName}}</span>
         </li>
         <li>
           <h4 style="display:inline-block;">(Project Name)</h4>
@@ -162,19 +162,20 @@
               <div>
                 <ul class="project" style="max-height:200px;margin-left: 30px; width:200px;list-style:none;overflow-y:auto;overflow-x:hidden;">
                   <li class="dropdown-submenu " style="border: 1px solid lightgrey;text-align:center; margin-left: -40px;padding: 10px;font-size: 17px"
-                    ng-repeat="x in projectArray">{{x.projectName}}
-                    <ul class="dropdown-menu secondlevel" style="max-height:250px;margin-top: 1px;">
+                    ng-repeat="project in projects">{{project.name}}
+                    <ul class="dropdown-menu secondlevel" style="max-height:300px;margin-top: 1px;">
                       <li>
-                        <input type="text" ng-model=x.projectName class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
+                        <input type="text" ng-model="project.name" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
                       </li>
                       <li class="text-center" style="width:200px;margin-bottom: 15px">
-                        <select class="menu-text" style="width:200px;margin-left: 30px">
+                        <!--  <select class="menu-text" style="width:200px;margin-left: 30px">
                           <option value="Default">Default</option>
                           <option value="mobile">mobile</option>
-                        </select>
+                        </select> -->
+                        <input type="text" ng-model="project.templateName" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
                       </li>
                       <li>
-                        <textarea placeholder="Project details" class="menu-text" style="resize:none;height:90px;margin-left: 30px;width: 200px;margin-bottom: 6px">{{x.projectDescription}}</textarea>
+                        <textarea placeholder="enter project description" class="menu-text" style="resize:none;height:90px;margin-left: 30px;width: 200px;margin-bottom: 6px">{{project.description}}</textarea>
                       </li>
 
                       <li>
@@ -205,26 +206,24 @@
             <ul class="dropdown-menu secondlevel">
               <li class="text-center secondMenu">Choose Project</li>
               <li class="text-center secondMenu">
-                <select class="menu-text">
-                  <option value="volvo">Standard</option>
-                  <option value="saab">project 2</option>
-                </select>
+
+                <select ng-model="selectedProject" ng-options="project.name for project in projects" class="menu-text"></select>
               </li>
 
               <li class="text-center secondMenu">Choose Session</li>
               <li class="text-center secondMenu">
-                <select class="menu-text">
-                  <option value="volvo">Reconnaissance</option>
-                  <option value="saab">Search</option>
+                <select ng-model="selectedSession" class="menu-text">
+                  <option value="RECON">Reconnaissance</option>
+                  <option value="SEARCH">Search</option>
                 </select>
               </li>
 
               <li class="text-center secondMenu ">Choose Duration</li>
               <li class="text-center secondMenu">
-                <select class="menu-text">
-                  <option value="volvo">45 Minutes</option>
-                  <option value="saab">60 Minutes</option>
-                  <option value="saab">90 Minutes</option>
+                <select ng-model="selectedDuration" class="menu-text">
+                  <option value="45">45 Minutes</option>
+                  <option value="60">60 Minutes</option>
+                  <option value="90">90 Minutes</option>
                 </select>
               </li>
               <br/>
@@ -237,8 +236,6 @@
           <li id="logout" class="dropdown-submenu firstlevel">
             <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
               <i class="fa fa-sign-out padding-15" aria-hidden="true"></i>Logout
-
-
             </a>
         </ul>
       </span>

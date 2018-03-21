@@ -5,11 +5,11 @@ var Template = require('../models/template.schema.js');
 
 
 router.post('/AddTemplate', function (req, res) {
-    var NewTemplate = new Template({
-        Name: req.body.Name,
-        templateValue: req.body.templateValue
+    var newTemplate = new Template({
+        name: req.body.name,
+        value: req.body.value
     });
-    NewTemplate.save(function (err, data) {
+    newTemplate.save(function (err, data) {
         if (err) {
             throw err;
         } else {
@@ -20,25 +20,33 @@ router.post('/AddTemplate', function (req, res) {
 });
 
 router.get('/GetTemplate', function (req, res) {
-    Template.find({}, function (err, data) {
-        if (err) {
-            throw err;
-        } else {
-            res.json(data);
+    Template.find(
+        {
+
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.json(data);
+            }
         }
-    });
+    );
 });
 
 router.get('/SearchTemplate/:id', function (req, res) {
-    Template.find({
-        Name: req.params.id
-    }, function (err, data) {
-        if (err) {
-            throw err;
-        } else {
-            res.json(data);
+    Template.find(
+        {
+            name: req.params.id
+        },
+        function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.json(data);
+            }
         }
-    });
+    );
 });
 
 
