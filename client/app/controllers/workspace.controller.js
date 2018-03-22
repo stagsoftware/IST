@@ -19,7 +19,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   var load = function () {
     ProjectService.getProjects().then(function (response) {
       $scope.projects = response.data;
-      $scope.selectedProject = $scope.projects[0];
+      $scope.selectedProject = $scope.projects[0] || {};
       $scope.selectedSession = "RECON";
       $scope.selectedDuration = "45";
     });
@@ -29,13 +29,13 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
     $("#logout").click(function () {
       var userName = $cookies.remove('UserName');
-      saveProject();
+      saveProjectDetails();
       $location.path('/');
       console.log("logged out");
       $("#myModal").modal("hide");
     });
 
-    $(".jottings-up").click(function () {
+    $(".jottings-dropup-header").click(function () {
       $(".jottings-dropup .dropdown-menu").slideDown("slow");
     });
 
@@ -43,7 +43,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $(".jottings-dropup .dropdown-menu").slideUp("slow");
     });
 
-    $(".notes-up").click(function () {
+    $(".notes-dropup-header").click(function () {
       $(".notes-dropup .dropdown-menu").slideDown("slow");
     });
 
@@ -51,7 +51,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $(".notes-dropup .dropdown-menu").slideUp("slow");
     });
 
-    $(".questions-up").click(function () {
+    $(".questions-dropup-header").click(function () {
       $(".questions-dropup .dropdown-menu").slideDown("slow");
     });
 
@@ -107,7 +107,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
           //const CanvasHeight = (window.innerHeight > CanvasMinHeight) ? window.innerHeight : CanvasMinHeight;
 
           CanvasWidth = window.screen.availWidth; // - (window.outerWidth - window.innerWidth);
-          CanvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight);
+          //CanvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight) - ($('header').height() + $('footer').height());
+          CanvasHeight = $('section.workspace-main').height();
 
           SessionSettings = UISettings.Properties.Session;
           LevelSettings = UISettings.Properties.Level;
@@ -184,7 +185,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     };
   };
 
-  var saveProject = function () {
+  var saveProjectDetails = function () {
     if ($scope.project) {
       $scope.value = $scope.project.save();
       ProjectService.saveProjectDetails($scope.selectedProject.name, $scope.value).then(function (response) { });

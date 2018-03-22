@@ -4,10 +4,6 @@ body {
     overflow: hidden;
 }
 
-.header-main {
-    max-height: 65px !important;
-}
-
 .modal-left {
     margin-left: 0px !important;
 }

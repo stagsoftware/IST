@@ -18,7 +18,7 @@ class Session {
         this.currentWorkspaceID = -1;
     }
 
-    init(currWsName, templateJSON, valueJSON) {
+    init(currWsName, templateJSON, valueJSON = []) {
 
         this.wsNames = templateJSON.map(wsTemplate => wsTemplate.name);
         this.wsDescriptions = templateJSON.map(wsTemplate => wsTemplate.description);

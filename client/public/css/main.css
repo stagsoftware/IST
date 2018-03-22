@@ -1,3 +1,17 @@
+header.header-main {
+    max-height: 60px !important;
+    height: 60px;
+}
+
+section.workspace-main {
+    max-height: calc(100vh - 90px) !important;
+    height: calc(100vh - 90px);
+}
+
+footer.footer-main {
+    max-height: 30px !important;
+    height: 30px;
+}
 
 #note {
     width:500px;
@@ -8,4 +22,8 @@
     left: 15%;
     top:28%;
     display: none;
+}
+
+#container {
+    height: 100%;
 }

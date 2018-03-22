@@ -16,7 +16,7 @@ class Workspace {
         this.isVisible = false;
     }
 
-    init(layer, x, y, wsName, templateJSON, valueJSON) {
+    init(layer, x, y, wsName, templateJSON, valueJSON = {}) {
 
         this.layer = layer;
         this.x = x;
@@ -24,7 +24,7 @@ class Workspace {
 
         this.wsName = wsName;
         this.levelTemplates = templateJSON.levels;
-        this.levelDetails = valueJSON.value;
+        this.levelDetails = valueJSON.value || [];
 
         this.noOfLevels = templateJSON.levels.length;
 

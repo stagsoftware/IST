@@ -1,16 +1,12 @@
-.footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
 
 .jottings-dropup, .notes-dropup, .questions-dropup {
+  padding: 0;
+  height: 30px;
+  line-height: 30px;
+  font-family: Verdana;
   background-color: black;
   color: white;
   border-right: 1px solid grey;
-  height: 30px;
-  line-height: 24px;
   opacity: 0.8;
 }
 
@@ -18,10 +14,9 @@
   opacity: 1;
 }
 
-.jottings-up, .notes-up, .questions-up {
-  font-family: Verdana;
-  font-size: 12px;
-  text-align: left;
+.jottings-dropup-header, .notes-dropup-header, .questions-dropup-header {
+  padding: 0 10px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -37,19 +32,18 @@
 }
 
 .jottings-dropdown-header.dropdown-header, .notes-dropdown-header.dropdown-header, .questions-dropdown-header.dropdown-header {
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
   background-color: black;
   color: white;
-  text-align: left;
-  font-family: Verdana;
   cursor: pointer;
-  font-size: 12px;
-  height: 10%;
+  font-size: 14px; 
 }
 
 .footer-menu-content {
   overflow-y: scroll;
-  overflow-x: hidden;
-  height: 90%;
+  height: calc(100% - 30px);
 }
 
 .footer-menu-content>form {
@@ -58,7 +52,6 @@
 }
 
 .footer-menu-content>form>input[type="text"] {
-  font-family: Verdana;
   width: 100%;
   padding: 0 5px;
 }

@@ -8,14 +8,14 @@ class Project {
         this.questions;
     }
 
-    init(currWsName, templateJSON, valueJSON) {
+    init(currWsName, templateJSON, valueJSON = {}) {
 
         this.session = new Session();
         this.session.init(currWsName, templateJSON.workspaces, valueJSON.workspaces);
 
-        this.jottings = valueJSON.jottings;
-        this.notes = valueJSON.notes;
-        this.questions = valueJSON.questions;
+        this.jottings = valueJSON.jottings || [];
+        this.notes = valueJSON.notes || [];
+        this.questions = valueJSON.questions || [];
     }
 
     save() {

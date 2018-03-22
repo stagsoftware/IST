@@ -2,7 +2,6 @@
   <header class="header-main">
     <div class="navbar">
       <ul class="nav navbar-left left-navbar">
-
         <li>
           <span class="hamburger-menu glyphicon glyphicon-menu-hamburger" ng-click="openNav()" data-toggle="modal" data-target="#myModal"></span>
         </li>
@@ -39,109 +38,103 @@
     </div>
   </header>
 
-  <div ng-show="isProjectOpen">
+  <section ng-show="isProjectOpen" class="workspace-main">
     <div id="note"></div>
     <div id="container"></div>
+  </section>
 
-    <div class="footer">
-      <div class="container-fluid">
-        <div class="row">
+  <footer ng-show="isProjectOpen" class="footer-main">
+    <div class="jottings-dropup dropup col-md-4">
 
-          <div class="jottings-dropup dropup col-md-4">
-
-            <div class="jottings-up">
-              <span>Jottings</span>
-              <span class="up-icon fa fa-angle-up"></span>
-            </div>
-
-            <div class="footer-menu dropdown-menu col-md-12">
-
-              <div class="jottings-dropdown-header dropdown-header">
-                <span>Jottings</span>
-                <span class="down-icon fa fa-angle-down"></span>
-              </div>
-
-              <div class="footer-menu-content">
-                <form ng-submit="addJotting()">
-                  <input type="text" ng-model="jotting" placeholder="insert text here">
-                </form>
-
-                <ul>
-                  <li ng-repeat="jotting in project.jottings track by $index">
-                    <span>{{jotting}}</span>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="notes-dropup dropup col-md-4">
-
-            <div class="notes-up">
-              <span>Notes</span>
-              <span class="up-icon fa fa-angle-up"></span>
-            </div>
-
-            <div class="footer-menu dropdown-menu col-md-12">
-
-              <div class="notes-dropdown-header dropdown-header">
-                <span>Notes</span>
-                <span class="down-icon fa fa-angle-down"></span>
-              </div>
-
-              <div class="footer-menu-content">
-                <form ng-submit="addNote()">
-                  <input type="text" ng-model="note" placeholder="insert text here">
-                </form>
-
-                <ol>
-                  <li ng-repeat="note in project.notes track by $index">
-                    <span>{{note}}</span>
-                  </li>
-                </ol>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="questions-dropup dropup col-md-4">
-
-            <div class="questions-up">
-              <span>Questions</span>
-              <span class="up-icon fa fa-angle-up"></span>
-            </div>
-
-            <div class="footer-menu dropdown-menu col-md-12">
-
-              <div class="questions-dropdown-header dropdown-header">
-                <span>Questions</span>
-                <span class="down-icon fa fa-angle-down"></span>
-              </div>
-
-              <div class="footer-menu-content">
-                <form ng-submit="addQuestion()">
-                  <input type="text" ng-model="question.text" placeholder="insert text here">
-                </form>
-
-                <ol>
-                  <li ng-repeat="question in project.questions track by $index">
-                    <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
-                    <input type="checkbox" ng-model="question.isChecked">
-                  </li>
-                </ol>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
+      <div class="jottings-dropup-header">
+        <span>Jottings</span>
+        <span class="up-icon fa fa-angle-up"></span>
       </div>
+
+      <div class="footer-menu dropdown-menu col-md-12">
+
+        <div class="jottings-dropdown-header dropdown-header">
+          <span>Jottings</span>
+          <span class="down-icon fa fa-angle-down"></span>
+        </div>
+
+        <div class="footer-menu-content">
+          <form ng-submit="addJotting()">
+            <input type="text" ng-model="jotting" placeholder="insert text here">
+          </form>
+
+          <ul>
+            <li ng-repeat="jotting in project.jottings track by $index">
+              <span>{{jotting}}</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
     </div>
-  </div>
+
+    <div class="notes-dropup dropup col-md-4">
+
+      <div class="notes-dropup-header">
+        <span>Notes</span>
+        <span class="up-icon fa fa-angle-up"></span>
+      </div>
+
+      <div class="footer-menu dropdown-menu col-md-12">
+
+        <div class="notes-dropdown-header dropdown-header">
+          <span>Notes</span>
+          <span class="down-icon fa fa-angle-down"></span>
+        </div>
+
+        <div class="footer-menu-content">
+          <form ng-submit="addNote()">
+            <input type="text" ng-model="note" placeholder="insert text here">
+          </form>
+
+          <ol>
+            <li ng-repeat="note in project.notes track by $index">
+              <span>{{note}}</span>
+            </li>
+          </ol>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="questions-dropup dropup col-md-4">
+
+      <div class="questions-dropup-header">
+        <span>Questions</span>
+        <span class="up-icon fa fa-angle-up"></span>
+      </div>
+
+      <div class="footer-menu dropdown-menu col-md-12">
+
+        <div class="questions-dropdown-header dropdown-header">
+          <span>Questions</span>
+          <span class="down-icon fa fa-angle-down"></span>
+        </div>
+
+        <div class="footer-menu-content">
+          <form ng-submit="addQuestion()">
+            <input type="text" ng-model="question.text" placeholder="insert text here">
+          </form>
+
+          <ol>
+            <li ng-repeat="question in project.questions track by $index">
+              <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
+              <input type="checkbox" ng-model="question.isChecked">
+            </li>
+          </ol>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

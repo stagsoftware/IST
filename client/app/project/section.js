@@ -15,7 +15,7 @@ class Section {
         this.noteCollection;
     }
 
-    init(layer, x, y, templateJSON, valueJSON, isVisible) {
+    init(layer, x, y, templateJSON, valueJSON = {}, isVisible) {
 
         this.layer = layer;
         this.x = x;
@@ -23,7 +23,7 @@ class Section {
 
         this.secName = templateJSON.name;
         this.noteTemplate = templateJSON.lines;
-        this.noteCollection = valueJSON.value;
+        this.noteCollection = valueJSON.value || [];
 
         // 1. Create section model and load it up
         this.model = new SectionModel();
