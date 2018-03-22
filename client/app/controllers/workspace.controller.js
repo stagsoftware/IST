@@ -77,14 +77,23 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.startSession = function () {
 
     ProjectService.getValue($scope.selectedProject.name).then(function (response) {
-      $scope.value = JSON.parse(response.data[0].details);
+      // NOTE: Uncomment for LOCAL db connection
+      $scope.value = response.data[0].details;
+      // NOTE: Uncomment for SERVER db connection
+      // $scope.value = JSON.parse(response.data[0].details);
       var templateName = response.data[0].templateName;
 
       ProjectService.getTemplate(templateName).then(function (response) {
-        $scope.template = JSON.parse(response.data[0].value);
+        // NOTE: Uncomment for LOCAL db connection
+        $scope.template = response.data[0].value;
+        // NOTE: Uncomment for SERVER db connection
+        // $scope.template = JSON.parse(response.data[0].value);
 
-        ProjectService.getUISettings().then(function (response) {
-          UISettings = JSON.parse(response.data[0].value);
+        ProjectService.getUISettings().then(function (response) {      
+          // NOTE: Uncomment for LOCAL db connection
+          UISettings = response.data[0].value;
+          // NOTE: Uncomment for SERVER db connection
+          // UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
             return Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
