@@ -8,16 +8,6 @@ body {
     margin-left: 0px !important;
 }
 
-.sidenav {
-    width: 0%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    transition: 0.5s;
-    padding-top: 10px;
-}
-
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -52,15 +42,6 @@ body {
     padding: 16px;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 17px;
-    }
-}
-
 .dropdown-submenu {
     position: auto;
     background-color: white;
@@ -82,7 +63,7 @@ body {
     border-bottom: 1px solid black;
 }
 
-.nav-menu>li>a:focus, .nav-menu>li>a:hover, .firstlevel:hover, .firstlevel>li>a:focus {
+.nav-menu>li>a:focus, .nav-menu>li>a:hover {
     background-color: #eb807b !important;
 }
 
@@ -187,15 +168,7 @@ hr {
     outline: none;
 }
 
-.menu-style {
-    margin-top: 15px;
-    margin-left: -30px;
-}
 
-.firstlevel {
-    min-width: 150px !important;
-    font-size: 12px;
-}
 
 .secondlevel {
     width: 250px;
@@ -220,28 +193,6 @@ hr {
     height: 30px;
 }
 
-.nvbr-tp-sb-two {
-    z-index: 1;
-    right: 4px;
-    top: 3px;
-    padding: 1px 2px;
-    border-radius: 50%;
-    font-size: 12px !important;
-    position: absolute;
-    background: #ffffff;
-}
-
-.nvbr-tp-sb {
-    z-index: 1;
-    right: 4px;
-    top: 3px;
-    background: #ffffff;
-    padding: 2px 3px;
-    border-radius: 50%;
-    font-size: 11px !important;
-    position: absolute;
-}
-
 .menu-text:focus {
     outline: none;
 }
@@ -253,11 +204,6 @@ hr {
 
 .padding-15 {
     padding-right: 15px;
-}
-
-.iconStyle {
-    font-size: 18px;
-    color: #b1b2b4;
 }
 
 .camera-style {

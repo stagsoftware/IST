@@ -35,6 +35,18 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $("#myModal").modal("hide");
     });
 
+    $('#hamburgerCheckBox').change(function () {
+      if ($('#hamburgerCheckBox').is(":checked")) {
+        $('#myModal').modal('show');
+      } else {
+        $('#myModal').modal('hide');
+      }
+    });
+
+    $('#myModal').on('hidden.bs.modal', function () {
+      $('#hamburgerCheckBox').prop('checked', false);
+    });
+
     $(".jottings-dropup-header").click(function () {
       $(".jottings-dropup .dropdown-menu").slideDown("slow");
     });
@@ -63,17 +75,6 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
   $scope.userName = $cookies.getObject('UserName');
 
-  $scope.openNav = function () {
-    document.getElementById("mySidenav").style.width = "550px";
-    document.getElementById("mySidenav").style.left = "-310px";
-    // document.getElementById("mySidenav").style.marginLeft = "550px";
-  };
-
-  $scope.closeNav = function () {
-    document.getElementById("mySidenav").style.width = "0";
-    // document.getElementById("mySidenav").style.marginLeft= "0";
-  };
-
   $scope.startSession = function () {
 
     ProjectService.getValue($scope.selectedProject.name).then(function (response) {
@@ -89,7 +90,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
         // NOTE: Uncomment for SERVER db connection
         // $scope.template = JSON.parse(response.data[0].value);
 
-        ProjectService.getUISettings().then(function (response) {      
+        ProjectService.getUISettings().then(function (response) {
           // NOTE: Uncomment for LOCAL db connection
           UISettings = response.data[0].value;
           // NOTE: Uncomment for SERVER db connection
@@ -192,6 +193,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
         isChecked: false
       };
     };
+
+    $('#hamburgerCheckBox').prop('checked', false).change();
   };
 
   var saveProjectDetails = function () {

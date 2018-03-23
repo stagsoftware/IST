@@ -1,114 +1,181 @@
-.left-navbar
-{
-    padding-top: 5px;
+.nav-bar {
+    display: grid;
+    grid-template-columns: 40px 40px 50px 150px auto 50px 40px 40px 60px;
+    grid-auto-rows: auto;
+    grid-gap: 1em;
+    align-items: center;
+    text-align: center;
 }
-.hamburger-menu
-{
-    font-size:30px;
-    cursor:pointer;
+
+.hamburger-menu {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.user-image {
+    width: 35px;
+    height: 35px;
+}
+
+.icon {
+    font-size: 18px !important;
+    color: #b1b2b4;
+    cursor: pointer;
+}
+
+.user-icon, .globe-icon {
+    position: relative;
+    top: -12px;
+    left: -12px;
+    background: #ffffff;
+    padding: 2px 3px;
+    border-radius: 50%;
+    font-size: 12px!important;
+}
+
+.stag-logo {
+    width: 45px;
+    height: 45px;
+}
+
+#menuToggle input[type="checkbox"] {
     position: absolute;
-    top: -25px;
-    left: -10px;
+    display: block;
+    margin: 0;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
 }
-.user-image
-{
-    width:35px; 
-    height:35px; 
-    margin-left: 30px;
-    top: 6px;
+
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
 }
-.project-name
-{
-    display:inline-block;
+
+#menuToggle span:first-child {
+    transform-origin: 0% 0%;
 }
-.side-navbar
-{
-    margin-top: -99px;
-    width: 550px;
-    left: -307px;
+
+#menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
 }
-.side-close-button
-{
+
+#menuToggle input:checked~span {
+    opacity: 1;
+    transform: rotate(45deg) translate(1px, -2px);
+    background: #232323;
+}
+
+#menuToggle input:checked~span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked~span:nth-last-child(1) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+.modal.left.fade .modal-dialog {
+    top: 55px;
+    left: -200px;
+    margin: 0;
+    transition: opacity 0.5s linear, left 0.5s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+    top: 55px;
+    left: 0;
+    margin: 0;
+}
+
+.first-level {
+    min-width: 150px !important;
+    font-size: 12px;
     border-bottom: 1px solid lightgrey;
 }
-.side-menu-dropdown
-{
-    margin-left:-30px;
-    margin-top: 16px
+
+.first-level:hover, .first-level>li>a:focus {
+    background-color: #eb807b !important;
 }
-.side-submenu-firstlevel
-{
+
+.side-close-button {
     border-bottom: 1px solid lightgrey;
 }
-.side-submenu-secondlevel
-{
+
+.side-submenu-secondlevel {
     color: #eb807b;
     text-align: center;
 }
-.submenu-secondlevel-dropdown
-{
-    max-height:200px;
+
+.submenu-secondlevel-dropdown {
+    max-height: 200px;
     margin-left: 30px;
-    width:200px;
-    list-style:none;
-    overflow-y:auto;
-    overflow-x:hidden;
+    width: 200px;
+    list-style: none;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-.secondlevel-dropdown-list
-{
+
+.secondlevel-dropdown-list {
     border: 1px solid lightgrey;
-    text-align:center; 
+    text-align: center;
     margin-left: -40px;
     padding: 10px;
     font-size: 17px;
 }
-.submenu-thirdlevel-dropdown
-{
-    max-height:300px;
+
+.submenu-thirdlevel-dropdown {
+    max-height: 300px;
     margin-top: 1px;
 }
-.thirdlevel-dropdown-list
-{
-    width:200px;
+
+.thirdlevel-dropdown-list {
+    width: 200px;
     margin-top: 20px;
     margin-left: 30px;
     margin-bottom: 15px;
 }
-.thirdlevel-dropdown-sublist
-{
-    width:200px;
+
+.thirdlevel-dropdown-sublist {
+    width: 200px;
     margin-bottom: 15px;
 }
-.thirdlevel-sublist-dropdown
-{
-    width:200px;
+
+.thirdlevel-sublist-dropdown {
+    width: 200px;
     margin-left: 30px;
 }
-.thirdlevel-textarea
-{
-    resize:none;
-    height:90px;
+
+.thirdlevel-textarea {
+    resize: none;
+    height: 90px;
     margin-left: 30px;
     width: 200px;
     margin-bottom: 6px;
 }
-.thirdlevel-save-button
-{
-    margin-left:100px;
+
+.thirdlevel-save-button {
+    margin-left: 100px;
 }
-.secondlevel-dropdown-sublist
-{
-    margin-left:40px;
+
+.secondlevel-dropdown-sublist {
+    margin-left: 40px;
 }
-.secondlevel-dropdown-okbtn
-{
-    margin-left:20px;
+
+.secondlevel-dropdown-okbtn {
+    margin-left: 20px;
 }
-.firstlevel-sessions
-{
-    border-bottom: 1px solid lightgrey;
-}
-.sessions-secondlevel-startbutton
-{
+
+.sessions-secondlevel-startbutton {
     margin-left: 50px;
 }
