@@ -17,7 +17,7 @@ class NoteForm {
 
         var HTMLString = "";
         HTMLString += '<label>' + secName + '</label>';
-        HTMLString += '<input type="text" id="noteText" placeholder="Enter Note Text" />' + '<br />';
+        HTMLString += '<input type="text" id="noteText" placeholder="enter note text" />';
         this.elementCollection['noteText'] = value;
 
         var noOfLines = noteTemplate.length;
@@ -27,6 +27,7 @@ class NoteForm {
             for (var j = 0; j < noOfElements; j++) {
 
                 var type = noteTemplate[i].element[j].type;
+                var id = noteTemplate[i].element[j].id || ('input' + inputIDIndex);
                 var value = noteTemplate[i].element[j].value;
 
                 switch (type) {
@@ -35,25 +36,34 @@ class NoteForm {
                         break;
 
                     case "VALUE-CHARSTRING":
-                        HTMLString += '<input type="text" id="input' + inputIDIndex + '" value="' + value + '" />' + '<br />';
-                        this.elementCollection['input' + inputIDIndex] = value;
+                        HTMLString += '<input type="text" id="' + id + '" placeholder="' + value + '" />';
+                        this.elementCollection[id] = value;
                         ++inputIDIndex;
                         break;
 
                     case "VALUE-NUMSTRING":
-                        HTMLString += '<input type="number" id="input' + inputIDIndex + '" value="' + value + '"/>' + '<br />';
-                        this.elementCollection['input' + inputIDIndex] = value;
+                        HTMLString += '<input type="number" id="' + id + '" placeholder="' + value + '"/>';
+                        this.elementCollection[id] = value;
                         ++inputIDIndex;
                         break;
 
                     case "VALUE-LIST":
-                        HTMLString += '<select id="input' + inputIDIndex + '">';
+                        HTMLString += '<select id="' + id + '">';
                         for (var k = 0; k < value.length; k++) {
                             HTMLString += '<option>' + value[k] + '</option>';
                         }
-                        HTMLString += '</select>' + '<br />';
-                        this.elementCollection['input' + inputIDIndex] = value[0];
+                        HTMLString += '</select>';
+                        this.elementCollection[id] = value[0];
                         ++inputIDIndex;
+                        break;
+
+                    case "ACCORDION-LABEL":
+                        HTMLString += '<button class="accordion">' + value + '<i class="fa fa-angle-down down-icon"></i></button>';
+                        break;
+
+                    case "ACCORDION-PANEL":
+                        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+                        this.elementCollection[id] = value;
                         break;
                 }
             }
@@ -65,8 +75,20 @@ class NoteForm {
 
         document.getElementById('note').innerHTML = HTMLString;
 
-        document.getElementById('ok').onclick = this.submit.bind(this, updateHandlerCallBack);
-        document.getElementById('cancel').onclick = this.cancel.bind(this);
+        document.getElementById('ok').addEventListener("click", this.submit.bind(this, updateHandlerCallBack));
+        document.getElementById('cancel').addEventListener("click", this.cancel.bind(this));
+        var accordions = document.getElementsByClassName("accordion")
+        for (var i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = "100px";
+                }
+            });
+        }
 
         document.getElementById('note').style.display = 'none';
     }

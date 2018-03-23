@@ -11,7 +11,7 @@ ist.service('ProjectService', function ($http) {
     };
 
     this.getTemplate = function () {
-        return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/45f5aefc8e99aae4935312841f9f219c47c6e0b2/projectTemplate.json");
+        return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/b6b929912705028f7519ad35936c22180e9f6405/projectTemplate.json");
     };
 
     this.getValue = function () {
