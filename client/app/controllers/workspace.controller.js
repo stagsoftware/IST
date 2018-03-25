@@ -136,15 +136,6 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             * (SessionSettings.skeleton.hPct / 100)
             * (LevelSettings.skeleton.hPct / 100);
 
-          SectionWidth = (CanvasWidth)
-            * (SessionSettings.skeleton.wPct / 100)
-            * (LevelSettings.skeleton.wPct / 100)
-            * (SectionSettings.skeleton.wPct / 100);
-          SectionHeight = (CanvasHeight)
-            * (SessionSettings.skeleton.hPct / 100)
-            * (LevelSettings.skeleton.hPct / 100)
-            * (SectionSettings.skeleton.hPct / 100);
-
           $scope.project = new Project();
           $scope.project.init($scope.selectedSession, $scope.template, $scope.value);
 

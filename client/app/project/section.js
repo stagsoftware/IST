@@ -15,7 +15,7 @@ class Section {
         this.noteCollection;
     }
 
-    init(layer, x, y, templateJSON, valueJSON = {}, isVisible) {
+    init(layer, x, y, w, h, templateJSON, valueJSON = {}, isVisible) {
 
         this.layer = layer;
         this.x = x;
@@ -32,7 +32,7 @@ class Section {
 
         // 2. Create the view and populate this
         this.view = new SectionView();
-        this.view.init(layer, x, y, this.secName);
+        this.view.init(layer, x, y, w, h, this.secName);
 
         // 3. Setup the controller to mediate between 'model' and 'view'
         this.controller = new SectionController();

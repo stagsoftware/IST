@@ -5,6 +5,8 @@ class SectionHeaderView {
         this.layer;
         this.x;
         this.y;
+        this.w;
+        this.h;
 
         this.secNameRect;
         this.secNameText;
@@ -26,19 +28,21 @@ class SectionHeaderView {
         this.isVisible = false;
     }
 
-    init(layer, x, y, secName) {
+    init(layer, x, y, w, h, secName) {
 
         this.layer = layer;
         this.x = x;
         this.y = y;
+        this.w = w;
+        this.h = h;
 
         //  Set secName text inside the Konva Rect that represents the title of the section
         //  Setup secName display object in Konva
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SectionWidth * (SectionSettings.secNameRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.secNameRect.hPct / 100))
+            width: (this.w * (SectionSettings.secNameRect.wPct / 100)),
+            height: (this.h * (SectionSettings.secNameRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "secNameRect");
         this.secNameRect = new Konva.Rect(config);
@@ -46,8 +50,8 @@ class SectionHeaderView {
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SectionWidth * (SectionSettings.secNameText.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.secNameText.hPct / 100)),
+            width: (this.w * (SectionSettings.secNameText.wPct / 100)),
+            height: (this.h * (SectionSettings.secNameText.hPct / 100)),
             text: secName
         };
         var config = UISettings.getSectionConfig(manualConfig, "secNameText");
@@ -59,20 +63,20 @@ class SectionHeaderView {
         //  Setup addButton display object in Konva
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.secNameRect.wPct / 100)),
+                + (this.w * (SectionSettings.secNameRect.wPct / 100)),
             y: this.y,
-            width: (SectionWidth * (SectionSettings.addButtonRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.addButtonRect.hPct / 100))
+            width: (this.w * (SectionSettings.addButtonRect.wPct / 100)),
+            height: (this.h * (SectionSettings.addButtonRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "addButtonRect");
         this.addButtonRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.secNameRect.wPct / 100)),
+                + (this.w * (SectionSettings.secNameRect.wPct / 100)),
             y: this.y,
-            width: (SectionWidth * (SectionSettings.addButtonText.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.addButtonText.hPct / 100)),
+            width: (this.w * (SectionSettings.addButtonText.wPct / 100)),
+            height: (this.h * (SectionSettings.addButtonText.hPct / 100)),
             text: '+'
         };
         var config = UISettings.getSectionConfig(manualConfig, "addButtonText");
@@ -84,22 +88,22 @@ class SectionHeaderView {
         //  Setup deleteButton display object in Konva
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.secNameRect.wPct / 100))
-                + (SectionWidth * (SectionSettings.addButtonRect.wPct / 100)),
+                + (this.w * (SectionSettings.secNameRect.wPct / 100))
+                + (this.w * (SectionSettings.addButtonRect.wPct / 100)),
             y: this.y,
-            width: (SectionWidth * (SectionSettings.deleteButtonRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.deleteButtonRect.hPct / 100))
+            width: (this.w * (SectionSettings.deleteButtonRect.wPct / 100)),
+            height: (this.h * (SectionSettings.deleteButtonRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "deleteButtonRect");
         this.deleteButtonRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.secNameRect.wPct / 100))
-                + (SectionWidth * (SectionSettings.addButtonRect.wPct / 100)),
+                + (this.w * (SectionSettings.secNameRect.wPct / 100))
+                + (this.w * (SectionSettings.addButtonRect.wPct / 100)),
             y: this.y,
-            width: (SectionWidth * (SectionSettings.deleteButtonText.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.deleteButtonText.hPct / 100)),
+            width: (this.w * (SectionSettings.deleteButtonText.wPct / 100)),
+            height: (this.h * (SectionSettings.deleteButtonText.hPct / 100)),
             text: '-'
         };
         var config = UISettings.getSectionConfig(manualConfig, "deleteButtonText");
@@ -112,9 +116,9 @@ class SectionHeaderView {
         var manualConfig = {
             x: this.x,
             y: this.y
-                + (SectionHeight * (SectionSettings.secNameRect.hPct / 100)),
-            width: (SectionWidth * (SectionSettings.scrollLeftButtonRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.scrollLeftButtonRect.hPct / 100))
+                + (this.h * (SectionSettings.secNameRect.hPct / 100)),
+            width: (this.w * (SectionSettings.scrollLeftButtonRect.wPct / 100)),
+            height: (this.h * (SectionSettings.scrollLeftButtonRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollLeftButtonRect");
         this.scrollLeftButtonRect = new Konva.Rect(config);
@@ -122,9 +126,9 @@ class SectionHeaderView {
         var manualConfig = {
             x: this.x,
             y: this.y
-                + (SectionHeight * (SectionSettings.secNameRect.hPct / 100)),
-            width: (SectionWidth * (SectionSettings.scrollLeftButtonText.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.scrollLeftButtonText.hPct / 100)),
+                + (this.h * (SectionSettings.secNameRect.hPct / 100)),
+            width: (this.w * (SectionSettings.scrollLeftButtonText.wPct / 100)),
+            height: (this.h * (SectionSettings.scrollLeftButtonText.hPct / 100)),
             text: '<'
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollLeftButtonText");
@@ -136,11 +140,11 @@ class SectionHeaderView {
         //  Setup scrollBar display object in Konva
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.scrollLeftButtonRect.wPct / 100)),
+                + (this.w * (SectionSettings.scrollLeftButtonRect.wPct / 100)),
             y: this.y
-                + (SectionHeight * (SectionSettings.secNameRect.hPct / 100)),
-            width: (SectionWidth * (SectionSettings.scrollBar.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.scrollBar.hPct / 100))
+                + (this.h * (SectionSettings.secNameRect.hPct / 100)),
+            width: (this.w * (SectionSettings.scrollBar.wPct / 100)),
+            height: (this.h * (SectionSettings.scrollBar.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollBar");
         this.scrollBar = new Konva.Rect(config);
@@ -150,24 +154,24 @@ class SectionHeaderView {
         //  Setup scrollRightButton display object in Konva
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.scrollLeftButtonRect.wPct / 100))
-                + (SectionWidth * (SectionSettings.scrollBar.wPct / 100)),
+                + (this.w * (SectionSettings.scrollLeftButtonRect.wPct / 100))
+                + (this.w * (SectionSettings.scrollBar.wPct / 100)),
             y: this.y
-                + (SectionHeight * (SectionSettings.secNameRect.hPct / 100)),
-            width: (SectionWidth * (SectionSettings.scrollRightButtonRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.scrollRightButtonRect.hPct / 100))
+                + (this.h * (SectionSettings.secNameRect.hPct / 100)),
+            width: (this.w * (SectionSettings.scrollRightButtonRect.wPct / 100)),
+            height: (this.h * (SectionSettings.scrollRightButtonRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollRightButtonRect");
         this.scrollRightButtonRect = new Konva.Rect(config);
 
         var manualConfig = {
             x: this.x
-                + (SectionWidth * (SectionSettings.scrollLeftButtonRect.wPct / 100))
-                + (SectionWidth * (SectionSettings.scrollBar.wPct / 100)),
+                + (this.w * (SectionSettings.scrollLeftButtonRect.wPct / 100))
+                + (this.w * (SectionSettings.scrollBar.wPct / 100)),
             y: this.y
-                + (SectionHeight * (SectionSettings.secNameRect.hPct / 100)),
-            width: (SectionWidth * (SectionSettings.scrollRightButtonText.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.scrollRightButtonText.hPct / 100)),
+                + (this.h * (SectionSettings.secNameRect.hPct / 100)),
+            width: (this.w * (SectionSettings.scrollRightButtonText.wPct / 100)),
+            height: (this.h * (SectionSettings.scrollRightButtonText.hPct / 100)),
             text: '>'
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollRightButtonText");
@@ -177,38 +181,70 @@ class SectionHeaderView {
         this.layer.add(this.scrollRightButtonText);
     }
 
-    relocateAt(newX, newY) {
-        
-        this.secNameRect.setX(newX + (this.secNameRect.x() - this.x));
-        this.secNameRect.setY(newY + (this.secNameRect.y() - this.y));
-        this.secNameText.setX(newX + (this.secNameText.x() - this.x));
-        this.secNameText.setY(newY + (this.secNameText.y() - this.y));
+    relocateAt(newX, newY, newW, newH) {
 
-        this.addButtonRect.setX(newX + (this.addButtonRect.x() - this.x));
-        this.addButtonRect.setY(newY + (this.addButtonRect.y() - this.y));
-        this.addButtonText.setX(newX + (this.addButtonText.x() - this.x));
-        this.addButtonText.setY(newY + (this.addButtonText.y() - this.y));
-        
-        this.deleteButtonRect.setX(newX + (this.deleteButtonRect.x() - this.x));
-        this.deleteButtonRect.setY(newY + (this.deleteButtonRect.y() - this.y));
-        this.deleteButtonText.setX(newX + (this.deleteButtonText.x() - this.x));
-        this.deleteButtonText.setY(newY + (this.deleteButtonText.y() - this.y));
-        
-        this.scrollLeftButtonRect.setX(newX + (this.scrollLeftButtonRect.x() - this.x));
-        this.scrollLeftButtonRect.setY(newY + (this.scrollLeftButtonRect.y() - this.y));
-        this.scrollLeftButtonText.setX(newX + (this.scrollLeftButtonText.x() - this.x));
-        this.scrollLeftButtonText.setY(newY + (this.scrollLeftButtonText.y() - this.y));
+        this.secNameRect.setX(newX);
+        this.secNameRect.setY(newY);
+        this.secNameRect.setWidth(newW * (SectionSettings.secNameRect.wPct / 100));
+        this.secNameRect.setHeight(newH * (SectionSettings.secNameRect.hPct / 100));
+        this.secNameText.setX(newX);
+        this.secNameText.setY(newY);
+        this.secNameText.setWidth(newW * (SectionSettings.secNameText.wPct / 100));
+        this.secNameText.setHeight(newH * (SectionSettings.secNameText.hPct / 100));
 
-        this.scrollBar.setX(newX + (this.scrollBar.x() - this.x));
-        this.scrollBar.setY(newY + (this.scrollBar.y() - this.y));
+        this.addButtonRect.setX(newX + (newW * (SectionSettings.secNameRect.wPct / 100)));
+        this.addButtonRect.setY(newY);
+        this.addButtonRect.setWidth(newW * (SectionSettings.addButtonRect.wPct / 100));
+        this.addButtonRect.setHeight(newH * (SectionSettings.addButtonRect.hPct / 100));
+        this.addButtonText.setX(newX + (newW * (SectionSettings.secNameRect.wPct / 100)));
+        this.addButtonText.setY(newY);
+        this.addButtonText.setWidth(newW * (SectionSettings.addButtonText.wPct / 100));
+        this.addButtonText.setHeight(newH * (SectionSettings.addButtonText.hPct / 100));
 
-        this.scrollRightButtonRect.setX(newX + (this.scrollRightButtonRect.x() - this.x));
-        this.scrollRightButtonRect.setY(newY + (this.scrollRightButtonRect.y() - this.y));
-        this.scrollRightButtonText.setX(newX + (this.scrollRightButtonText.x() - this.x));
-        this.scrollRightButtonText.setY(newY + (this.scrollRightButtonText.y() - this.y));
+        this.deleteButtonRect.setX(newX
+            + (newW * (SectionSettings.secNameRect.wPct / 100))
+            + (newW * (SectionSettings.addButtonRect.wPct / 100)));
+        this.deleteButtonRect.setY(newY);
+        this.deleteButtonRect.setWidth(newW * (SectionSettings.deleteButtonRect.wPct / 100));
+        this.deleteButtonRect.setHeight(newH * (SectionSettings.deleteButtonRect.hPct / 100));
+        this.deleteButtonText.setX(newX
+            + (newW * (SectionSettings.secNameRect.wPct / 100))
+            + (newW * (SectionSettings.addButtonRect.wPct / 100)));
+        this.deleteButtonText.setY(newY);
+        this.deleteButtonText.setWidth(newW * (SectionSettings.deleteButtonText.wPct / 100));
+        this.deleteButtonText.setHeight(newH * (SectionSettings.deleteButtonText.hPct / 100));
+
+        this.scrollLeftButtonRect.setX(newX);
+        this.scrollLeftButtonRect.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollLeftButtonRect.setWidth(newW * (SectionSettings.scrollLeftButtonRect.wPct / 100));
+        this.scrollLeftButtonRect.setHeight(newH * (SectionSettings.scrollLeftButtonRect.hPct / 100));
+        this.scrollLeftButtonText.setX(newX);
+        this.scrollLeftButtonText.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollLeftButtonText.setWidth(newW * (SectionSettings.scrollLeftButtonText.wPct / 100));
+        this.scrollLeftButtonText.setHeight(newH * (SectionSettings.scrollLeftButtonText.hPct / 100));
+
+        this.scrollBar.setX(newX + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100)));
+        this.scrollBar.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollBar.setWidth(newW * (SectionSettings.scrollBar.wPct / 100));
+        this.scrollBar.setHeight(newH * (SectionSettings.scrollBar.hPct / 100));
+
+        this.scrollRightButtonRect.setX(newX
+            + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100))
+            + (newW * (SectionSettings.scrollBar.wPct / 100)));
+        this.scrollRightButtonRect.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollRightButtonRect.setWidth(newW * (SectionSettings.scrollRightButtonRect.wPct / 100));
+        this.scrollRightButtonRect.setHeight(newH * (SectionSettings.scrollRightButtonRect.hPct / 100));
+        this.scrollRightButtonText.setX(newX
+            + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100))
+            + (newW * (SectionSettings.scrollBar.wPct / 100)));
+        this.scrollRightButtonText.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollRightButtonText.setWidth(newW * (SectionSettings.scrollRightButtonRect.wPct / 100));
+        this.scrollRightButtonText.setHeight(newH * (SectionSettings.scrollRightButtonText.hPct / 100));
 
         this.x = newX;
         this.y = newY;
+        this.w = newW;
+        this.h = newH;
     }
 
     makeVisible(isVisible) {
