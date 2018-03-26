@@ -35,7 +35,7 @@ class Workspace {
             var levelX = this.x;
             var levelY = this.y + (i * LevelHeight);
 
-            this.levelCollection[i].init(layer, levelX, levelY, wsName, this.levelTemplates[i], this.levelDetails[i], UISettings.Properties.Workspace[wsName][i]);
+            this.levelCollection[i].init(layer, levelX, levelY, wsName, this.levelTemplates[i], this.levelDetails[i], WorkspaceSettings[wsName][i]);
         }
     }
 

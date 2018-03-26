@@ -7,7 +7,7 @@ ist.service('ProjectService', function ($http) {
     };
 
     this.getUISettings = function () {
-        return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/d463d487484283eb3c2db9b75fe3f0f20c7c72c4/UISettings.json");
+        return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/22ef775e9f244e73d615d16c94ce1432b86598e7/UISettings.json");
     };
 
     this.getTemplate = function () {

@@ -27,6 +27,9 @@ class LevelBoardView {
         this.x = x;
         this.y = y;
 
+        this.noOfSections = SectionAreaSettings.noOfSections;
+        this.noOfSectionAreas = SectionAreaSettings.noOfSectionAreas;
+
         // Draw the outer box for BoardView (Konva Rect)
         var manualConfig = {
             x: this.x,
@@ -48,7 +51,6 @@ class LevelBoardView {
         var totalSectionWidth = (LevelWidth * (LevelSettings.boardViewRect.wPct / 100));
         var totalSectionHeight = (LevelHeight * (LevelSettings.boardViewRect.hPct / 100));
 
-        this.noOfSectionAreas = SectionAreaSettings.noOfSectionAreas;
         for (var i = 0; i < this.noOfSectionAreas; ++i) {
 
             var newSecAreaW = (totalSectionWidth * (SectionAreaSettings.whRatios[i].wPct / 100));
@@ -62,19 +64,37 @@ class LevelBoardView {
 
         // Now create all the sections based on the templateJSON and hide them
         // and store in sectionCollection object
-        for (var i = 0; i < templateJSON.length; ++i) {
+        if (this.noOfSectionAreas <= this.noOfSections) {
 
-            this.sectionCollection[i] = new Section();
+            for (var i = 0; i < this.noOfSections; ++i) {
 
-            var secX = this.x;
-            var secY = this.y;
+                this.sectionCollection[i] = new Section();
 
-            var secW = totalSectionWidth / this.noOfSectionAreas;
-            var secH = totalSectionHeight;
-            var isVisible = false;
+                var secX = this.x;
+                var secY = this.y;
 
-            this.sectionCollection[i].init(layer, secX, secY, secW, secH, templateJSON[i], valueJSON[i], isVisible);
-            ++this.noOfSections;
+                var secW = (totalSectionWidth * (SectionAreaSettings.whRatios[i].wPct / 100));
+                var secH = (totalSectionHeight * (SectionAreaSettings.whRatios[i].hPct / 100));
+                var isVisible = false;
+
+                this.sectionCollection[i].init(layer, secX, secY, secW, secH, templateJSON[i], valueJSON[i], isVisible);
+            }
+        } else {
+
+            for (var i = 0; i < this.noOfSections; ++i) {
+
+                this.sectionCollection[i] = new Section();
+
+                var secX = this.x;
+                var secY = this.y;
+
+                var secAreaID = (this.noOfSectionAreas - this.noOfSections) + i;
+                var secW = (totalSectionWidth * (SectionAreaSettings.whRatios[secAreaID].wPct / 100));
+                var secH = (totalSectionHeight * (SectionAreaSettings.whRatios[secAreaID].hPct / 100));
+                var isVisible = false;
+
+                this.sectionCollection[i].init(layer, secX, secY, secW, secH, templateJSON[i], valueJSON[i], isVisible);
+            }
         }
 
         switch (wsName) {

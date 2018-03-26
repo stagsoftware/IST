@@ -192,7 +192,8 @@ class SectionHeaderView {
         this.secNameText.setWidth(newW * (SectionSettings.secNameText.wPct / 100));
         this.secNameText.setHeight(newH * (SectionSettings.secNameText.hPct / 100));
 
-        this.addButtonRect.setX(newX + (newW * (SectionSettings.secNameRect.wPct / 100)));
+        this.addButtonRect.setX(newX 
+            + (newW * (SectionSettings.secNameRect.wPct / 100)));
         this.addButtonRect.setY(newY);
         this.addButtonRect.setWidth(newW * (SectionSettings.addButtonRect.wPct / 100));
         this.addButtonRect.setHeight(newH * (SectionSettings.addButtonRect.hPct / 100));
@@ -215,29 +216,35 @@ class SectionHeaderView {
         this.deleteButtonText.setHeight(newH * (SectionSettings.deleteButtonText.hPct / 100));
 
         this.scrollLeftButtonRect.setX(newX);
-        this.scrollLeftButtonRect.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollLeftButtonRect.setY(newY 
+            + (newH * (SectionSettings.secNameRect.hPct / 100)));
         this.scrollLeftButtonRect.setWidth(newW * (SectionSettings.scrollLeftButtonRect.wPct / 100));
         this.scrollLeftButtonRect.setHeight(newH * (SectionSettings.scrollLeftButtonRect.hPct / 100));
         this.scrollLeftButtonText.setX(newX);
-        this.scrollLeftButtonText.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollLeftButtonText.setY(newY 
+            + (newH * (SectionSettings.secNameRect.hPct / 100)));
         this.scrollLeftButtonText.setWidth(newW * (SectionSettings.scrollLeftButtonText.wPct / 100));
         this.scrollLeftButtonText.setHeight(newH * (SectionSettings.scrollLeftButtonText.hPct / 100));
 
-        this.scrollBar.setX(newX + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100)));
-        this.scrollBar.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollBar.setX(newX 
+            + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100)));
+        this.scrollBar.setY(newY 
+            + (newH * (SectionSettings.secNameRect.hPct / 100)));
         this.scrollBar.setWidth(newW * (SectionSettings.scrollBar.wPct / 100));
         this.scrollBar.setHeight(newH * (SectionSettings.scrollBar.hPct / 100));
 
         this.scrollRightButtonRect.setX(newX
             + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100))
             + (newW * (SectionSettings.scrollBar.wPct / 100)));
-        this.scrollRightButtonRect.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollRightButtonRect.setY(newY 
+            + (newH * (SectionSettings.secNameRect.hPct / 100)));
         this.scrollRightButtonRect.setWidth(newW * (SectionSettings.scrollRightButtonRect.wPct / 100));
         this.scrollRightButtonRect.setHeight(newH * (SectionSettings.scrollRightButtonRect.hPct / 100));
         this.scrollRightButtonText.setX(newX
             + (newW * (SectionSettings.scrollLeftButtonRect.wPct / 100))
             + (newW * (SectionSettings.scrollBar.wPct / 100)));
-        this.scrollRightButtonText.setY(newY + (newH * (SectionSettings.secNameRect.hPct / 100)));
+        this.scrollRightButtonText.setY(newY 
+            + (newH * (SectionSettings.secNameRect.hPct / 100)));
         this.scrollRightButtonText.setWidth(newW * (SectionSettings.scrollRightButtonRect.wPct / 100));
         this.scrollRightButtonText.setHeight(newH * (SectionSettings.scrollRightButtonText.hPct / 100));
 

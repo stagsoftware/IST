@@ -47,10 +47,12 @@ class SectionBoardView {
         // and store in boardCollection object. Make them not-visible for now.
         var bvMaxX = this.x + (this.w * (SectionSettings.boardViewRect.wPct / 100));
         var bvMaxY = this.y + (this.h * (SectionSettings.boardViewRect.hPct / 100));
-        var currBX = this.x;
-        var currBY = this.y;
-        var currBMaxX = currBX + SectionSettings.board.w;
-        var currBMaxY = currBY + SectionSettings.board.h;
+
+        var currBX = this.x + SectionSettings.boardViewRect.margin;
+        var currBY = this.y + SectionSettings.boardViewRect.margin;
+
+        var currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+        var currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
 
         for (var boardID = 0; (currBMaxX <= bvMaxX) && (currBMaxY <= bvMaxY); ++boardID) {
 
@@ -60,15 +62,15 @@ class SectionBoardView {
 
             currBX = currBMaxX;
             currBY = currBY;
-            currBMaxX = currBX + SectionSettings.board.w;
-            currBMaxY = currBY + SectionSettings.board.h;
+            currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+            currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
 
             if (currBMaxX > bvMaxX) {
-                currBX = this.x;
-                currBY = currBY + SectionSettings.board.h;
+                currBX = this.x + SectionSettings.boardViewRect.margin;
+                currBY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
                 
-                currBMaxX = currBX + SectionSettings.board.w;
-                currBMaxY = currBY + SectionSettings.board.h;
+                currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+                currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
             }
         }
     }
