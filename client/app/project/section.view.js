@@ -8,32 +8,32 @@ class SectionView {
         this.isVisible = false;
     }
 
-    init(layer, x, y, secName) {
+    init(layer, x, y, w, h, secName) {
 
         // Init HeaderView part of SectionView
         this.headerView = new SectionHeaderView();
-        this.headerView.init(layer, x, y, secName);
+        this.headerView.init(layer, x, y, w, h, secName);
 
         // Calculate the (x,y) for BoardView
         var bvX = x;
         var bvY = y
-            + (SectionHeight * (SectionSettings.secNameRect.hPct / 100))
-            + (SectionHeight * (SectionSettings.scrollLeftButtonRect.hPct / 100));
+            + (h * (SectionSettings.secNameRect.hPct / 100))
+            + (h * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
         // Init Boardview part of SectionView
         this.boardView = new SectionBoardView();
-        this.boardView.init(layer, bvX, bvY);
+        this.boardView.init(layer, bvX, bvY, w, h);
     }
 
-    relocateAt(newX, newY) {
-        this.headerView.relocateAt(newX, newY);
+    relocateAt(newX, newY, newW, newH) {
+        this.headerView.relocateAt(newX, newY, newW, newH);
 
         var newBvX = newX;
         var newBvY = newY
-            + (SectionHeight * (SectionSettings.secNameRect.hPct / 100))
-            + (SectionHeight * (SectionSettings.scrollLeftButtonRect.hPct / 100));
+            + (newH * (SectionSettings.secNameRect.hPct / 100))
+            + (newH * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
-        this.boardView.relocateAt(newBvX, newBvY);
+        this.boardView.relocateAt(newBvX, newBvY, newW, newH);
     }
 
     makeVisible(isVisible) {

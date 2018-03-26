@@ -97,15 +97,30 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
           // UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
-            return Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
+            var config = Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
+            config.x = config.x + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.width = config.width - ((config.strokeWidth) || 0);
+            config.height = config.height - ((config.strokeWidth) || 0);
+            return config;
           }
 
           UISettings.getLevelConfig = function (manualConfig, styleConfigID) {
-            return Object.assign({}, manualConfig, UISettings.Styles.Level[styleConfigID]);
+            var config = Object.assign({}, manualConfig, UISettings.Styles.Level[styleConfigID]);
+            config.x = config.x + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.width = config.width - ((config.strokeWidth) || 0);
+            config.height = config.height - ((config.strokeWidth) || 0);
+            return config;
           }
 
           UISettings.getSectionConfig = function (manualConfig, styleConfigID) {
-            return Object.assign({}, manualConfig, UISettings.Styles.Section[styleConfigID]);
+            var config = Object.assign({}, manualConfig, UISettings.Styles.Section[styleConfigID]);
+            config.x = config.x + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
+            config.width = config.width - ((config.strokeWidth) || 0);
+            config.height = config.height - ((config.strokeWidth) || 0);
+            return config;
           }
 
           CanvasX = 0;
@@ -121,6 +136,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
           CanvasHeight = $('section.workspace-main').height();
 
           SessionSettings = UISettings.Properties.Session;
+          WorkspaceSettings = UISettings.Properties.Workspace;
           LevelSettings = UISettings.Properties.Level;
           SectionSettings = UISettings.Properties.Section;
 
@@ -135,15 +151,6 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
           LevelHeight = (CanvasHeight)
             * (SessionSettings.skeleton.hPct / 100)
             * (LevelSettings.skeleton.hPct / 100);
-
-          SectionWidth = (CanvasWidth)
-            * (SessionSettings.skeleton.wPct / 100)
-            * (LevelSettings.skeleton.wPct / 100)
-            * (SectionSettings.skeleton.wPct / 100);
-          SectionHeight = (CanvasHeight)
-            * (SessionSettings.skeleton.hPct / 100)
-            * (LevelSettings.skeleton.hPct / 100)
-            * (SectionSettings.skeleton.hPct / 100);
 
           $scope.project = new Project();
           $scope.project.init($scope.selectedSession, $scope.template, $scope.value);

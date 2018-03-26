@@ -5,6 +5,8 @@ class SectionBoardView {
         this.layer;
         this.x;
         this.y;
+        this.w;
+        this.h;
 
         this.boardViewRect;
 
@@ -17,7 +19,7 @@ class SectionBoardView {
         this.isVisible = false;
     }
 
-    init(layer, x, y) {
+    init(layer, x, y, w, h) {
         // Draw the outer box for BoardView (Konva Rect), display this!
         // Calculate #boards that can be displayed in a view & store in maxNoBoards
         // Now create that many KonvaRect & KonvaText objects that represent 'a-board' in a loop
@@ -25,13 +27,15 @@ class SectionBoardView {
         this.layer = layer;
         this.x = x;
         this.y = y;
+        this.w = w;
+        this.h = h;
 
         // Draw the outer box for BoardView (Konva Rect)
         var manualConfig = {
             x: this.x,
             y: this.y,
-            width: (SectionWidth * (SectionSettings.boardViewRect.wPct / 100)),
-            height: (SectionHeight * (SectionSettings.boardViewRect.hPct / 100))
+            width: (this.w * (SectionSettings.boardViewRect.wPct / 100)),
+            height: (this.h * (SectionSettings.boardViewRect.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "boardViewRect");
         this.boardViewRect = new Konva.Rect(config);
@@ -41,12 +45,14 @@ class SectionBoardView {
         // Calculate #boards that can be displayed in a view & store in maxNoBoards
         // Now create that many KonvaRect & KonvaText objects that represent 'a-board' in a loop
         // and store in boardCollection object. Make them not-visible for now.
-        var bvMaxX = this.x + (SectionWidth * (SectionSettings.boardViewRect.wPct / 100));
-        var bvMaxY = this.y + (SectionHeight * (SectionSettings.boardViewRect.hPct / 100));
-        var currBX = this.x;
-        var currBY = this.y;
-        var currBMaxX = currBX + SectionSettings.board.w;
-        var currBMaxY = currBY + SectionSettings.board.h;
+        var bvMaxX = this.x + (this.w * (SectionSettings.boardViewRect.wPct / 100));
+        var bvMaxY = this.y + (this.h * (SectionSettings.boardViewRect.hPct / 100));
+
+        var currBX = this.x + SectionSettings.boardViewRect.margin;
+        var currBY = this.y + SectionSettings.boardViewRect.margin;
+
+        var currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+        var currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
 
         for (var boardID = 0; (currBMaxX <= bvMaxX) && (currBMaxY <= bvMaxY); ++boardID) {
 
@@ -56,15 +62,15 @@ class SectionBoardView {
 
             currBX = currBMaxX;
             currBY = currBY;
-            currBMaxX = currBX + SectionSettings.board.w;
-            currBMaxY = currBY + SectionSettings.board.h;
+            currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+            currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
 
             if (currBMaxX > bvMaxX) {
-                currBX = this.x;
-                currBY = currBY + SectionSettings.board.h;
+                currBX = this.x + SectionSettings.boardViewRect.margin;
+                currBY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
                 
-                currBMaxX = currBX + SectionSettings.board.w;
-                currBMaxY = currBY + SectionSettings.board.h;
+                currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
+                currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
             }
         }
     }
@@ -197,10 +203,12 @@ class SectionBoardView {
         }
     }
 
-    relocateAt(newX, newY) {
+    relocateAt(newX, newY, newW, newH) {
 
-        this.boardViewRect.setX(newX + (this.boardViewRect.x() - this.x));
-        this.boardViewRect.setY(newY + (this.boardViewRect.y() - this.y));
+        this.boardViewRect.setX(newX);
+        this.boardViewRect.setY(newY);
+        this.boardViewRect.setWidth(newW  * (SectionSettings.boardViewRect.wPct / 100));
+        this.boardViewRect.setHeight(newH * (SectionSettings.boardViewRect.hPct / 100));
 
         for (var i = 0; i < this.maxNoBoards; ++i) {
 
@@ -213,6 +221,8 @@ class SectionBoardView {
 
         this.x = newX;
         this.y = newY;
+        this.w = newW;
+        this.h = newH;
     }
 
     makeVisible(isVisible) {
