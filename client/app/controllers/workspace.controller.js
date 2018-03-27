@@ -1,6 +1,6 @@
 
 var ist = angular.module('ist');
-ist.controller('WorkspaceController', function ($scope, $http, $window, $location, $cookies, $controller, ProjectService) {
+ist.controller('WorkspaceController', function ($scope, $http, $window, $location, $cookies, $controller, HeaderService, ProjectService) {
 
   // NOTE: Model values used
   $scope.projects;
@@ -15,6 +15,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.jotting;
   $scope.note;
   $scope.question;
+  $scope.timer;
 
   var load = function () {
     ProjectService.getProjects().then(function (response) {
@@ -102,6 +103,9 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
+            // if (config.text) {
+            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
+            // }
             return config;
           }
 
@@ -111,6 +115,9 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
+            // if (config.text) {
+            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
+            // }
             return config;
           }
 
@@ -120,16 +127,14 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
+            // if (config.text) {
+            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
+            // }
             return config;
           }
 
           CanvasX = 0;
           CanvasY = 0;
-
-          //const CanvasMinWidth = 1000;
-          //const CanvasMinHeight = 800;
-          //const CanvasWidth = (window.innerWidth > CanvasMinWidth) ? window.innerWidth : CanvasMinWidth;
-          //const CanvasHeight = (window.innerHeight > CanvasMinHeight) ? window.innerHeight : CanvasMinHeight;
 
           CanvasWidth = window.screen.availWidth; // - (window.outerWidth - window.innerWidth);
           //CanvasHeight = window.screen.availHeight - (window.outerHeight - window.innerHeight) - ($('header').height() + $('footer').height());
@@ -155,90 +160,46 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
           $scope.project = new Project();
           $scope.project.init($scope.selectedSession, $scope.template, $scope.value);
 
-          $scope.isProjectOpen = true;
-        });
+          HeaderService.startTimer();
+          HeaderService.startCountDown($scope.selectedDuration);
+          $scope.timer = HeaderService.timer;
 
+          $scope.jotting = "";
+          $scope.note = "";
+          $scope.question = {
+            text: "",
+            isChecked: false
+          };
+
+          $scope.addJotting = function () {
+            if ($scope.jotting !== "") {
+              $scope.project.jottings.push($scope.jotting);
+            }
+            $scope.jotting = "";
+          };
+
+          $scope.addNote = function () {
+            if ($scope.note !== "") {
+              $scope.project.notes.push($scope.note);
+            }
+            $scope.note = "";
+          };
+
+          $scope.addQuestion = function () {
+            if ($scope.question.text !== "") {
+              $scope.project.questions.push($scope.question);
+            }
+            $scope.question = {
+              text: "",
+              isChecked: false
+            };
+          };
+
+          $scope.isProjectOpen = true;
+
+        });
       });
     });
-
-    // $scope.newProject = function() {
-    //     var newProjectValueJSON = $scope.project.save();
-    //     $scope.project = new Project();
-    //     $scope.project.init(currWsName, projectTemplateJSON, newProjectValueJSON);
-    //     //setTimeout($scope.newProject, 10000);
-    // }
-
-    //setTimeout($scope.newProject, 10000);
-
-    $scope.jotting = "";
-    $scope.note = "";
-    $scope.question = {
-      text: "",
-      isChecked: false
-    };
-
-    $scope.addJotting = function () {
-      if ($scope.jotting !== "") {
-        $scope.project.jottings.push($scope.jotting);
-      }
-      $scope.jotting = "";
-    };
-
-    $scope.addNote = function () {
-      if ($scope.note !== "") {
-        $scope.project.notes.push($scope.note);
-      }
-      $scope.note = "";
-    };
-
-    $scope.addQuestion = function () {
-      if ($scope.question.text !== "") {
-        $scope.project.questions.push($scope.question);
-      }
-      $scope.question = {
-        text: "",
-        isChecked: false
-      };
-    };
-    //Timer (start/stop)
-    document.getElementById("timer-stop").style.display = 'none';
-    function hourglass() {
-      var a;
-      a = document.getElementById("timer-start");
-      a.innerHTML = "&#xf251;";
-      setTimeout(function () {
-        a.innerHTML = "&#xf252;";
-      }, 1000);
-
-      setTimeout(function () {
-        a.innerHTML = "&#xf253;";
-      }, 2000);
-    }
-    hourglass();
-    setInterval(hourglass, 3000);
-
-    function countdown(minutes) {
-      var seconds = 60;
-      var mins = minutes;
-      function tick() {
-        var current_minutes = mins - 1;
-        seconds--;
-        if (seconds > 0) {
-          setTimeout(tick, 1000);
-        } else {
-
-          if (mins > 1) {
-
-            // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
-            setTimeout(function () { countdown(mins - 1); }, 1000);
-
-          }
-        }
-      }
-      tick();
-    }
-    countdown($scope.selectedDuration);
-
   };
 
   var saveProjectDetails = function () {

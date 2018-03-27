@@ -23,10 +23,8 @@
     cursor: pointer;
 }
 
-.icon-active {
-    font-size: 18px !important;
+.icon.active {
     color: #333;
-    cursor: pointer;
 }
 
 .user-icon, .globe-icon {
