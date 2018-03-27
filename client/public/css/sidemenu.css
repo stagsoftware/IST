@@ -1,0 +1,112 @@
+.size{
+    padding: 0px 2px;
+    margin:2px;
+    display: inline-block;
+    margin-left: 6px;
+    margin-right: 6px;
+    background-color:lightorange;
+}
+
+.input-text::-webkit-input-placeholder {
+    color:black;
+}
+
+.input-text::-moz-placeholder {
+    color:black;
+}
+
+
+
+
+
+
+.table>tbody>tr>td, .table>tbody>tr>th,
+ .table>tfoot>tr>td, .table>tfoot>tr>th, 
+ .table>thead>tr>td, .table>thead>tr>th{
+        padding: 0px;
+
+       
+
+}
+
+#add, #save, #mod,#abort{
+    margin-left: -21px;
+    margin-top: 0px;
+    margin-right: -15px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+#abort{
+    margin-left: -17px;
+}
+
+.firstrow .form-control,select {
+height: 29px;
+font-size: 13px;
+border-radius: 0px;
+padding-left: 1px;
+    }
+
+    select{
+       max-width:100%;
+    }
+    #tempname{
+ margin-right: -7px;
+    }
+
+    .firstrow{
+        margin:0px;
+ 
+    }
+
+
+
+ .tooltips {
+    position: relative;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+}
+
+
+
+tbody {
+    display:block;
+    max-height: 120px;
+    overflow-y:scroll;
+    color:grey;
+}
+
+thead {
+    width: calc( 100% - 1em ) ;
+    color: black;
+}
+
+table{
+    font-size:13px;
+    background-color: white;
+display: block;
+}
+
+
+table thead, tbody tr {
+display:table;
+width:100%;
+table-layout:fixed;
+}
+
+tr{
+    max-height: 10px;
+}
+
+.description{
+    max-width:95%;
+}
+
+

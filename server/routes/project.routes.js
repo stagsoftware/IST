@@ -54,7 +54,7 @@ router.get('/SearchProject/:id', function (req, res) {
 router.put('/UpdateProject/:id', function (req, res) {
     Project.findOneAndUpdate(
         {
-            name: req.params.id
+            _id: req.params.id
         },
         {
             name: req.body.name,
@@ -101,6 +101,7 @@ router.delete('/DeleteProject/:id', function (req, res) {
                 throw err;
             } else {
                 console.log('the Project has been Removed Successfully');
+                res.end();
             }
         }
     );

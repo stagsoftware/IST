@@ -24,7 +24,14 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.selectedSession = "RECON";
       $scope.selectedDuration = "45";
     });
-  }
+    ProjectService.getTemplates().then(function (response) {
+      $scope.tempName = [];
+      $scope.templates = response.data;
+      for (let m in $scope.templates) {
+        $scope.tempName.push($scope.templates[m].name);
+      }
+    });
+  };
 
   $(document).ready(function () {
 
@@ -80,22 +87,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
     ProjectService.getValue($scope.selectedProject.name).then(function (response) {
       // NOTE: Uncomment for LOCAL db connection
-      $scope.value = response.data[0].details;
+      // $scope.value = response.data[0].details;
       // NOTE: Uncomment for SERVER db connection
-      // $scope.value = JSON.parse(response.data[0].details);
+      $scope.value = JSON.parse(response.data[0].details);
       var templateName = response.data[0].templateName;
 
       ProjectService.getTemplate(templateName).then(function (response) {
         // NOTE: Uncomment for LOCAL db connection
-        $scope.template = response.data[0].value;
+        // $scope.template = response.data[0].value;
         // NOTE: Uncomment for SERVER db connection
-        // $scope.template = JSON.parse(response.data[0].value);
+        $scope.template = JSON.parse(response.data[0].value);
 
         ProjectService.getUISettings().then(function (response) {
           // NOTE: Uncomment for LOCAL db connection
-          UISettings = response.data[0].value;
+          // UISettings = response.data[0].value;
           // NOTE: Uncomment for SERVER db connection
-          // UISettings = JSON.parse(response.data[0].value);
+          UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
             var config = Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
@@ -208,6 +215,82 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       ProjectService.saveProjectDetails($scope.selectedProject.name, $scope.value).then(function (response) { });
     }
   };
+
+  $scope.addNewProject = function () {
+    $scope.pro.details = JSON.stringify({});
+    $http.post('/workspace/AddProject', $scope.pro).then(function (response) {
+      console.log('Data Saved Successfully');
+    });
+    load();
+    $scope.pro = {};
+  }
+
+  $scope.cloneProject = function (pro) {
+    $scope.add = true;
+    $scope.clone = true;
+    $scope.modify = false;
+    ProjectService.getValue(pro.name).then(function (response) {
+      $scope.myprojectDetails = response.data[0].details;
+      $scope.pro = {
+        name: response.data[0].name + "(Copy)",
+        description: response.data[0].description,
+        templateName: response.data[0].templateName
+      }
+      document.getElementById('tempname').disabled = true;
+    });
+  }
+
+  $scope.modifyProject = function (pro) {
+    $scope.add = true;
+    $scope.clone = false;
+    $scope.modify = true;
+    ProjectService.getValue(pro.name).then(function (response) {
+      $scope.pro = {
+        _id: response.data[0]._id,
+        name: response.data[0].name,
+        description: response.data[0].description,
+        templateName: response.data[0].templateName,
+      }
+      document.getElementById('tempname').disabled = true;
+    });
+  }
+
+  $scope.addClonedProject = function () {
+    $scope.pro.details = $scope.myprojectDetails;
+    $http.post('/workspace/AddProject', $scope.pro).then(function (response) {
+      console.log('Data Saved Successfully');
+      load();
+    });
+    $scope.pro = {};
+  }
+
+  $scope.addModifiedProject = function () {
+    $http.put("/workspace/UpdateProject/" + $scope.pro._id, $scope.pro).then(function (response) {
+      console.log('Data updated Successfully');
+      load();
+    });
+    $scope.pro = {};
+  }
+
+
+  $scope.abort = function () {
+    $scope.pro = {};
+    $scope.add = false;
+    $scope.clone = false;
+    $scope.modify = false;
+    document.getElementById('tempname').disabled = false;
+  }
+
+  $scope.deleteProject = function () {
+    $http.delete('/workspace/DeleteProject/' + $scope.projectName).then(function (response) {
+      console.log('project Removed Successfully');
+      load();
+    });
+  }
+
+  $scope.Delete = function (pro) {
+    $scope.projectName = pro.name;
+  }
 
   load();
 });

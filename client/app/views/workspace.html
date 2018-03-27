@@ -146,40 +146,74 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>Project
             </a>
-            <span class="dropdown-menu secondlevel">
-              <h4 class="side-submenu-secondlevel"> Projects </h4>
-
-              <div>
-                <ul class="project submenu-secondlevel-dropdown">
-                  <li class="dropdown-submenu secondlevel-dropdown-list" ng-repeat="project in projects">{{project.name}}
-                    <ul class="dropdown-menu secondlevel submenu-thirdlevel-dropdown">
-                      <li>
-                        <input type="text" ng-model="project.name" class="menu-text thirdlevel-dropdown-list"></input>
-                      </li>
-                      <li class="text-center thirdlevel-dropdown-sublist">
-                        <input type="text" ng-model="project.templateName" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
-                      </li>
-                      <li>
-                        <textarea placeholder="enter project description" class="menu-text thirdlevel-textarea">{{project.description}}</textarea>
-                      </li>
-
-                      <li>
-                        <button class="buttonSecondLevel thirdlevel-save-button"> Save </button>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-
-                <br>
-                <div>
-                  <select class="menu-text secondlevel-dropdown-sublist">
-                    <option value="volvo">New</option>
-                    <option value="saab">Clone</option>
-                    <option value="saab">Modify</option>
-                    <option value="saab">Delete</option>
-                  </select>
-                  <button class="buttonSecondLevel secondlevel-dropdown-okbtn"> Ok</button>
-            </span>
+            <div class="dropdown-menu secondlevel">
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-group firstrow">
+                            <input type="text" ng-model="pro.name" class="form-control input-text" placeholder="Enter Project Name" id="pname">
+                          </div>
+                        </th>
+                        <th>
+                          <div class="form-group firstrow">
+                            <select id="tempname" ng-model="pro.templateName" ng-options="template for template  in tempName">{{template.name}}
+                              <option disabled value="">Choose Template</option>
+                            </select>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="form-group firstrow description ">
+                            <input type="text" class="form-control input-text" ng-model="pro.description" placeholder="Enter Description" id="pdes">
+                          </div>
+                        </th>
+                        <td>
+                          <div class="col-sm-6">
+                            <button id="add" ng-hide="add" class="btn btn-default size " ng-click="addNewProject()">
+                              <span class="fa fa-plus"></span>
+                            </button>
+                            <button id="save" ng-show="clone" class="btn btn-default size " ng-click="addClonedProject()">
+                              <span class=" fa fa-plus"></span>
+                            </button>
+                            <button id="mod" ng-show="modify" class="btn btn-default size " ng-click="addModifiedProject()">
+                              <span class="fa fa-plus"></span>
+                            </button>
+                          </div>
+                          <div class="col-sm-6">
+                            <button id="abort" class="btn btn-default size " ng-click="abort()">
+                              <span class="fa fa-times-circle-o"></span>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr ng-repeat="project in projects| orderBy:'$index':true">
+                        <td class="tooltips">{{project.name}}</td>
+                        <td>{{project.templateName}}</td>
+                        <td id="desc" class="tooltips" ng-attr-title="{{project.description}}">{{project.description}}</td>
+                        <td>
+                          <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Clone" ng-click="cloneProject(project)">
+                            <span class="fa fa-clone"></span>
+                          </button>
+                          <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Modify" ng-click="modifyProject(project)">
+                            <span class="fa fa-pencil"></span>
+                          </button>
+                          <button class="btn btn-default size" data-toggle="modal" data-toggle="tooltip" ng-click="Delete(project)" data-target="#myDelModal">
+                            <span class="fa fa-trash-o"></span>
+                          </button>
+                     
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            
+              </div>
+            </div>
           </li>
 
           <li class="dropdown-submenu first-level">
@@ -225,5 +259,25 @@
       </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myDelModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to Delete ?.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="deleteProject()" class="btn btn-danger" data-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>
