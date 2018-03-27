@@ -3,7 +3,7 @@
     <nav class="nav-bar">
       <div>
         <div id="menuToggle">
-          <input type="checkbox" id="hamburgerCheckBox"/>
+          <input type="checkbox" id="hamburgerCheckBox" />
           <span></span>
           <span></span>
           <span></span>
@@ -22,7 +22,8 @@
 
       </div>
       <div>
-        <i class="fa fa-hourglass-half icon" aria-hidden="true"></i>
+          <i id="timer-start" class="fa fa-start icon-active" aria-hidden="true"></i> 
+          <i id="timer-stop" class="fa fa-hourglass icon" aria-hidden="true"></i>
       </div>
       <div>
         <i class="fa fa-database icon" aria-hidden="true"></i>
@@ -33,7 +34,7 @@
         <i class="fa fa-globe globe-icon icon" aria-hidden="true"></i>
       </div>
       <div>
-        <img class="stag-logo" src="./public/images/logo.jpg" alt="logo">
+        <img class="stag-logo" src="./public/images/stag_logo_transparent.png" alt="logo">
       </div>
     </nav>
   </header>
@@ -141,7 +142,7 @@
 
       <span class="sidenav">
 
-        <ul class="nav nav-menu navbar-nav side-menu-dropdown">
+        <ul class="nav nav-menu side-menu-dropdown">
           <li class="dropdown-submenu first-level">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>Project
@@ -157,10 +158,6 @@
                         <input type="text" ng-model="project.name" class="menu-text thirdlevel-dropdown-list"></input>
                       </li>
                       <li class="text-center thirdlevel-dropdown-sublist">
-                        <!-- <select class="menu-text thirdlevel-sublist-dropdown">
-                          <option value="Default">Default</option>
-                          <option value="mobile">mobile</option>
-                        </select> -->
                         <input type="text" ng-model="project.templateName" class="menu-text" style="width:200px;margin-top: 20px;margin-left: 30px;margin-bottom: 15px"></input>
                       </li>
                       <li>
@@ -185,7 +182,6 @@
                   <button class="buttonSecondLevel secondlevel-dropdown-okbtn"> Ok</button>
             </span>
           </li>
-          </br>
 
           <li class="dropdown-submenu first-level">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -215,12 +211,12 @@
                 </select>
               </li>
               <br/>
-              <button class="buttonSecondLevel sessions-secondlevel-startbutton" ng-click="startSession()">Start</button>
+              <button class="buttonSecondLevel sessions-secondlevel-startbutton" ng-click="startSession()" data-dismiss="modal">Start</button>
               <button class="buttonSecondLevel">Cancel</button>
 
             </ul>
           </li>
-          </br>
+
           <li id="logout" class="dropdown-submenu first-level">
             <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
               <i class="fa fa-sign-out padding-15" aria-hidden="true"></i>Logout

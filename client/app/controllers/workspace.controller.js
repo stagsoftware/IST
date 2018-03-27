@@ -44,7 +44,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
 
     $('#myModal').on('hidden.bs.modal', function () {
-      $('#hamburgerCheckBox').prop('checked', false);
+      $('#hamburgerCheckBox').prop('checked', false).change();
     });
 
     $(".jottings-dropup-header").click(function () {
@@ -200,8 +200,45 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
         isChecked: false
       };
     };
+    //Timer (start/stop)
+    document.getElementById("timer-stop").style.display = 'none';
+    function hourglass() {
+      var a;
+      a = document.getElementById("timer-start");
+      a.innerHTML = "&#xf251;";
+      setTimeout(function () {
+        a.innerHTML = "&#xf252;";
+      }, 1000);
 
-    $('#hamburgerCheckBox').prop('checked', false).change();
+      setTimeout(function () {
+        a.innerHTML = "&#xf253;";
+      }, 2000);
+    }
+    hourglass();
+    setInterval(hourglass, 3000);
+
+    function countdown(minutes) {
+      var seconds = 60;
+      var mins = minutes;
+      function tick() {
+        var current_minutes = mins - 1;
+        seconds--;
+        if (seconds > 0) {
+          setTimeout(tick, 1000);
+        } else {
+
+          if (mins > 1) {
+
+            // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
+            setTimeout(function () { countdown(mins - 1); }, 1000);
+
+          }
+        }
+      }
+      tick();
+    }
+    countdown($scope.selectedDuration);
+
   };
 
   var saveProjectDetails = function () {
