@@ -1,9 +1,13 @@
 
-// NOTE: Uncomment for LOCAL db connection
+// NOTE: Uncomment for no db connection
 // var ist = angular.module('ist');
 // ist.service('ProjectService', function ($http) {
 //     this.getProjects = function () {
 //         return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/62fa256a50c7cf0726a9b1333fd42c94f2d2ca23/projects.json");
+//     };
+
+//     this.getTemplates = function () {
+//         return $http.get("https://gist.githubusercontent.com/shivarajavate/c44b478d73c546ecfb4c68a2c66559d2/raw/b6b929912705028f7519ad35936c22180e9f6405/projectTemplate.json");
 //     };
 
 //     this.getUISettings = function () {
@@ -20,11 +24,15 @@
 // });
 
 
-// NOTE: Uncomment for SERVER db connection
+// NOTE: Uncomment for mongo db connection
 var ist = angular.module('ist');
 ist.service('ProjectService', function ($http) {
     this.getProjects = function () {
         return $http.get("/workspace/GetProject");
+    };
+
+    this.getTemplates = function () {
+        return $http.get("/workspace/GetTemplate");
     };
 
     this.getUISettings = function () {
@@ -39,16 +47,12 @@ ist.service('ProjectService', function ($http) {
         return $http.get("/workspace/SearchProject/" + projectName);
     };
 
-    this.getTemplates = function () {
-        return $http.get("/workspace/GetTemplate");
-    };
-
-
-
     this.saveProjectDetails = function (projectName, projectDetails) {
         return $http.put("/workspace/SaveProject/" + projectName, { details: JSON.stringify(projectDetails) });
     };
-    this.saveProjectDetails = function (projectName, projectDetails) {
-        return $http.put("/workspace/SaveProject/" + projectName, { details: JSON.stringify(projectDetails) });
+
+    this.addNewProject = function (newProject) {
+        return $http.post('/workspace/AddProject', newProject);
     };
+
 });

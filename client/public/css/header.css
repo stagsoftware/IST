@@ -42,6 +42,41 @@
     height: 45px;
 }
 
+.sessions-menu {
+    top: 4px !important;
+    width: 300px;
+    padding: 10px;
+    border-radius: 0px !important;
+    background-color: antiquewhite;
+}
+
+.sessions-menu>li {
+    margin: 10px 0;
+}
+
+.sessions-menu>li>select {
+    width: 60%;
+    margin: 0 4%;
+    padding: 0;
+    background-color: #e2e2e2;
+    border: none;
+    height: 30px;
+}
+
+.sessions-menu>li>label {
+    width: 20%;
+    margin: 0 4%;
+    padding: 0;
+}
+
+.sessions-menu>li>button {
+    width: 26%;
+    margin: 0 2% 0 4%;
+    background-color: #eb807b;
+    border: none;
+    padding: 5px 10px;
+}
+
 #menuToggle input[type="checkbox"] {
     position: absolute;
     display: block;
@@ -188,6 +223,7 @@
 .nav-menu {
     width: 100px;
 }
-.secondlevel{
-    width:500px;
+
+.secondlevel {
+    width: 500px;
 }

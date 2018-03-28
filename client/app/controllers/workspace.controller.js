@@ -16,6 +16,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.note;
   $scope.question;
   $scope.timer;
+  $scope.selectedProjectInProjectsMenu;
 
   var load = function () {
     ProjectService.getProjects().then(function (response) {
@@ -31,6 +32,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
         $scope.tempName.push($scope.templates[m].name);
       }
     });
+    $scope.selectedProjectInProjectsMenu = {};
   };
 
   $(document).ready(function () {
@@ -86,22 +88,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.startSession = function () {
 
     ProjectService.getValue($scope.selectedProject.name).then(function (response) {
-      // NOTE: Uncomment for LOCAL db connection
+      // NOTE: Uncomment for no db connection
       // $scope.value = response.data[0].details;
-      // NOTE: Uncomment for SERVER db connection
+      // NOTE: Uncomment for mongo db connection
       $scope.value = JSON.parse(response.data[0].details);
       var templateName = response.data[0].templateName;
 
       ProjectService.getTemplate(templateName).then(function (response) {
-        // NOTE: Uncomment for LOCAL db connection
+        // NOTE: Uncomment for no db connection
         // $scope.template = response.data[0].value;
-        // NOTE: Uncomment for SERVER db connection
+        // NOTE: Uncomment for mongo db connection
         $scope.template = JSON.parse(response.data[0].value);
 
         ProjectService.getUISettings().then(function (response) {
-          // NOTE: Uncomment for LOCAL db connection
+          // NOTE: Uncomment for no db connection
           // UISettings = response.data[0].value;
-          // NOTE: Uncomment for SERVER db connection
+          // NOTE: Uncomment for mongo db connection
           UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
@@ -217,21 +219,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   };
 
   $scope.addNewProject = function () {
-    $scope.pro.details = JSON.stringify({});
-    $http.post('/workspace/AddProject', $scope.pro).then(function (response) {
-      console.log('Data Saved Successfully');
-    });
-    load();
-    $scope.pro = {};
+    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+      $scope.selectedProjectInProjectsMenu.details = JSON.stringify({});
+      ProjectService.addNewProject($scope.selectedProjectInProjectsMenu).then(function (response) {
+        console.log('Data Saved Successfully');
+        load();
+      });
+    }
   }
 
-  $scope.cloneProject = function (pro) {
+  $scope.cloneProject = function (selectedProjectInProjectsMenu) {
     $scope.add = true;
     $scope.clone = true;
     $scope.modify = false;
-    ProjectService.getValue(pro.name).then(function (response) {
+    ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
       $scope.myprojectDetails = response.data[0].details;
-      $scope.pro = {
+      $scope.selectedProjectInProjectsMenu = {
         name: response.data[0].name + "(Copy)",
         description: response.data[0].description,
         templateName: response.data[0].templateName
@@ -240,12 +243,12 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
   }
 
-  $scope.modifyProject = function (pro) {
+  $scope.modifyProject = function (selectedProjectInProjectsMenu) {
     $scope.add = true;
     $scope.clone = false;
     $scope.modify = true;
-    ProjectService.getValue(pro.name).then(function (response) {
-      $scope.pro = {
+    ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
+      $scope.selectedProjectInProjectsMenu = {
         _id: response.data[0]._id,
         name: response.data[0].name,
         description: response.data[0].description,
@@ -256,25 +259,23 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   }
 
   $scope.addClonedProject = function () {
-    $scope.pro.details = $scope.myprojectDetails;
-    $http.post('/workspace/AddProject', $scope.pro).then(function (response) {
+    $scope.selectedProjectInProjectsMenu.details = $scope.myprojectDetails;
+    $http.post('/workspace/AddProject', $scope.selectedProjectInProjectsMenu).then(function (response) {
       console.log('Data Saved Successfully');
       load();
     });
-    $scope.pro = {};
   }
 
   $scope.addModifiedProject = function () {
-    $http.put("/workspace/UpdateProject/" + $scope.pro._id, $scope.pro).then(function (response) {
+    $http.put("/workspace/UpdateProject/" + $scope.selectedProjectInProjectsMenu._id, $scope.selectedProjectInProjectsMenu).then(function (response) {
       console.log('Data updated Successfully');
       load();
     });
-    $scope.pro = {};
   }
 
 
   $scope.abort = function () {
-    $scope.pro = {};
+    $scope.selectedProjectInProjectsMenu = {};
     $scope.add = false;
     $scope.clone = false;
     $scope.modify = false;
@@ -288,8 +289,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
   }
 
-  $scope.Delete = function (pro) {
-    $scope.projectName = pro.name;
+  $scope.Delete = function (selectedProjectInProjectsMenu) {
+    $scope.projectName = selectedProjectInProjectsMenu.name;
   }
 
   load();
