@@ -144,7 +144,7 @@
         <ul class="nav nav-menu">
           <li class="dropdown-submenu first-level">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>Project
+              <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>project
             </a>
             <div class="dropdown-menu secondlevel">
               <div class="row">
@@ -220,41 +220,40 @@
 
           <li class="dropdown-submenu first-level">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-file-text padding-15" aria-hidden="true"></i>Sessions
+              <i class="fa fa-file-text padding-15" aria-hidden="true"></i>session
             </a>
             <ul class="sessions-menu dropdown-menu">
               <li>
-                <label>Project</label>
-                <select ng-model="selectedProject" ng-options="project.name for project in projects"></select>
+                <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="choose project">
+                  <option value="" disabled selected hidden>choose project</option>
+                </select>
               </li>
 
               <li>
-                <label>Session</label>
                 <select ng-model="selectedSession">
+                  <option value="" disabled selected hidden>choose session</option>
                   <option value="RECON">Reconnaissance</option>
                   <option value="SEARCH">Search</option>
                 </select>
               </li>
 
               <li>
-                <label>Duration</label>
                 <select ng-model="selectedDuration">
+                  <option value="" disabled selected hidden>choose duration</option>
                   <option value="45">45 Minutes</option>
                   <option value="60">60 Minutes</option>
                   <option value="90">90 Minutes</option>
                 </select>
               </li>
               <li>
-                <label></label>
-                <button ng-click="startSession()" data-dismiss="modal">Start</button>
-                <button>Cancel</button>
+                <button ng-click="startSession()" data-dismiss="modal">start</button>
               </li>
             </ul>
           </li>
 
           <li id="logout" class="dropdown-submenu first-level">
             <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
-              <i class="fa fa-sign-out padding-15" aria-hidden="true"></i>Logout
+              <i class="fa fa-sign-out padding-15" aria-hidden="true"></i>logout
             </a>
         </ul>
       </span>
