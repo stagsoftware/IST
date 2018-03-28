@@ -48,9 +48,52 @@ ist.service('HeaderService', function ($timeout, $interval) {
         --minutes;
     }
 
+    function wireUpEventHandlers() {
+        $(document).ready(function () {
+
+            $('#hamburgerCheckBox').change(function () {
+                if ($('#hamburgerCheckBox').is(":checked")) {
+                    $('#myModal').modal('show');
+                } else {
+                    $('#myModal').modal('hide');
+                }
+            });
+
+            $('#myModal').on('hidden.bs.modal', function () {
+                $('#hamburgerCheckBox').prop('checked', false).change();
+            });
+
+            $(".jottings-dropup-header").click(function () {
+                $(".jottings-dropup .dropdown-menu").slideDown("slow");
+            });
+
+            $(".jottings-dropdown-header").click(function () {
+                $(".jottings-dropup .dropdown-menu").slideUp("slow");
+            });
+
+            $(".notes-dropup-header").click(function () {
+                $(".notes-dropup .dropdown-menu").slideDown("slow");
+            });
+
+            $(".notes-dropdown-header").click(function () {
+                $(".notes-dropup .dropdown-menu").slideUp("slow");
+            });
+
+            $(".questions-dropup-header").click(function () {
+                $(".questions-dropup .dropdown-menu").slideDown("slow");
+            });
+
+            $(".questions-dropdown-header").click(function () {
+                $(".questions-dropup .dropdown-menu").slideUp("slow");
+            });
+
+        });
+    }
+
     return {
         timer: timer,
         startTimer: startTimer,
-        startCountDown: startCountDown
+        startCountDown: startCountDown,
+        wireUpEventHandlers: wireUpEventHandlers
     }
 });

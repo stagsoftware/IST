@@ -18,6 +18,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.timer;
   $scope.selectedProjectInProjectsMenu;
 
+  HeaderService.wireUpEventHandlers();
+
   var load = function () {
     ProjectService.getProjects().then(function (response) {
       $scope.projects = response.data;
@@ -34,54 +36,6 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
     $scope.selectedProjectInProjectsMenu = {};
   };
-
-  $(document).ready(function () {
-
-    $("#logout").click(function () {
-      var userName = $cookies.remove('UserName');
-      saveProjectDetails();
-      $location.path('/');
-      console.log("logged out");
-      $("#myModal").modal("hide");
-    });
-
-    $('#hamburgerCheckBox').change(function () {
-      if ($('#hamburgerCheckBox').is(":checked")) {
-        $('#myModal').modal('show');
-      } else {
-        $('#myModal').modal('hide');
-      }
-    });
-
-    $('#myModal').on('hidden.bs.modal', function () {
-      $('#hamburgerCheckBox').prop('checked', false).change();
-    });
-
-    $(".jottings-dropup-header").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".jottings-dropdown-header").click(function () {
-      $(".jottings-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".notes-dropup-header").click(function () {
-      $(".notes-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".notes-dropdown-header").click(function () {
-      $(".notes-dropup .dropdown-menu").slideUp("slow");
-    });
-
-    $(".questions-dropup-header").click(function () {
-      $(".questions-dropup .dropdown-menu").slideDown("slow");
-    });
-
-    $(".questions-dropdown-header").click(function () {
-      $(".questions-dropup .dropdown-menu").slideUp("slow");
-    });
-
-  });
 
   $scope.userName = $cookies.getObject('UserName');
 
@@ -292,6 +246,12 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.Delete = function (selectedProjectInProjectsMenu) {
     $scope.projectName = selectedProjectInProjectsMenu.name;
   }
+
+  $scope.logout = function () {
+    var userName = $cookies.remove('UserName');
+    saveProjectDetails();
+    $location.path('/');
+  };
 
   load();
 });

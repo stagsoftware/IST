@@ -22,15 +22,15 @@
 
       </div>
       <div>
-        <i id="sessionTimer" class="fa fa-hourglass-start icon" ng-attr-title="{{timer.sessionTime}}" aria-hidden="true"></i>
+        <i id="sessionTimer" class="fa fa-hourglass-start icon" ng-attr-title="{{timer.sessionTime}}"></i>
       </div>
       <div>
-        <i class="fa fa-database icon" aria-hidden="true"></i>
-        <i class="fa fa-user user-icon icon" aria-hidden="true"></i>
+        <i class="fa fa-database icon"></i>
+        <i class="fa fa-user user-icon icon"></i>
       </div>
       <div>
-        <i class="fa fa-database icon" aria-hidden="true"></i>
-        <i class="fa fa-globe globe-icon icon" aria-hidden="true"></i>
+        <i class="fa fa-database icon"></i>
+        <i class="fa fa-globe globe-icon icon"></i>
       </div>
       <div>
         <img class="stag-logo" src="./public/images/stag_logo_transparent.png" alt="logo">
@@ -138,125 +138,117 @@
 
   <div class="modal left fade" id="myModal" role="dialog">
     <div class="modal-dialog">
+      <ul class="nav main-menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-pencil-square icon active"></i>
+            <label>project</label>
+          </a>
+          <div class="project-menu dropdown-menu">
 
-      <span class="sidenav">
+            <table class="table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="text" ng-model="selectedProjectInProjectsMenu.name" class="form-control input-text" placeholder="enter project name">
+                  </th>
+                  <th>
+                    <select id="tempname" required ng-model="selectedProjectInProjectsMenu.templateName" ng-options="template for template  in tempName">{{template.name}}
+                      <option disabled selected value="">choose template</option>
+                    </select>
+                  </th>
+                  <th>
+                    <input type="text" class="form-control input-text" ng-model="selectedProjectInProjectsMenu.description" placeholder="enter description">
+                  </th>
+                  <td>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <button id="add" ng-hide="add" class="btn btn-default size " ng-click="addNewProject()">
+                          <span class="fa fa-plus"></span>
+                        </button>
+                        <button id="save" ng-show="clone" class="btn btn-default size " ng-click="addClonedProject()">
+                          <span class=" fa fa-plus"></span>
+                        </button>
+                        <button id="mod" ng-show="modify" class="btn btn-default size " ng-click="addModifiedProject()">
+                          <span class="fa fa-plus"></span>
+                        </button>
+                      </div>
+                      <div class="col-sm-2">
+                        <button id="abort" class="btn btn-default size" ng-click="abort()">
+                          <span class="fa fa-times-circle-o"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </thead>
 
-        <ul class="nav nav-menu">
-          <li class="dropdown-submenu first-level">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-pencil-square padding-15" aria-hidden="true"></i>project
-            </a>
-            <div class="dropdown-menu secondlevel">
-              <div class="row">
-                <div class="col-md-12">
-                  <table class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>
-                          <div class="form-group firstrow">
-                            <input type="text" ng-model="selectedProjectInProjectsMenu.name" class="form-control input-text" placeholder="Enter Project Name"
-                              id="pname">
-                          </div>
-                        </th>
-                        <th>
-                          <div class="form-group firstrow">
-                            <select id="tempname" ng-model="selectedProjectInProjectsMenu.templateName" ng-options="template for template  in tempName">{{template.name}}
-                              <option disabled value="">Choose Template</option>
-                            </select>
-                          </div>
-                        </th>
-                        <th>
-                          <div class="form-group firstrow description ">
-                            <input type="text" class="form-control input-text" ng-model="selectedProjectInProjectsMenu.description" placeholder="Enter Description"
-                              id="pdes">
-                          </div>
-                        </th>
-                        <td>
-                          <div class="col-sm-6">
-                            <button id="add" ng-hide="add" class="btn btn-default size " ng-click="addNewProject()">
-                              <span class="fa fa-plus"></span>
-                            </button>
-                            <button id="save" ng-show="clone" class="btn btn-default size " ng-click="addClonedProject()">
-                              <span class=" fa fa-plus"></span>
-                            </button>
-                            <button id="mod" ng-show="modify" class="btn btn-default size " ng-click="addModifiedProject()">
-                              <span class="fa fa-plus"></span>
-                            </button>
-                          </div>
-                          <div class="col-sm-6">
-                            <button id="abort" class="btn btn-default size " ng-click="abort()">
-                              <span class="fa fa-times-circle-o"></span>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </thead>
+              <tbody>
+                <tr ng-repeat="project in projects | orderBy:'$index':true">
+                  <td class="tooltips">{{project.name}}</td>
+                  <td>{{project.templateName}}</td>
+                  <td id="desc" class="tooltips" ng-attr-title="{{project.description}}">{{project.description}}</td>
+                  <td>
+                    <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Clone" ng-click="cloneProject(project)">
+                      <span class="fa fa-clone"></span>
+                    </button>
+                    <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Modify" ng-click="modifyProject(project)">
+                      <span class="fa fa-pencil"></span>
+                    </button>
+                    <button class="btn btn-default size" data-toggle="modal" data-toggle="tooltip" ng-click="Delete(project)" data-target="#myDelModal">
+                      <span class="fa fa-trash-o"></span>
+                    </button>
 
-                    <tbody>
-                      <tr ng-repeat="project in projects | orderBy:'$index':true">
-                        <td class="tooltips">{{project.name}}</td>
-                        <td>{{project.templateName}}</td>
-                        <td id="desc" class="tooltips" ng-attr-title="{{project.description}}">{{project.description}}</td>
-                        <td>
-                          <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Clone" ng-click="cloneProject(project)">
-                            <span class="fa fa-clone"></span>
-                          </button>
-                          <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Modify" ng-click="modifyProject(project)">
-                            <span class="fa fa-pencil"></span>
-                          </button>
-                          <button class="btn btn-default size" data-toggle="modal" data-toggle="tooltip" ng-click="Delete(project)" data-target="#myDelModal">
-                            <span class="fa fa-trash-o"></span>
-                          </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          </div>
+        </li>
 
-              </div>
-            </div>
-          </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-file-text icon active"></i>
+            <label>session</label>
+          </a>
+          <ul class="session-menu dropdown-menu">
+            <li>
+              <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="choose project">
+                <option value="" disabled selected hidden>choose project</option>
+              </select>
+            </li>
 
-          <li class="dropdown-submenu first-level">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-file-text padding-15" aria-hidden="true"></i>session
-            </a>
-            <ul class="sessions-menu dropdown-menu">
-              <li>
-                <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="choose project">
-                  <option value="" disabled selected hidden>choose project</option>
-                </select>
-              </li>
+            <li>
+              <select ng-model="selectedSession">
+                <option value="" disabled selected hidden>choose session</option>
+                <option value="RECON">Reconnaissance</option>
+                <option value="SEARCH">Search</option>
+              </select>
+            </li>
 
-              <li>
-                <select ng-model="selectedSession">
-                  <option value="" disabled selected hidden>choose session</option>
-                  <option value="RECON">Reconnaissance</option>
-                  <option value="SEARCH">Search</option>
-                </select>
-              </li>
+            <li>
+              <select ng-model="selectedDuration">
+                <option value="" disabled selected hidden>choose duration</option>
+                <option value="45">45 Minutes</option>
+                <option value="60">60 Minutes</option>
+                <option value="90">90 Minutes</option>
+              </select>
+            </li>
+            <li>
+              <button ng-click="startSession()" data-dismiss="modal">start</button>
+            </li>
+          </ul>
+        </li>
 
-              <li>
-                <select ng-model="selectedDuration">
-                  <option value="" disabled selected hidden>choose duration</option>
-                  <option value="45">45 Minutes</option>
-                  <option value="60">60 Minutes</option>
-                  <option value="90">90 Minutes</option>
-                </select>
-              </li>
-              <li>
-                <button ng-click="startSession()" data-dismiss="modal">start</button>
-              </li>
-            </ul>
-          </li>
+        <li class="dropdown-submenu">
+          <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
+            <i class="fa fa-sign-out icon active"></i>
+            <label>logout</label>
+          </a>
+        </li>
 
-          <li id="logout" class="dropdown-submenu first-level">
-            <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
-              <i class="fa fa-sign-out padding-15" aria-hidden="true"></i>logout
-            </a>
-        </ul>
-      </span>
+      </ul>
     </div>
   </div>
 </div>
@@ -268,9 +260,6 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
       <div class="modal-body">
         <p>Are you sure you want to Delete ?.</p>
       </div>

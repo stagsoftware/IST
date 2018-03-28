@@ -1,3 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: lighter;
+    font-family: Roboto, sans-serif;
+    color: #5f5f5f;
+    background: #e9ecef;
+}
+
 header.header-main {
     max-height: 55px !important;
     height: 55px;
