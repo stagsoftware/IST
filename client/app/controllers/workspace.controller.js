@@ -43,22 +43,23 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
     ProjectService.getValue($scope.selectedProject.name).then(function (response) {
       // NOTE: Uncomment for no db connection
-      // $scope.value = response.data[0].details;
+      $scope.value = response.data[0].details;
       // NOTE: Uncomment for mongo db connection
-      $scope.value = JSON.parse(response.data[0].details);
+      // $scope.value = JSON.parse(response.data[0].details);
+
       var templateName = response.data[0].templateName;
 
       ProjectService.getTemplate(templateName).then(function (response) {
         // NOTE: Uncomment for no db connection
-        // $scope.template = response.data[0].value;
+        $scope.template = response.data[0].value;
         // NOTE: Uncomment for mongo db connection
-        $scope.template = JSON.parse(response.data[0].value);
+        // $scope.template = JSON.parse(response.data[0].value);
 
         ProjectService.getUISettings().then(function (response) {
           // NOTE: Uncomment for no db connection
-          // UISettings = response.data[0].value;
+          UISettings = response.data[0].value;
           // NOTE: Uncomment for mongo db connection
-          UISettings = JSON.parse(response.data[0].value);
+          // UISettings = JSON.parse(response.data[0].value);
 
           UISettings.getSessionConfig = function (manualConfig, styleConfigID) {
             var config = Object.assign({}, manualConfig, UISettings.Styles.Session[styleConfigID]);
@@ -66,9 +67,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            // if (config.text) {
-            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
-            // }
+            if (config.text && config.verticalAlign) {
+              switch (config.verticalAlign) {
+                case "top":
+                  config.y = config.y;
+                  break;
+                case "center":
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+                case "bottom":
+                  config.y = config.y + config.height - config.fontSize;
+                  break;
+                default:
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+              }
+            }
             return config;
           }
 
@@ -78,9 +92,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            // if (config.text) {
-            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
-            // }
+            if (config.text && config.verticalAlign) {
+              switch (config.verticalAlign) {
+                case "top":
+                  config.y = config.y;
+                  break;
+                case "center":
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+                case "bottom":
+                  config.y = config.y + config.height - config.fontSize;
+                  break;
+                default:
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+              }
+            }
             return config;
           }
 
@@ -90,9 +117,22 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            // if (config.text) {
-            //   config.padding = ((config.height > config.width ? config.width : config.height) - config.fontSize) / 2;
-            // }
+            if (config.text && config.verticalAlign) {
+              switch (config.verticalAlign) {
+                case "top":
+                  config.y = config.y;
+                  break;
+                case "center":
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+                case "bottom":
+                  config.y = config.y + config.height - config.fontSize;
+                  break;
+                default:
+                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                  break;
+              }
+            }
             return config;
           }
 

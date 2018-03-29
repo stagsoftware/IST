@@ -51,6 +51,16 @@ ist.service('HeaderService', function ($timeout, $interval) {
     function wireUpEventHandlers() {
         $(document).ready(function () {
 
+            $('#sessionTitle').on('click', function (event) {
+                $('.session-menu').toggleClass('show');
+                $('.project-menu').removeClass('show');
+            });
+
+            $('#projectTitle').on('click', function (event) {
+                $('.project-menu').toggleClass('show');
+                $('.session-menu').removeClass('show');
+            });
+
             $('#hamburgerCheckBox').change(function () {
                 if ($('#hamburgerCheckBox').is(":checked")) {
                     $('#myModal').modal('show');
@@ -61,6 +71,8 @@ ist.service('HeaderService', function ($timeout, $interval) {
 
             $('#myModal').on('hidden.bs.modal', function () {
                 $('#hamburgerCheckBox').prop('checked', false).change();
+                $('.session-menu').removeClass('show');
+                $('.project-menu').removeClass('show');
             });
 
             $(".jottings-dropup-header").click(function () {

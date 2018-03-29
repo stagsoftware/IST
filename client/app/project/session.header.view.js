@@ -44,8 +44,7 @@ class SessionHeaderView {
             x: this.x,
             y: this.y,
             width: (SessionWidth * (SessionSettings.scrollLeftButtonText.wPct / 100)),
-            height: (SessionHeight * (SessionSettings.scrollLeftButtonText.hPct / 100)),
-            text: '<'
+            height: (SessionHeight * (SessionSettings.scrollLeftButtonText.hPct / 100))
         };
         var config = UISettings.getSessionConfig(manualConfig, "scrollLeftButtonText");
         this.scrollLeftButtonText = new Konva.Text(config);
@@ -96,8 +95,7 @@ class SessionHeaderView {
                 + (SessionWidth * (SessionSettings.wsNameRect.wPct / 100)),
             y: this.y,
             width: (SessionWidth * (SessionSettings.scrollRightButtonText.wPct / 100)),
-            height: (SessionHeight * (SessionSettings.scrollRightButtonText.hPct / 100)),
-            text: '>'
+            height: (SessionHeight * (SessionSettings.scrollRightButtonText.hPct / 100))
         };
         var config = UISettings.getSessionConfig(manualConfig, "scrollRightButtonText");
         this.scrollRightButtonText = new Konva.Text(config);

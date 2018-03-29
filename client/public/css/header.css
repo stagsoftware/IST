@@ -70,13 +70,16 @@
 }
 
 .project-menu {
+    position: absolute;
     top: 0;
     left: 100%;
     width: 600px;
     padding: 10px;
     margin: 0px;
+    border: 1px solid black;
     border-radius: 0px !important;
     background-color: antiquewhite;
+    display: none;
 }
 
 .project-menu table thead, .project-menu table tbody {
@@ -99,17 +102,21 @@
 }
 
 .session-menu {
+    position: absolute;
     top: 0;
     left: 100%;
     width: 200px;
     padding: 10px;
     margin: 0px;
+    border: 1px solid black;
     border-radius: 0px !important;
     background-color: antiquewhite;
+    display: none;
 }
 
 .session-menu>li {
     margin: 10px 0;
+    list-style-type: none;
 }
 
 .session-menu>li>select {
@@ -127,6 +134,10 @@
     background-color: #eb807b;
     border: none;
     padding: 5px;
+}
+
+.project-menu.show, .session-menu.show {
+    display: block;
 }
 
 #menuToggle input[type="checkbox"] {

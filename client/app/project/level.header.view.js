@@ -43,8 +43,7 @@ class LevelHeaderView {
                     x: this.x,
                     y: this.y,
                     width: (LevelWidth * (LevelSettings.scrollLeftButtonText.wPct / 100)),
-                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100)),
-                    text: '<'
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100))
                 };
                 var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonText");
                 this.scrollLeftButtonText = new Konva.Text(config);
@@ -68,8 +67,7 @@ class LevelHeaderView {
                     y: this.y
                         + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
                     width: (LevelWidth * (LevelSettings.scrollRightButtonText.wPct / 100)),
-                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100)),
-                    text: '>'
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100))
                 };
                 var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonText");
                 this.scrollRightButtonText = new Konva.Text(config);
@@ -195,8 +193,7 @@ class LevelHeaderView {
                         + (LevelWidth * (LevelSettings.levelIDRect.wPct / 100)),
                     y: this.y,
                     width: (LevelWidth * (LevelSettings.scrollLeftButtonText.wPct / 100)),
-                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100)),
-                    text: '<'
+                    height: (LevelHeight * (LevelSettings.scrollLeftButtonText.hPct / 100))
                 };
                 var config = UISettings.getLevelConfig(manualConfig, "scrollLeftButtonText");
                 this.scrollLeftButtonText = new Konva.Text(config);
@@ -222,8 +219,7 @@ class LevelHeaderView {
                     y: this.y
                         + (LevelHeight * (LevelSettings.scrollLeftButtonRect.hPct / 100)),
                     width: (LevelWidth * (LevelSettings.scrollRightButtonText.wPct / 100)),
-                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100)),
-                    text: '>'
+                    height: (LevelHeight * (LevelSettings.scrollRightButtonText.hPct / 100))
                 };
                 var config = UISettings.getLevelConfig(manualConfig, "scrollRightButtonText");
                 this.scrollRightButtonText = new Konva.Text(config);

@@ -76,8 +76,7 @@ class SectionHeaderView {
                 + (this.w * (SectionSettings.secNameRect.wPct / 100)),
             y: this.y,
             width: (this.w * (SectionSettings.addButtonText.wPct / 100)),
-            height: (this.h * (SectionSettings.addButtonText.hPct / 100)),
-            text: '+'
+            height: (this.h * (SectionSettings.addButtonText.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "addButtonText");
         this.addButtonText = new Konva.Text(config);
@@ -103,8 +102,7 @@ class SectionHeaderView {
                 + (this.w * (SectionSettings.addButtonRect.wPct / 100)),
             y: this.y,
             width: (this.w * (SectionSettings.deleteButtonText.wPct / 100)),
-            height: (this.h * (SectionSettings.deleteButtonText.hPct / 100)),
-            text: '-'
+            height: (this.h * (SectionSettings.deleteButtonText.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "deleteButtonText");
         this.deleteButtonText = new Konva.Text(config);
@@ -128,8 +126,7 @@ class SectionHeaderView {
             y: this.y
                 + (this.h * (SectionSettings.secNameRect.hPct / 100)),
             width: (this.w * (SectionSettings.scrollLeftButtonText.wPct / 100)),
-            height: (this.h * (SectionSettings.scrollLeftButtonText.hPct / 100)),
-            text: '<'
+            height: (this.h * (SectionSettings.scrollLeftButtonText.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollLeftButtonText");
         this.scrollLeftButtonText = new Konva.Text(config);
@@ -171,8 +168,7 @@ class SectionHeaderView {
             y: this.y
                 + (this.h * (SectionSettings.secNameRect.hPct / 100)),
             width: (this.w * (SectionSettings.scrollRightButtonText.wPct / 100)),
-            height: (this.h * (SectionSettings.scrollRightButtonText.hPct / 100)),
-            text: '>'
+            height: (this.h * (SectionSettings.scrollRightButtonText.hPct / 100))
         };
         var config = UISettings.getSectionConfig(manualConfig, "scrollRightButtonText");
         this.scrollRightButtonText = new Konva.Text(config);

@@ -1,0 +1,518 @@
+[
+  {
+    "name": "default UI settings",
+    "value": {
+      "Styles": {
+        "Session": {
+          "scrollLeftButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollLeftButtonText": {
+            "fontSize": 16,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0d9",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "wsNameRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "wsNameText": {
+            "fontSize": 16,
+            "fontStyle": "bold",
+            "fontFamily": "Roboto",
+            "fill": "#555",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "scrollRightButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollRightButtonText": {
+            "fontSize": 16,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0da",
+            "align": "center",
+            "verticalAlign": "center"
+          }
+        },
+        "Level": {
+          "boardViewRect": {
+            "fill": "white",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollLeftButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollLeftButtonText": {
+            "fontSize": 16,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0d9",
+            "align": "center",
+            "verticalAlign": "bottom"
+          },
+          "scrollRightButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollRightButtonText": {
+            "fontSize": 16,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0da",
+            "align": "center",
+            "verticalAlign": "top"
+          },
+          "levelIDRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "levelIDText": {
+            "fontSize": 16,
+            "fontStyle": "bold",
+            "fontFamily": "Roboto",
+            "fill": "#555",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "levelNameRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "levelNameText": {
+            "fontSize": 16,
+            "fontStyle": "bold",
+            "fontFamily": "Roboto",
+            "fill": "#555",
+            "align": "center",
+            "verticalAlign": "center"
+          }
+        },
+        "Section": {
+          "sectionAreaRect": {
+            "fill": "white",
+            "stroke": "white",
+            "strokeWidth": 2,
+            "strokeEnabled": true,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "secNameRect": {
+            "fill": "#E4F4D8",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "secNameText": {
+            "fontSize": 12,
+            "fontStyle": "bold",
+            "fontFamily": "Roboto",
+            "fill": "#555",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "addButtonRect": {
+            "fill": "#E4F4D8",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "addButtonText": {
+            "fontSize": 12,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0fe",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "deleteButtonRect": {
+            "fill": "#E4F4D8",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "deleteButtonText": {
+            "fontSize": 12,
+            "fontFamily": "FontAwesome",
+            "text": "\uf146",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "scrollLeftButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollLeftButtonText": {
+            "fontSize": 14,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0d9",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "scrollBar": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollRightButtonRect": {
+            "fill": "hsl(4, 3%, 76%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "scrollRightButtonText": {
+            "fontSize": 14,
+            "fontFamily": "FontAwesome",
+            "text": "\uf0da",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "boardViewRect": {
+            "fill": "rgb(240, 240, 240)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "konvaRect": {
+            "fill": "hsl(29, 95%, 76%)",
+            "stroke": "hsl(29, 95%, 76%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          },
+          "konvaText": {
+            "fontSize": 12,
+            "fontStyle": "bold",
+            "fontFamily": "Roboto",
+            "fill": "#555",
+            "align": "center",
+            "verticalAlign": "center"
+          },
+          "selectedKonvaRect": {
+            "fill": "hsl(9, 1%, 69%)",
+            "stroke": "hsl(165, 53%, 81%)",
+            "strokeWidth": 0,
+            "strokeEnabled": false,
+            "shadowColor": "black",
+            "shadowBlur": 0,
+            "shadowEnabled": false
+          }
+        }
+      },
+      "Properties": {
+        "Session": {
+          "skeleton": {
+            "wPct": 100,
+            "hPct": 100
+          },
+          "scrollLeftButtonRect": {
+            "wPct": 10,
+            "hPct": 2.8
+          },
+          "scrollLeftButtonText": {
+            "wPct": 10,
+            "hPct": 2.8
+          },
+          "wsNameRect": {
+            "wPct": 80,
+            "hPct": 2.8
+          },
+          "wsNameText": {
+            "wPct": 80,
+            "hPct": 2.8
+          },
+          "scrollRightButtonRect": {
+            "wPct": 10,
+            "hPct": 2.8
+          },
+          "scrollRightButtonText": {
+            "wPct": 10,
+            "hPct": 2.8
+          }
+        },
+        "Workspace": {
+          "RECON": [
+            {
+              "noOfSections": 0,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 5,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 6,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 3,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 5,
+              "wPct": 20,
+              "hPct": 100
+            }
+          ],
+          "SEARCH": [
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            },
+            {
+              "noOfSections": 2,
+              "noOfSectionAreas": 2,
+              "wPct": 50,
+              "hPct": 100
+            }
+          ]
+        },
+        "Level": {
+          "skeleton": {
+            "wPct": 100,
+            "hPct": 10.8
+          },
+          "boardViewRect": {
+            "wPct": 90,
+            "hPct": 100
+          },
+          "scrollLeftButtonRect": {
+            "wPct": 2,
+            "hPct": 50
+          },
+          "scrollLeftButtonText": {
+            "wPct": 2,
+            "hPct": 50
+          },
+          "scrollRightButtonRect": {
+            "wPct": 2,
+            "hPct": 50
+          },
+          "scrollRightButtonText": {
+            "wPct": 2,
+            "hPct": 50
+          },
+          "levelIDRect": {
+            "wPct": 8,
+            "hPct": 30
+          },
+          "levelIDText": {
+            "wPct": 8,
+            "hPct": 30
+          },
+          "levelNameRect": {
+            "wPct": 8,
+            "hPct": 70
+          },
+          "levelNameText": {
+            "wPct": 8,
+            "hPct": 70
+          }
+        },
+        "Section": {
+          "secNameRect": {
+            "wPct": 84,
+            "hPct": 15
+          },
+          "secNameText": {
+            "wPct": 84,
+            "hPct": 15
+          },
+          "addButtonRect": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "addButtonText": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "deleteButtonRect": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "deleteButtonText": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "scrollLeftButtonRect": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "scrollLeftButtonText": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "scrollBar": {
+            "wPct": 84,
+            "hPct": 15
+          },
+          "scrollRightButtonRect": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "scrollRightButtonText": {
+            "wPct": 8,
+            "hPct": 15
+          },
+          "boardViewRect": {
+            "wPct": 100,
+            "hPct": 70,
+            "margin": 5
+          },
+          "board": {
+            "w": 50,
+            "h": 15,
+            "gapW": 5,
+            "gapH": 5
+          }
+        }
+      }
+    }
+  }
+]
