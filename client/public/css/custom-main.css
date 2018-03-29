@@ -7,20 +7,6 @@ a {
     width: 100%;
 }
 
-ul.dropdown-menu.grp-sblink li a:hover {
-    color: #fff!important;
-    background: #eb807b;
-}
-
-.edit-menu::after {
-    width: 0;
-    position: absolute;
-    margin-left: -30px;
-    border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #f5f5f5;
-    border-width: 10px;
-    bottom: -13px;
-}
-
 .header-main .nav>li>a:focus, .header-main .nav>li>a:hover {
     text-decoration: none;
     background: 0 0;
@@ -93,8 +79,4 @@ ul.dropdown-menu.grp-sblink li a:hover {
 
 a, a label {
     cursor: pointer;
-}
-
-.dropleft {
-    position: relative;
 }
