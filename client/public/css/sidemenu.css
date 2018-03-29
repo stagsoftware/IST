@@ -13,15 +13,6 @@ option[value=""][disabled] {
     display: none;
 }
 
-.tooltips {
-    position: relative;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    position: relative;
-}
-
 tbody {
     height: 120px;
     max-height: 120px;

@@ -25,16 +25,13 @@
     margin: 0;
 }
 
-.main-menu .dropdown-submenu {
-    width: 150px;
-    min-width: 150px !important;
-}
-
 .main-menu .dropdown-submenu:hover, .main-menu .dropdown-submenu>li>a:focus {
     background-color: #eb807b !important;
 }
 
 .main-menu .dropdown-submenu {
+    width: 150px;
+    min-width: 150px !important;
     border-bottom: 1px solid lightgrey;
     background-color: antiquewhite;
 }
@@ -101,6 +98,13 @@
     padding: 0px 5px;
 }
 
+.project-menu table tbody tr td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .session-menu {
     position: absolute;
     top: 0;
@@ -138,6 +142,12 @@
 
 .project-menu.show, .session-menu.show {
     display: block;
+}
+
+.project-menu-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 5px;
 }
 
 #menuToggle input[type="checkbox"] {

@@ -26,14 +26,14 @@ class SectionView {
     }
 
     relocateAt(newX, newY, newW, newH) {
-        this.headerView.relocateAt(newX, newY, newW, newH);
+        this.headerView.relocateAt(newX, newY);
 
         var newBvX = newX;
         var newBvY = newY
             + (newH * (SectionSettings.secNameRect.hPct / 100))
             + (newH * (SectionSettings.scrollLeftButtonRect.hPct / 100));
 
-        this.boardView.relocateAt(newBvX, newBvY, newW, newH);
+        this.boardView.relocateAt(newBvX, newBvY);
     }
 
     makeVisible(isVisible) {

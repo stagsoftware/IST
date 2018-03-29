@@ -170,7 +170,7 @@
           "addButtonText": {
             "fontSize": 12,
             "fontFamily": "FontAwesome",
-            "text": "\uf0fe",
+            "text": "\uf067",
             "align": "center",
             "verticalAlign": "center"
           },
@@ -186,7 +186,7 @@
           "deleteButtonText": {
             "fontSize": 12,
             "fontFamily": "FontAwesome",
-            "text": "\uf146",
+            "text": "\uf00d",
             "align": "center",
             "verticalAlign": "center"
           },
@@ -458,51 +458,51 @@
         "Section": {
           "secNameRect": {
             "wPct": 84,
-            "hPct": 15
+            "hPct": 20
           },
           "secNameText": {
             "wPct": 84,
-            "hPct": 15
+            "hPct": 20
           },
           "addButtonRect": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "addButtonText": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "deleteButtonRect": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "deleteButtonText": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "scrollLeftButtonRect": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "scrollLeftButtonText": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "scrollBar": {
             "wPct": 84,
-            "hPct": 15
+            "hPct": 20
           },
           "scrollRightButtonRect": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "scrollRightButtonText": {
             "wPct": 8,
-            "hPct": 15
+            "hPct": 20
           },
           "boardViewRect": {
             "wPct": 100,
-            "hPct": 70,
+            "hPct": 60,
             "margin": 5
           },
           "board": {

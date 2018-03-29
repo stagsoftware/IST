@@ -84,7 +84,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
               }
             }
             return config;
-          }
+          };
 
           UISettings.getLevelConfig = function (manualConfig, styleConfigID) {
             var config = Object.assign({}, manualConfig, UISettings.Styles.Level[styleConfigID]);
@@ -109,7 +109,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
               }
             }
             return config;
-          }
+          };
 
           UISettings.getSectionConfig = function (manualConfig, styleConfigID) {
             var config = Object.assign({}, manualConfig, UISettings.Styles.Section[styleConfigID]);
@@ -134,7 +134,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
               }
             }
             return config;
-          }
+          };
 
           CanvasX = 0;
           CanvasY = 0;
@@ -212,20 +212,39 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     }
   };
 
+  var projectExists = function () {
+    return $scope.projects.find((project) => project.name === $scope.selectedProjectInProjectsMenu.name) ? true : false;
+  };
+
   $scope.addNewProject = function () {
     if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
-      $scope.selectedProjectInProjectsMenu.details = JSON.stringify({});
-      ProjectService.addNewProject($scope.selectedProjectInProjectsMenu).then(function (response) {
-        console.log('Data Saved Successfully');
-        load();
-      });
+      $scope.incompletemessage = false;
+      if (!projectExists()) {
+        $scope.alertmessage = false;
+        $scope.selectedProjectInProjectsMenu.details = JSON.stringify({});
+        ProjectService.addNewProject($scope.selectedProjectInProjectsMenu).then(function (response) {
+          console.log('Data Saved Successfully');
+          load();
+        });
+      }
+      else {
+        $scope.alertmessage = true;
+      }
+
     }
+    else {
+      $scope.incompletemessage = true;
+      $scope.alertmessage = false;
+    }
+    $scope.selectedProjectInProjectsMenu = {};
   }
 
   $scope.cloneProject = function (selectedProjectInProjectsMenu) {
     $scope.add = true;
     $scope.clone = true;
     $scope.modify = false;
+    $scope.incompletemessage = false;
+    $scope.alertmessage = false;
     ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
       $scope.myprojectDetails = response.data[0].details;
       $scope.selectedProjectInProjectsMenu = {
@@ -241,6 +260,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     $scope.add = true;
     $scope.clone = false;
     $scope.modify = true;
+    $scope.incompletemessage = false;
+    $scope.alertmessage = false;
     ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
       $scope.selectedProjectInProjectsMenu = {
         _id: response.data[0]._id,
@@ -253,22 +274,52 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   }
 
   $scope.addClonedProject = function () {
-    $scope.selectedProjectInProjectsMenu.details = $scope.myprojectDetails;
-    $http.post('/workspace/AddProject', $scope.selectedProjectInProjectsMenu).then(function (response) {
-      console.log('Data Saved Successfully');
-      load();
-    });
+    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+      $scope.incompletemessage = false;
+
+      if (!projectExists()) {
+        $scope.alertmessage = false;
+        $scope.selectedProjectInProjectsMenu.details = $scope.myprojectDetails;
+        $http.post('/workspace/AddProject', $scope.selectedProjectInProjectsMenu).then(function (response) {
+          console.log('Data Saved Successfully');
+          load();
+        });
+      }
+      else {
+        $scope.alertmessage = true;
+      }
+    }
+    else {
+      $scope.incompletemessage = true;
+      $scope.alertmessage = false;
+    }
+    $scope.selectedProjectInProjectsMenu = {};
   }
 
   $scope.addModifiedProject = function () {
-    $http.put("/workspace/UpdateProject/" + $scope.selectedProjectInProjectsMenu._id, $scope.selectedProjectInProjectsMenu).then(function (response) {
-      console.log('Data updated Successfully');
-      load();
-    });
+    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+      $scope.incompletemessage = false;
+      if (!projectExists()) {
+        $scope.alertmessage = false;
+        $http.put("/workspace/UpdateProject/" + $scope.selectedProjectInProjectsMenu._id, $scope.selectedProjectInProjectsMenu).then(function (response) {
+          console.log('Data updated Successfully');
+          load();
+        });
+      }
+      else {
+        $scope.alertmessage = true;
+      }
+    }
+    else {
+      $scope.incompletemessage = true;
+      $scope.alertmessage = false;
+    }
+    $scope.selectedProjectInProjectsMenu = {};
   }
 
-
   $scope.abort = function () {
+    $scope.incompletemessage = false;
+    $scope.alertmessage = false;
     $scope.selectedProjectInProjectsMenu = {};
     $scope.add = false;
     $scope.clone = false;

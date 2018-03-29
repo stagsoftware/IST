@@ -161,23 +161,12 @@
                     <input type="text" class="form-control input-text" ng-model="selectedProjectInProjectsMenu.description" placeholder="enter description">
                   </th>
                   <td>
-                    <div class="row">
-                      <div class="col-sm-2">
-                        <button id="add" ng-hide="add" class="btn btn-default size " ng-click="addNewProject()">
-                          <span class="fa fa-plus-square"></span>
-                        </button>
-                        <button id="save" ng-show="clone" class="btn btn-default size " ng-click="addClonedProject()">
-                          <span class=" fa fa-plus-square"></span>
-                        </button>
-                        <button id="mod" ng-show="modify" class="btn btn-default size " ng-click="addModifiedProject()">
-                          <span class="fa fa-plus-square"></span>
-                        </button>
-                      </div>
-                      <div class="col-sm-2">
-                        <button id="abort" class="btn btn-default size" ng-click="abort()">
-                          <span class="fa fa-minus-square"></span>
-                        </button>
-                      </div>
+                    <div class="project-menu-options">
+                      <i></i>
+                      <i id="add" class="fa fa-plus icon active" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
+                      <i id="save" class=" fa fa-plus icon active" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
+                      <i id="mod" class="fa fa-plus icon active" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
+                      <i id="abort" class="fa fa-times" title="discard changes" ng-click="abort()"></i>
                     </div>
                   </td>
                 </tr>
@@ -185,24 +174,26 @@
 
               <tbody>
                 <tr ng-repeat="project in projects | orderBy:'$index':true">
-                  <td class="tooltips">{{project.name}}</td>
-                  <td>{{project.templateName}}</td>
-                  <td id="desc" class="tooltips" ng-attr-title="{{project.description}}">{{project.description}}</td>
+                  <td ng-attr-title="{{project.name}}">{{project.name}}</td>
+                  <td ng-attr-title="{{project.templateName}}">{{project.templateName}}</td>
+                  <td ng-attr-title="{{project.description}}">{{project.description}}</td>
                   <td>
-                    <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Clone" ng-click="cloneProject(project)">
-                      <span class="fa fa-clone"></span>
-                    </button>
-                    <button class="btn btn-default size" data-toggle="tooltip" data-placement="top" title="Modify" ng-click="modifyProject(project)">
-                      <span class="fa fa-edit"></span>
-                    </button>
-                    <button class="btn btn-default size" data-toggle="modal" data-toggle="tooltip" ng-click="Delete(project)" data-target="#myDelModal">
-                      <span class="fa fa-trash-o"></span>
-                    </button>
-
+                    <div class="project-menu-options">
+                      <i class="fa fa-clone icon active" title="clone" ng-click="cloneProject(project)"></i>
+                      <i class="fa fa-edit icon active" title="modify" ng-click="modifyProject(project)"></i>
+                      <i class="fa fa-trash-o icon active" title="delete" ng-click="Delete(project)" data-toggle="modal" data-target="#myDelModal"></i>
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
+
+            <label ng-show="alertmessage">
+              <strong>error: this project already exists!</strong>
+            </label>
+            <label ng-show="incompletemessage">
+              <strong>error: enter project name and template name</strong>
+            </label>
 
           </div>
         </li>

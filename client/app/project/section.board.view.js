@@ -68,7 +68,7 @@ class SectionBoardView {
             if (currBMaxX > bvMaxX) {
                 currBX = this.x + SectionSettings.boardViewRect.margin;
                 currBY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
-                
+
                 currBMaxX = currBX + (SectionSettings.board.w + SectionSettings.board.gapW);
                 currBMaxY = currBY + (SectionSettings.board.h + SectionSettings.board.gapH);
             }
@@ -203,12 +203,10 @@ class SectionBoardView {
         }
     }
 
-    relocateAt(newX, newY, newW, newH) {
+    relocateAt(newX, newY) {
 
-        this.boardViewRect.setX(newX);
-        this.boardViewRect.setY(newY);
-        this.boardViewRect.setWidth(newW  * (SectionSettings.boardViewRect.wPct / 100));
-        this.boardViewRect.setHeight(newH * (SectionSettings.boardViewRect.hPct / 100));
+        this.boardViewRect.setX(newX + (this.boardViewRect.x() - this.x));
+        this.boardViewRect.setY(newY + (this.boardViewRect.y() - this.y));
 
         for (var i = 0; i < this.maxNoBoards; ++i) {
 
@@ -221,9 +219,29 @@ class SectionBoardView {
 
         this.x = newX;
         this.y = newY;
-        this.w = newW;
-        this.h = newH;
     }
+
+    // redrawAt(newX, newY, newW, newH) {
+
+    //     this.boardViewRect.setX(newX);
+    //     this.boardViewRect.setY(newY);
+    //     this.boardViewRect.setWidth(newW  * (SectionSettings.boardViewRect.wPct / 100));
+    //     this.boardViewRect.setHeight(newH * (SectionSettings.boardViewRect.hPct / 100));
+
+    //     for (var i = 0; i < this.maxNoBoards; ++i) {
+
+    //         this.boardCollection[i].konvaRect.setX(newX + (this.boardCollection[i].konvaRect.x() - this.x));
+    //         this.boardCollection[i].konvaRect.setY(newY + (this.boardCollection[i].konvaRect.y() - this.y));
+
+    //         this.boardCollection[i].konvaText.setX(newX + (this.boardCollection[i].konvaText.x() - this.x));
+    //         this.boardCollection[i].konvaText.setY(newY + (this.boardCollection[i].konvaText.y() - this.y));
+    //     }
+
+    //     this.x = newX;
+    //     this.y = newY;
+    //     this.w = newW;
+    //     this.h = newH;
+    // }
 
     makeVisible(isVisible) {
 
