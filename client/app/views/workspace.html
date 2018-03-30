@@ -206,13 +206,13 @@
           </a>
           <ul class="session-menu">
             <li>
-              <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="choose project">
+              <select ng-model="currProject" ng-options="project.name for project in projects" placeholder="choose project">
                 <option value="" disabled selected hidden>choose project</option>
               </select>
             </li>
 
             <li>
-              <select ng-model="selectedSession">
+              <select ng-model="currSession">
                 <option value="" disabled selected hidden>choose session</option>
                 <option value="RECON">Reconnaissance</option>
                 <option value="SEARCH">Search</option>
@@ -220,7 +220,7 @@
             </li>
 
             <li>
-              <select ng-model="selectedDuration">
+              <select ng-model="currDuration">
                 <option value="" disabled selected hidden>choose duration</option>
                 <option value="45">45 Minutes</option>
                 <option value="60">60 Minutes</option>

@@ -4,9 +4,9 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
   // NOTE: Model values used
   $scope.projects;
-  $scope.selectedProject;
-  $scope.selectedSession;
-  $scope.selectedDuration;
+  $scope.currProject;
+  $scope.currSession;
+  $scope.currDuration;
   $scope.isProjectOpen = false;
   $scope.userName;
   $scope.template;
@@ -16,16 +16,16 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.note;
   $scope.question;
   $scope.timer;
-  $scope.selectedProjectInProjectsMenu;
+  $scope.selectedProject;
 
   HeaderService.wireUpEventHandlers();
 
   var load = function () {
     ProjectService.getProjects().then(function (response) {
       $scope.projects = response.data;
-      $scope.selectedProject = $scope.projects[0] || {};
-      $scope.selectedSession = "RECON";
-      $scope.selectedDuration = "45";
+      $scope.currProject = $scope.projects[0] || {};
+      $scope.currSession = "RECON";
+      $scope.currDuration = "45";
     });
     ProjectService.getTemplates().then(function (response) {
       $scope.tempName = [];
@@ -34,14 +34,14 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
         $scope.tempName.push($scope.templates[m].name);
       }
     });
-    $scope.selectedProjectInProjectsMenu = {};
+    $scope.selectedProject = {};
   };
 
   $scope.userName = $cookies.getObject('UserName');
 
   $scope.startSession = function () {
 
-    ProjectService.getValue($scope.selectedProject.name).then(function (response) {
+    ProjectService.getValue($scope.currProject.name).then(function (response) {
       // NOTE: Uncomment for no db connection
       $scope.value = response.data[0].details;
       // NOTE: Uncomment for mongo db connection
@@ -161,10 +161,10 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             * (LevelSettings.skeleton.hPct / 100);
 
           $scope.project = new Project();
-          $scope.project.init($scope.selectedSession, $scope.template, $scope.value);
+          $scope.project.init($scope.currSession, $scope.template, $scope.value);
 
           HeaderService.startTimer();
-          HeaderService.startCountDown($scope.selectedDuration);
+          HeaderService.startCountDown($scope.currDuration);
           $scope.timer = HeaderService.timer;
 
           $scope.jotting = "";
@@ -208,21 +208,21 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   var saveProjectDetails = function () {
     if ($scope.project) {
       $scope.value = $scope.project.save();
-      ProjectService.saveProjectDetails($scope.selectedProject.name, $scope.value).then(function (response) { });
+      ProjectService.saveProjectDetails($scope.currProject.name, $scope.value).then(function (response) { });
     }
   };
 
   var projectExists = function () {
-    return $scope.projects.find((project) => project.name === $scope.selectedProjectInProjectsMenu.name) ? true : false;
+    return $scope.projects.find((project) => project.name === $scope.selectedProject.name) ? true : false;
   };
 
   $scope.addNewProject = function () {
-    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+    if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
       if (!projectExists()) {
         $scope.alertmessage = false;
-        $scope.selectedProjectInProjectsMenu.details = JSON.stringify({});
-        ProjectService.addNewProject($scope.selectedProjectInProjectsMenu).then(function (response) {
+        $scope.selectedProject.details = JSON.stringify({});
+        ProjectService.addNewProject($scope.selectedProject).then(function (response) {
           console.log('Data Saved Successfully');
           load();
         });
@@ -236,18 +236,18 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.incompletemessage = true;
       $scope.alertmessage = false;
     }
-    $scope.selectedProjectInProjectsMenu = {};
+    $scope.selectedProject = {};
   }
 
-  $scope.cloneProject = function (selectedProjectInProjectsMenu) {
+  $scope.cloneProject = function (selectedProject) {
     $scope.add = true;
     $scope.clone = true;
     $scope.modify = false;
     $scope.incompletemessage = false;
     $scope.alertmessage = false;
-    ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
+    ProjectService.getValue(selectedProject.name).then(function (response) {
       $scope.myprojectDetails = response.data[0].details;
-      $scope.selectedProjectInProjectsMenu = {
+      $scope.selectedProject = {
         name: response.data[0].name + "(Copy)",
         description: response.data[0].description,
         templateName: response.data[0].templateName
@@ -256,14 +256,14 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
   }
 
-  $scope.modifyProject = function (selectedProjectInProjectsMenu) {
+  $scope.modifyProject = function (selectedProject) {
     $scope.add = true;
     $scope.clone = false;
     $scope.modify = true;
     $scope.incompletemessage = false;
     $scope.alertmessage = false;
-    ProjectService.getValue(selectedProjectInProjectsMenu.name).then(function (response) {
-      $scope.selectedProjectInProjectsMenu = {
+    ProjectService.getValue(selectedProject.name).then(function (response) {
+      $scope.selectedProject = {
         _id: response.data[0]._id,
         name: response.data[0].name,
         description: response.data[0].description,
@@ -274,13 +274,13 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   }
 
   $scope.addClonedProject = function () {
-    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+    if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
 
       if (!projectExists()) {
         $scope.alertmessage = false;
-        $scope.selectedProjectInProjectsMenu.details = $scope.myprojectDetails;
-        $http.post('/workspace/AddProject', $scope.selectedProjectInProjectsMenu).then(function (response) {
+        $scope.selectedProject.details = $scope.myprojectDetails;
+        $http.post('/workspace/AddProject', $scope.selectedProject).then(function (response) {
           console.log('Data Saved Successfully');
           load();
         });
@@ -293,15 +293,15 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.incompletemessage = true;
       $scope.alertmessage = false;
     }
-    $scope.selectedProjectInProjectsMenu = {};
+    $scope.selectedProject = {};
   }
 
   $scope.addModifiedProject = function () {
-    if ($scope.selectedProjectInProjectsMenu.name && $scope.selectedProjectInProjectsMenu.templateName) {
+    if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
       if (!projectExists()) {
         $scope.alertmessage = false;
-        $http.put("/workspace/UpdateProject/" + $scope.selectedProjectInProjectsMenu._id, $scope.selectedProjectInProjectsMenu).then(function (response) {
+        $http.put("/workspace/UpdateProject/" + $scope.selectedProject._id, $scope.selectedProject).then(function (response) {
           console.log('Data updated Successfully');
           load();
         });
@@ -314,13 +314,13 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.incompletemessage = true;
       $scope.alertmessage = false;
     }
-    $scope.selectedProjectInProjectsMenu = {};
+    $scope.selectedProject = {};
   }
 
   $scope.abort = function () {
     $scope.incompletemessage = false;
     $scope.alertmessage = false;
-    $scope.selectedProjectInProjectsMenu = {};
+    $scope.selectedProject = {};
     $scope.add = false;
     $scope.clone = false;
     $scope.modify = false;
@@ -334,8 +334,8 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     });
   }
 
-  $scope.Delete = function (selectedProjectInProjectsMenu) {
-    $scope.projectName = selectedProjectInProjectsMenu.name;
+  $scope.Delete = function (selectedProject) {
+    $scope.projectName = selectedProject.name;
   }
 
   $scope.logout = function () {
