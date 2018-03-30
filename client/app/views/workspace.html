@@ -15,22 +15,20 @@
       <div>
         <span>{{userName}}</span>
       </div>
-      <div>
-        <h4 class="project-name">(Project Name)</h4>
+      <div class="menu-title">
+        <label>IST WORKSPACE</label>
+        <label ng-show="isProjectOpen">{{currProject.name}}</label>
       </div>
       <div>
-
+        <i id="sessionTimer" class="fa fa-hourglass-start icon disabled" ng-attr-title="{{timer.sessionTime}}"></i>
       </div>
       <div>
-        <i id="sessionTimer" class="fa fa-hourglass-start icon" ng-attr-title="{{timer.sessionTime}}"></i>
+        <i class="fa fa-database icon disabled"></i>
+        <i class="fa fa-user user-icon icon disabled"></i>
       </div>
       <div>
-        <i class="fa fa-database icon"></i>
-        <i class="fa fa-user user-icon icon"></i>
-      </div>
-      <div>
-        <i class="fa fa-database icon"></i>
-        <i class="fa fa-globe globe-icon icon"></i>
+        <i class="fa fa-database icon disabled"></i>
+        <i class="fa fa-globe globe-icon icon disabled"></i>
       </div>
       <div>
         <img class="stag-logo" src="./public/images/stag_logo_transparent.png" alt="logo">
@@ -142,7 +140,7 @@
 
         <li>
           <a id="projectTitle">
-            <i class="fa fa-pencil-square icon active"></i>
+            <i class="fa fa-pencil-square icon"></i>
             <label>project</label>
           </a>
           <div class="project-menu">
@@ -166,9 +164,9 @@
                       <td>
                         <div class="project-menu-options">
                           <i></i>
-                          <i id="add" class="fa fa-plus icon active" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
-                          <i id="save" class=" fa fa-plus icon active" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
-                          <i id="mod" class="fa fa-plus icon active" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
+                          <i id="add" class="fa fa-plus icon" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
+                          <i id="save" class=" fa fa-plus icon" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
+                          <i id="mod" class="fa fa-plus icon" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
                           <i id="abort" class="fa fa-times" title="discard changes" ng-click="abort()"></i>
                         </div>
                       </td>
@@ -185,9 +183,9 @@
                       <td ng-attr-title="{{project.description}}">{{project.description}}</td>
                       <td>
                         <div class="project-menu-options">
-                          <i class="fa fa-clone icon active" title="clone" ng-click="cloneProject(project)"></i>
-                          <i class="fa fa-edit icon active" title="modify" ng-click="modifyProject(project)"></i>
-                          <i class="fa fa-trash-o icon active" title="delete" ng-click="Delete(project)"></i>
+                          <i class="fa fa-clone icon" title="clone" ng-click="cloneProject(project)"></i>
+                          <i class="fa fa-edit icon" title="modify" ng-click="modifyProject(project)"></i>
+                          <i class="fa fa-trash-o icon" title="delete" ng-click="Delete(project)"></i>
                         </div>
                       </td>
                     </tr>
@@ -203,8 +201,8 @@
                 </label>
                 <label ng-show="deletemessage">
                   <strong>Delete project {{projectName}} ? </strong>
-                  <i class="fa fa-check icon active" ng-click="deleteProject()"></i>
-                  <i class="fa fa-times icon active" ng-click="clear()"></i>
+                  <i class="fa fa-check icon" ng-click="deleteProject()"></i>
+                  <i class="fa fa-times icon" ng-click="clear()"></i>
                 </label>
               </div>
             </div>
@@ -213,7 +211,7 @@
 
         <li>
           <a id="sessionTitle">
-            <i class="fa fa-file-text icon active"></i>
+            <i class="fa fa-file-text icon"></i>
             <label>session</label>
           </a>
           <ul class="session-menu">
@@ -247,7 +245,7 @@
 
         <li>
           <a data-dismiss="modal" ng-click="logout()">
-            <i class="fa fa-sign-out icon active"></i>
+            <i class="fa fa-sign-out icon"></i>
             <label>logout</label>
           </a>
         </li>

@@ -26,7 +26,7 @@ ist.service('HeaderService', function ($timeout, $interval) {
 
     function startTimer() {
         var sessionTimer = document.getElementById("sessionTimer");
-        sessionTimer.classList.add("active");
+        sessionTimer.classList.remove("disabled");
         function hourGlass() {
             sessionTimer.classList.add("fa-hourglass-start");
             sessionTimer.classList.remove("fa-hourglass-half", "fa-hourglass-end");

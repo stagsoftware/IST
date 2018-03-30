@@ -1,6 +1,6 @@
 .nav-bar {
     display: grid;
-    grid-template-columns: 25px 40px 50px 150px auto 50px 40px 40px 60px;
+    grid-template-columns: 25px 40px 50px minmax(150px, auto) 50px 40px 40px 60px;
     grid-auto-rows: auto;
     grid-gap: 1em;
     align-items: center;
@@ -38,14 +38,19 @@
     height: 35px;
 }
 
+.menu-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
 .icon {
     font-size: 16px !important;
-    color: #b1b2b4;
     cursor: pointer;
 }
 
-.icon.active {
-    color: #333;
+.icon.disabled {
+    color: #b1b2b4;
 }
 
 .user-icon, .globe-icon {
