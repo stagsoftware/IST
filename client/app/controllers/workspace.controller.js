@@ -67,21 +67,16 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            if (config.text && config.verticalAlign) {
-              switch (config.verticalAlign) {
-                case "top":
-                  config.y = config.y;
-                  break;
-                case "center":
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-                case "bottom":
-                  config.y = config.y + config.height - config.fontSize;
-                  break;
-                default:
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-              }
+            switch (config.verticalAlign) {
+              case "top":
+                config.y = config.y;
+                break;
+              case "center":
+                config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                break;
+              case "bottom":
+                config.y = config.y + config.height - config.fontSize;
+                break;
             }
             return config;
           };
@@ -92,21 +87,16 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            if (config.text && config.verticalAlign) {
-              switch (config.verticalAlign) {
-                case "top":
-                  config.y = config.y;
-                  break;
-                case "center":
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-                case "bottom":
-                  config.y = config.y + config.height - config.fontSize;
-                  break;
-                default:
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-              }
+            switch (config.verticalAlign) {
+              case "top":
+                config.y = config.y;
+                break;
+              case "center":
+                config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                break;
+              case "bottom":
+                config.y = config.y + config.height - config.fontSize;
+                break;
             }
             return config;
           };
@@ -117,21 +107,16 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
             config.y = config.y + (config.strokeWidth ? ((config.strokeWidth) / 2) : 0);
             config.width = config.width - ((config.strokeWidth) || 0);
             config.height = config.height - ((config.strokeWidth) || 0);
-            if (config.text && config.verticalAlign) {
-              switch (config.verticalAlign) {
-                case "top":
-                  config.y = config.y;
-                  break;
-                case "center":
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-                case "bottom":
-                  config.y = config.y + config.height - config.fontSize;
-                  break;
-                default:
-                  config.y = config.y + (config.height / 2) - (config.fontSize / 2);
-                  break;
-              }
+            switch (config.verticalAlign) {
+              case "top":
+                config.y = config.y;
+                break;
+              case "center":
+                config.y = config.y + (config.height / 2) - (config.fontSize / 2);
+                break;
+              case "bottom":
+                config.y = config.y + config.height - config.fontSize;
+                break;
             }
             return config;
           };
@@ -217,6 +202,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   };
 
   $scope.addNewProject = function () {
+    $scope.deletemessage = false;
     if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
       if (!projectExists()) {
@@ -245,6 +231,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     $scope.modify = false;
     $scope.incompletemessage = false;
     $scope.alertmessage = false;
+    $scope.deletemessage = false;
     ProjectService.getValue(selectedProject.name).then(function (response) {
       $scope.myprojectDetails = response.data[0].details;
       $scope.selectedProject = {
@@ -262,6 +249,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     $scope.modify = true;
     $scope.incompletemessage = false;
     $scope.alertmessage = false;
+    $scope.deletemessage = false;
     ProjectService.getValue(selectedProject.name).then(function (response) {
       $scope.selectedProject = {
         _id: response.data[0]._id,
@@ -274,6 +262,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   }
 
   $scope.addClonedProject = function () {
+    $scope.deletemessage = false;
     if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
 
@@ -294,9 +283,11 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.alertmessage = false;
     }
     $scope.selectedProject = {};
+    document.getElementById('tempname').disabled = false;
   }
 
   $scope.addModifiedProject = function () {
+    $scope.deletemessage = false;
     if ($scope.selectedProject.name && $scope.selectedProject.templateName) {
       $scope.incompletemessage = false;
       if (!projectExists()) {
@@ -315,10 +306,12 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
       $scope.alertmessage = false;
     }
     $scope.selectedProject = {};
+    document.getElementById('tempname').disabled = false;
   }
 
   $scope.abort = function () {
     $scope.incompletemessage = false;
+    $scope.deletemessage = false;
     $scope.alertmessage = false;
     $scope.selectedProject = {};
     $scope.add = false;
@@ -335,6 +328,9 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   }
 
   $scope.Delete = function (selectedProject) {
+    $scope.deletemessage = true;
+    $scope.incompletemessage = false;
+    $scope.alertmessage = false;
     $scope.projectName = selectedProject.name;
   }
 
@@ -342,6 +338,10 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     var userName = $cookies.remove('UserName');
     saveProjectDetails();
     $location.path('/');
+  };
+
+  $scope.clear = function () {
+    $scope.deletemessage = false;
   };
 
   load();

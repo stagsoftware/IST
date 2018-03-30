@@ -44,38 +44,32 @@ class LevelBoardView {
 
         // Calculate #sectionAreas that can be created in a view & store in #noOfSectionAreas
         // Now create that many sectionAreas that represent 'a-section' coordinates in a loop
-        var newSecAreaX = this.x;
-        var newSecAreaY = this.y;
-        var newSectionID = -1;
-
         var totalSectionWidth = (LevelWidth * (LevelSettings.boardViewRect.wPct / 100));
         var totalSectionHeight = (LevelHeight * (LevelSettings.boardViewRect.hPct / 100));
 
+        var newSecAreaX = this.x + SectionAreaSettings.margin;
+        var newSecAreaY = this.y + SectionAreaSettings.margin;
+        var newSecAreaW = (totalSectionWidth * (SectionAreaSettings.wPct / 100)) - (SectionAreaSettings.margin * 2);
+        var newSecAreaH = (totalSectionHeight * (SectionAreaSettings.hPct / 100)) - (SectionAreaSettings.margin * 2);
+        var newSectionID = -1;
+
         for (var i = 0; i < this.noOfSectionAreas; ++i) {
-
-            var newSecAreaW = (totalSectionWidth * (SectionAreaSettings.wPct / 100));
-            var newSecAreaH = (totalSectionHeight * (SectionAreaSettings.hPct / 100));
-
             this.sectionAreaCollection[i] = new SectionArea();
             this.sectionAreaCollection[i].init(newSecAreaX, newSecAreaY, newSecAreaW, newSecAreaH, newSectionID);
 
-            newSecAreaX = newSecAreaX + newSecAreaW;
+            newSecAreaX = newSecAreaX + (totalSectionWidth * (SectionAreaSettings.wPct / 100));
         }
 
         // Now create all the sections based on the templateJSON and hide them
         // and store in sectionCollection object
+        var defaultSecX = this.sectionAreaCollection[0].x;
+        var defaultSecY = this.sectionAreaCollection[0].y;
+        var defaultSecW = this.sectionAreaCollection[0].w;
+        var defaultSecH = this.sectionAreaCollection[0].h;
+
         for (var i = 0; i < this.noOfSections; ++i) {
-
             this.sectionCollection[i] = new Section();
-
-            var secX = this.x;
-            var secY = this.y;
-
-            var secW = (totalSectionWidth * (SectionAreaSettings.wPct / 100));
-            var secH = (totalSectionHeight * (SectionAreaSettings.hPct / 100));
-            var isVisible = false;
-
-            this.sectionCollection[i].init(layer, secX, secY, secW, secH, templateJSON[i], valueJSON[i], isVisible);
+            this.sectionCollection[i].init(layer, defaultSecX, defaultSecY, defaultSecW, defaultSecH, templateJSON[i], valueJSON[i], false);
         }
 
         switch (wsName) {

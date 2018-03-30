@@ -67,7 +67,8 @@
     position: absolute;
     top: 0;
     left: 100%;
-    width: 600px;
+    width: 625px;
+    height: 230px;
     padding: 10px;
     margin: 0px;
     border: 1px solid black;
@@ -76,23 +77,25 @@
     display: none;
 }
 
+.project-menu table thead td {
+    padding: 0 10px;
+}
+
+.project-menu table thead td:last-child, .project-menu table tbody td:last-child {
+    width: 17.5%;
+}
+
+.project-menu table thead td input, .project-menu table thead td select {
+    width: 100%;
+    padding: 0px 5px;
+}
+
 .project-menu table thead, .project-menu table tbody {
     display: block;
 }
 
-.project-menu table thead th, .project-menu table tbody td {
+.project-menu table thead td, .project-menu table tbody td {
     width: 27.5%;
-}
-
-.project-menu table thead th:last-child, .project-menu table tbody td:last-child {
-    width: 17.5%;
-}
-
-.project-menu table thead th input, .project-menu table thead th select {
-    width: 100%;
-    height: 29px;
-    border-radius: 0px;
-    padding: 0px 5px;
 }
 
 .project-menu table tbody tr td {
@@ -102,11 +105,37 @@
     white-space: nowrap;
 }
 
+.project-menu .panel-heading {
+    padding: 10px 0;
+}
+
+.project-menu .panel-body {
+    padding: 0;
+}
+
+.project-menu .panel-footer {
+    padding: 0;
+}
+
+.project-menu table>tbody>tr:hover {
+    background-color: #eb807b;
+    color: white;
+}
+
+.panel {
+    margin-bottom: 0px;
+    background-color: antiquewhite;
+}
+
+.project-menu table>tbody>tr>td {
+    padding: 10px 10px;
+}
+
 .session-menu {
     position: absolute;
     top: 0;
     left: 100%;
-    width: 200px;
+    width: 225px;
     padding: 10px;
     margin: 0px;
     border: 1px solid black;
@@ -144,7 +173,6 @@
 .project-menu-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 5px;
 }
 
 #menuToggle input[type="checkbox"] {
@@ -198,7 +226,7 @@
     top: 55px;
     left: -200px;
     margin: 0;
-    transform: translate(0,0);
+    transform: translate(0, 0);
     transition: opacity 0.5s linear, left 0.5s ease-out;
 }
 
@@ -206,5 +234,5 @@
     top: 55px;
     left: 0;
     margin: 0;
-    transform: translate(0,0);
+    transform: translate(0, 0);
 }

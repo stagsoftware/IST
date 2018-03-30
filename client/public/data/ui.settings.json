@@ -136,15 +136,6 @@
           }
         },
         "Section": {
-          "sectionAreaRect": {
-            "fill": "white",
-            "stroke": "white",
-            "strokeWidth": 2,
-            "strokeEnabled": true,
-            "shadowColor": "black",
-            "shadowBlur": 0,
-            "shadowEnabled": false
-          },
           "secNameRect": {
             "fill": "#E4F4D8",
             "stroke": "hsl(165, 53%, 81%)",
@@ -312,55 +303,64 @@
               "noOfSections": 0,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 5,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 6,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 3,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 5,
               "wPct": 20,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             }
           ],
           "SEARCH": [
@@ -368,55 +368,64 @@
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             },
             {
               "noOfSections": 2,
               "noOfSectionAreas": 2,
               "wPct": 50,
-              "hPct": 100
+              "hPct": 100,
+              "margin": 2
             }
           ]
         },
