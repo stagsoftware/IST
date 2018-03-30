@@ -43,17 +43,17 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
 
     ProjectService.getValue($scope.currProject.name).then(function (response) {
       // NOTE: Uncomment for no db connection
-      $scope.value = response.data[0].details;
+      // $scope.value = response.data[0].details;
       // NOTE: Uncomment for mongo db connection
-      // $scope.value = JSON.parse(response.data[0].details);
+      $scope.value = JSON.parse(response.data[0].details);
 
       var templateName = response.data[0].templateName;
 
       ProjectService.getTemplate(templateName).then(function (response) {
         // NOTE: Uncomment for no db connection
-        $scope.template = response.data[0].value;
+        // $scope.template = response.data[0].value;
         // NOTE: Uncomment for mongo db connection
-        // $scope.template = JSON.parse(response.data[0].value);
+        $scope.template = JSON.parse(response.data[0].value);
 
         ProjectService.getUISettings().then(function (response) {
           // NOTE: Uncomment for no db connection
@@ -323,6 +323,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   $scope.deleteProject = function () {
     $http.delete('/workspace/DeleteProject/' + $scope.projectName).then(function (response) {
       console.log('project Removed Successfully');
+      $scope.clear();
       load();
     });
   }

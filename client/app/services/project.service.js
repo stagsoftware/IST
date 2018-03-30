@@ -3,16 +3,16 @@ var ist = angular.module('ist');
 ist.service('ProjectService', function ($http) {
     this.getProjects = function () {
         // NOTE: Uncomment for no db connection
-        return $http.get("/public/data/projects.json");
+        // return $http.get("/public/data/projects.json");
         // NOTE: Uncomment for mongo db connection
-        // return $http.get("/workspace/GetProject");
+        return $http.get("/workspace/GetProject");
     };
 
     this.getTemplates = function () {
         // NOTE: Uncomment for no db connection
-        return $http.get("/public/data/templates.json");
+        // return $http.get("/public/data/templates.json");
         // NOTE: Uncomment for mongo db connection
-        // return $http.get("/workspace/GetTemplate");
+        return $http.get("/workspace/GetTemplate");
     };
 
     this.getUISettings = function () {
@@ -24,16 +24,16 @@ ist.service('ProjectService', function ($http) {
 
     this.getTemplate = function (templateName) {
         // NOTE: Uncomment for no db connection
-        return $http.get("/public/data/project.template.json");
+        // return $http.get("/public/data/project.template.json");
         // NOTE: Uncomment for mongo db connection
-        // return $http.get("/workspace/SearchTemplate/" + templateName);
+        return $http.get("/workspace/SearchTemplate/" + templateName);
     };
 
     this.getValue = function (projectName) {
         // NOTE: Uncomment for no db connection
-        return $http.get("/public/data/project.value.json");
+        // return $http.get("/public/data/project.value.json");
         // NOTE: Uncomment for mongo db connection
-        // return $http.get("/workspace/SearchProject/" + projectName);
+        return $http.get("/workspace/SearchProject/" + projectName);
     };
 
     this.saveProjectDetails = function (projectName, projectDetails) {

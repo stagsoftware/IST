@@ -101,7 +101,7 @@
             "verticalAlign": "top"
           },
           "levelIDRect": {
-            "fill": "hsl(4, 3%, 76%)",
+            "fill": "black",
             "stroke": "hsl(165, 53%, 81%)",
             "strokeWidth": 0,
             "strokeEnabled": false,
@@ -113,12 +113,12 @@
             "fontSize": 16,
             "fontStyle": "bold",
             "fontFamily": "Roboto",
-            "fill": "#555",
+            "fill": "white",
             "align": "center",
             "verticalAlign": "center"
           },
           "levelNameRect": {
-            "fill": "hsl(4, 3%, 76%)",
+            "fill": "black",
             "stroke": "hsl(165, 53%, 81%)",
             "strokeWidth": 0,
             "strokeEnabled": false,
@@ -130,7 +130,7 @@
             "fontSize": 16,
             "fontStyle": "bold",
             "fontFamily": "Roboto",
-            "fill": "#555",
+            "fill": "white",
             "align": "center",
             "verticalAlign": "top"
           }

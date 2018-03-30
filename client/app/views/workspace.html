@@ -120,7 +120,7 @@
           <form ng-submit="addQuestion()">
             <input type="text" ng-model="question.text" placeholder="insert text here">
           </form>
-
+          
           <ol>
             <li ng-repeat="question in project.questions track by $index">
               <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
@@ -151,23 +151,23 @@
                   <thead>
                     <tr>
                       <td>
-                        <input type="text" ng-model="selectedProject.name" class="form-control input-text" placeholder="enter project name">
+                        <input type="text" class="form-control" ng-model="selectedProject.name" placeholder="enter project name">
                       </td>
                       <td>
-                        <select id="tempname" class="form-control input-text" required ng-model="selectedProject.templateName" ng-options="template for template  in tempName">{{template.name}}
-                          <option disabled selected value="">choose template</option>
+                        <select id="tempname" class="form-control" ng-model="selectedProject.templateName" ng-options="template for template in tempName">
+                          <option disabled selected hidden value="">choose template</option>
                         </select>
                       </td>
                       <td>
-                        <input type="text" class="form-control input-text" ng-model="selectedProject.description" placeholder="enter description">
+                        <input type="text" class="form-control" ng-model="selectedProject.description" placeholder="enter description">
                       </td>
                       <td>
                         <div class="project-menu-options">
                           <i></i>
-                          <i id="add" class="fa fa-plus icon" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
-                          <i id="save" class=" fa fa-plus icon" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
-                          <i id="mod" class="fa fa-plus icon" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
-                          <i id="abort" class="fa fa-times icon" title="discard changes" ng-click="abort()"></i>
+                          <i class="fa fa-plus-square icon" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
+                          <i class=" fa fa-plus-square icon" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
+                          <i class="fa fa-plus-square icon" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
+                          <i class="fa fa-window-close icon" title="discard changes" ng-click="abort()"></i>
                         </div>
                       </td>
                     </tr>
@@ -201,8 +201,8 @@
                 </label>
                 <label ng-show="deletemessage">
                   <strong>Delete project {{projectName}} ? </strong>
-                  <i class="fa fa-check icon" ng-click="deleteProject()"></i>
-                  <i class="fa fa-times icon" ng-click="clear()"></i>
+                  <i class="fa fa-check-square icon" ng-click="deleteProject()"></i>
+                  <i class="fa fa-window-close icon" ng-click="clear()"></i>
                 </label>
               </div>
             </div>

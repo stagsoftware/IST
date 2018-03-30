@@ -2,10 +2,6 @@
 .jottings-dropup, .notes-dropup, .questions-dropup {
   padding: 0;
   border-right: 1px solid grey;
-  opacity: 0.8;
-}
-
-.jottings-dropup:hover, .notes-dropup:hover, .questions-dropup:hover {
   opacity: 1;
 }
 
