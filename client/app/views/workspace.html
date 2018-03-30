@@ -53,7 +53,7 @@
 
       <div class="footer-menu dropdown-menu col-md-12">
 
-        <div class="jottings-dropdown-header dropdown-header">
+        <div class="jottings-dropdown-header">
           <span>Jottings</span>
           <span class="down-icon fa fa-angle-down"></span>
         </div>
@@ -83,7 +83,7 @@
 
       <div class="footer-menu dropdown-menu col-md-12">
 
-        <div class="notes-dropdown-header dropdown-header">
+        <div class="notes-dropdown-header">
           <span>Notes</span>
           <span class="down-icon fa fa-angle-down"></span>
         </div>
@@ -113,7 +113,7 @@
 
       <div class="footer-menu dropdown-menu col-md-12">
 
-        <div class="questions-dropdown-header dropdown-header">
+        <div class="questions-dropdown-header">
           <span>Questions</span>
           <span class="down-icon fa fa-angle-down"></span>
         </div>
@@ -139,7 +139,8 @@
   <div class="modal left fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <ul class="nav main-menu">
-        <li class="dropdown-submenu">
+
+        <li>
           <a id="projectTitle">
             <i class="fa fa-pencil-square icon active"></i>
             <label>project</label>
@@ -198,7 +199,7 @@
           </div>
         </li>
 
-        <li class="dropdown-submenu">
+        <li>
           <a id="sessionTitle">
             <i class="fa fa-file-text icon active"></i>
             <label>session</label>
@@ -232,8 +233,8 @@
           </ul>
         </li>
 
-        <li class="dropdown-submenu">
-          <a href="/" data-dismiss="modal" class="dropdown-toggle" ng-click="logout()" data-toggle="dropdown">
+        <li>
+          <a data-dismiss="modal" ng-click="logout()">
             <i class="fa fa-sign-out icon active"></i>
             <label>logout</label>
           </a>

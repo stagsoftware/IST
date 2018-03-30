@@ -16,6 +16,7 @@
           "scrollLeftButtonText": {
             "fontSize": 16,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0d9",
             "align": "center",
             "verticalAlign": "center"
@@ -49,6 +50,7 @@
           "scrollRightButtonText": {
             "fontSize": 16,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0da",
             "align": "center",
             "verticalAlign": "center"
@@ -76,6 +78,7 @@
           "scrollLeftButtonText": {
             "fontSize": 16,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0d9",
             "align": "center",
             "verticalAlign": "bottom"
@@ -92,6 +95,7 @@
           "scrollRightButtonText": {
             "fontSize": 16,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0da",
             "align": "center",
             "verticalAlign": "top"
@@ -128,7 +132,7 @@
             "fontFamily": "Roboto",
             "fill": "#555",
             "align": "center",
-            "verticalAlign": "center"
+            "verticalAlign": "top"
           }
         },
         "Section": {
@@ -170,6 +174,7 @@
           "addButtonText": {
             "fontSize": 12,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf067",
             "align": "center",
             "verticalAlign": "center"
@@ -186,6 +191,7 @@
           "deleteButtonText": {
             "fontSize": 12,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf00d",
             "align": "center",
             "verticalAlign": "center"
@@ -202,6 +208,7 @@
           "scrollLeftButtonText": {
             "fontSize": 14,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0d9",
             "align": "center",
             "verticalAlign": "center"
@@ -227,6 +234,7 @@
           "scrollRightButtonText": {
             "fontSize": 14,
             "fontFamily": "FontAwesome",
+            "fill": "#555",
             "text": "\uf0da",
             "align": "center",
             "verticalAlign": "center"
@@ -251,7 +259,6 @@
           },
           "konvaText": {
             "fontSize": 12,
-            "fontStyle": "bold",
             "fontFamily": "Roboto",
             "fill": "#555",
             "align": "center",

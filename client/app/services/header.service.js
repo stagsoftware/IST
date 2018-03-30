@@ -76,27 +76,27 @@ ist.service('HeaderService', function ($timeout, $interval) {
             });
 
             $(".jottings-dropup-header").click(function () {
-                $(".jottings-dropup .dropdown-menu").slideDown("slow");
+                $(".jottings-dropup .footer-menu").slideDown("slow");
             });
 
             $(".jottings-dropdown-header").click(function () {
-                $(".jottings-dropup .dropdown-menu").slideUp("slow");
+                $(".jottings-dropup .footer-menu").slideUp("slow");
             });
 
             $(".notes-dropup-header").click(function () {
-                $(".notes-dropup .dropdown-menu").slideDown("slow");
+                $(".notes-dropup .footer-menu").slideDown("slow");
             });
 
             $(".notes-dropdown-header").click(function () {
-                $(".notes-dropup .dropdown-menu").slideUp("slow");
+                $(".notes-dropup .footer-menu").slideUp("slow");
             });
 
             $(".questions-dropup-header").click(function () {
-                $(".questions-dropup .dropdown-menu").slideDown("slow");
+                $(".questions-dropup .footer-menu").slideDown("slow");
             });
 
             $(".questions-dropdown-header").click(function () {
-                $(".questions-dropup .dropdown-menu").slideUp("slow");
+                $(".questions-dropup .footer-menu").slideUp("slow");
             });
 
         });

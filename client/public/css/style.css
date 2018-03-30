@@ -2,27 +2,6 @@
     margin-left: 0px !important;
 }
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-
-.dropdown-submenu {
-    position: auto;
-    background-color: white;
-    margin-left: 0px;
-}
-
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-    border-bottom: 1px solid black;
-}
-
-.bg-white {
-    background-color: white !important;
-    z-index: 1;
-}
-
 .modal-content {
     /* background-color: #fefefe; */
     margin: auto;

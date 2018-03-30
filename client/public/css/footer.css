@@ -1,10 +1,6 @@
 
 .jottings-dropup, .notes-dropup, .questions-dropup {
   padding: 0;
-  height: 30px;
-  line-height: 30px;
-  background-color: black;
-  color: white;
   border-right: 1px solid grey;
   opacity: 0.8;
 }
@@ -13,33 +9,26 @@
   opacity: 1;
 }
 
-.jottings-dropup-header, .notes-dropup-header, .questions-dropup-header {
-  padding: 0 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.up-icon, .down-icon {
-  font-size: 20px;
-  line-height: 30px;
-  float: right;
-}
-
-.footer-menu.dropdown-menu {
-  background-color: #ffffcc;
-  padding: 0;
-  margin: 0;
-  height: 300px;
-}
-
-.jottings-dropdown-header.dropdown-header, .notes-dropdown-header.dropdown-header, .questions-dropdown-header.dropdown-header {
+.jottings-dropup-header, .notes-dropup-header, .questions-dropup-header, .jottings-dropdown-header, .notes-dropdown-header, .questions-dropdown-header {
   height: 30px;
   padding: 0 10px;
   line-height: 30px;
   background-color: black;
   color: white;
   cursor: pointer;
-  font-size: 14px; 
+}
+
+.up-icon, .down-icon {
+  font-size: 16px;
+  line-height: 30px;
+  float: right;
+}
+
+.footer-menu {
+  background-color: #ffffcc;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 300px;
 }
 
 .footer-menu-content {
