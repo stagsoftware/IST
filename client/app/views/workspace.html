@@ -151,15 +151,15 @@
               <thead>
                 <tr>
                   <th>
-                    <input type="text" ng-model="selectedProjectInProjectsMenu.name" class="form-control input-text" placeholder="enter project name">
+                    <input type="text" ng-model="selectedProject.name" class="form-control input-text" placeholder="enter project name">
                   </th>
                   <th>
-                    <select id="tempname" required ng-model="selectedProjectInProjectsMenu.templateName" ng-options="template for template  in tempName">{{template.name}}
+                    <select id="tempname" required ng-model="selectedProject.templateName" ng-options="template for template  in tempName">{{template.name}}
                       <option disabled selected value="">choose template</option>
                     </select>
                   </th>
                   <th>
-                    <input type="text" class="form-control input-text" ng-model="selectedProjectInProjectsMenu.description" placeholder="enter description">
+                    <input type="text" class="form-control input-text" ng-model="selectedProject.description" placeholder="enter description">
                   </th>
                   <td>
                     <div class="project-menu-options">
