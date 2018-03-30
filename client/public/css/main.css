@@ -11,10 +11,10 @@ body {
 header.header-main {
     max-height: 55px !important;
     height: 55px;
-    display: block;
     padding: 5px 15px;
+    display: block;
     background-color: antiquewhite;
-    border-bottom: solid 1px #e4e5e6a8;
+    border-bottom: 1px solid lightgrey;
 }
 
 section.workspace-main {

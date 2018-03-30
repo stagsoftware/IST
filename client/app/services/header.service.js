@@ -45,7 +45,6 @@ ist.service('HeaderService', function ($timeout, $interval) {
 
     function startCountDown(minutes) {
         countdown(minutes);
-        --minutes;
     }
 
     function wireUpEventHandlers() {

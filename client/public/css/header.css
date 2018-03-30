@@ -10,8 +10,8 @@
 .main-menu>li {
     width: 150px;
     min-width: 150px !important;
-    border-bottom: 1px solid lightgrey;
     background-color: antiquewhite;
+    border-bottom: 1px solid lightgrey;
 }
 
 .main-menu>li>a {
@@ -110,6 +110,21 @@
     white-space: nowrap;
 }
 
+.project-menu table>tbody>tr:hover {
+    color: white;
+    background-color: #eb807b;
+}
+
+.project-menu table>tbody>tr>td {
+    padding: 10px 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.project-menu .panel {
+    margin: 0px;
+    background-color: antiquewhite;
+}
+
 .project-menu .panel-heading {
     padding: 10px 0;
 }
@@ -122,20 +137,6 @@
     padding: 0;
 }
 
-.project-menu table>tbody>tr:hover {
-    background-color: #eb807b;
-    color: white;
-}
-
-.panel {
-    margin-bottom: 0px;
-    background-color: antiquewhite;
-}
-
-.project-menu table>tbody>tr>td {
-    padding: 10px 10px;
-}
-
 .session-menu {
     position: absolute;
     top: 0;
@@ -143,6 +144,7 @@
     width: 225px;
     padding: 10px;
     margin: 0px;
+    font-weight: bold;
     border: 1px solid black;
     border-radius: 0px !important;
     background-color: antiquewhite;
@@ -169,6 +171,10 @@
     background-color: #eb807b;
     border: none;
     padding: 5px;
+}
+
+.session-menu>li>button:hover {
+    color: white;
 }
 
 .project-menu.show, .session-menu.show {
