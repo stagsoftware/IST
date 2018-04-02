@@ -70,6 +70,23 @@ class NoteForm {
         }
 
         HTMLString += '<br />';
+
+        // Accordion for Information Notes
+        var id = "iNotes";
+        var label = "iNotes";
+        var value = "enter extra information";
+        HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
+        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+        this.elementCollection[id] = value;
+
+        // Accordion for Links
+        var id = "links";
+        var label = "links";
+        var value = "enter links (if any)";
+        HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
+        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+        this.elementCollection[id] = value;
+
         HTMLString += '<input type="button" value="OK" id="ok"/>';
         HTMLString += '<input type="button" value="CANCEL" id="cancel"/>' + '<br />';
 
