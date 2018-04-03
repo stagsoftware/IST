@@ -17,7 +17,7 @@
       </div>
       <div class="menu-title">
         <label>IST WORKSPACE</label>
-        <label ng-show="isProjectOpen">{{currProject.name}}</label>
+        <label ng-show="isProjectOpen">[ {{currProject.name}} ]</label>
       </div>
       <div>
         <i id="sessionTimer" class="fa fa-hourglass-start icon disabled" ng-attr-title="{{timer.sessionTime}}"></i>
@@ -37,7 +37,7 @@
   </header>
 
   <section ng-show="isProjectOpen" class="workspace-main">
-    <div id="note"></div>
+    <div id="note" class="modal fade" role="dialog"></div>
     <div id="container"></div>
   </section>
 
@@ -61,11 +61,11 @@
             <input type="text" ng-model="jotting" placeholder="insert text here">
           </form>
 
-          <ul>
-            <li ng-repeat="jotting in project.jottings track by $index">
+          <div>
+            <div ng-repeat="jotting in project.jottings track by $index">
               <span>{{jotting}}</span>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -91,13 +91,12 @@
             <input type="text" ng-model="note" placeholder="insert text here">
           </form>
 
-          <ol>
-            <li ng-repeat="note in project.notes track by $index">
-              <span>{{note}}</span>
-            </li>
-          </ol>
+          <div>
+            <div ng-repeat="note in project.notes track by $index">
+              <span>{{$index + 1}}. {{note}}</span>
+            </div>
+          </div>
         </div>
-
       </div>
 
     </div>
@@ -120,15 +119,15 @@
           <form ng-submit="addQuestion()">
             <input type="text" ng-model="question.text" placeholder="insert text here">
           </form>
-          
-          <ol>
-            <li ng-repeat="question in project.questions track by $index">
-              <span class="is-checked-{{question.isChecked}}">{{question.text}}</span>
-              <input type="checkbox" ng-model="question.isChecked">
-            </li>
-          </ol>
-        </div>
 
+          <div>
+            <div ng-repeat="question in project.questions track by $index">
+              <input type="checkbox" ng-model="question.isChecked">
+              <span class="is-checked-{{question.isChecked}}">{{$index + 1}}. {{question.text}}</span>
+            </div>
+          </div>
+        </div>
+        
       </div>
 
     </div>
@@ -143,70 +142,69 @@
             <i class="fa fa-pencil-square icon"></i>
             <label>project</label>
           </a>
-          <div class="project-menu">
 
-            <div class="panel panel-default">
-              <div class="panel panel-heading">
-                <table>
-                  <thead>
-                    <tr>
-                      <td>
-                        <input type="text" class="form-control" ng-model="selectedProject.name" placeholder="enter project name">
-                      </td>
-                      <td>
-                        <select id="tempname" class="form-control" ng-model="selectedProject.templateName" ng-options="templateName for templateName in templateNames">
-                          <option disabled selected hidden value="">choose template</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" ng-model="selectedProject.description" placeholder="enter description">
-                      </td>
-                      <td>
-                        <div class="project-menu-options">
-                          <i></i>
-                          <i class="fa fa-plus-square icon" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
-                          <i class=" fa fa-plus-square icon" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
-                          <i class="fa fa-plus-square icon" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
-                          <i class="fa fa-window-close icon" title="discard changes" ng-click="abort()"></i>
-                        </div>
-                      </td>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-              <div class="panel panel-body">
-                <table>
-                  <tbody>
-                    <tr ng-repeat="project in projects | orderBy:'$index':true">
-                      <td ng-attr-title="{{project.name}}">{{project.name}}</td>
-                      <td ng-attr-title="{{project.templateName}}">{{project.templateName}}</td>
-                      <td ng-attr-title="{{project.description}}">{{project.description}}</td>
-                      <td>
-                        <div class="project-menu-options">
-                          <i class="fa fa-clone icon" title="clone" ng-click="cloneProject(project)"></i>
-                          <i class="fa fa-edit icon" title="modify" ng-click="modifyProject(project)"></i>
-                          <i class="fa fa-trash-o icon" title="delete" ng-click="Delete(project)"></i>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="panel-footer">
-                <label ng-show="alertmessage">
-                  <strong>Error: this project already exists!</strong>
-                </label>
-                <label ng-show="incompletemessage">
-                  <strong>Error: enter project name and template name</strong>
-                </label>
-                <label ng-show="deletemessage">
-                  <strong>Delete project {{projectName}} ? </strong>
-                  <i class="fa fa-check-square icon" ng-click="deleteProject()"></i>
-                  <i class="fa fa-window-close icon" ng-click="clear()"></i>
-                </label>
-              </div>
+          <div class="project-menu panel panel-default">
+            <div class="panel-heading">
+              <table>
+                <thead>
+                  <tr>
+                    <td>
+                      <input type="text" class="form-control" ng-model="selectedProject.name" placeholder="enter project name">
+                    </td>
+                    <td>
+                      <select id="tempname" class="form-control" ng-model="selectedProject.templateName" ng-options="templateName for templateName in templateNames">
+                        <option disabled selected hidden value="">choose template</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" ng-model="selectedProject.description" placeholder="enter description">
+                    </td>
+                    <td>
+                      <div class="project-menu-options">
+                        <i></i>
+                        <i class="fa fa-plus-square icon" title="add new project" ng-hide="add" ng-click="addNewProject()"></i>
+                        <i class=" fa fa-plus-square icon" title="clone project" ng-show="clone" ng-click="addClonedProject()"></i>
+                        <i class="fa fa-plus-square icon" title="save modifications" ng-show="modify" ng-click="addModifiedProject()"></i>
+                        <i class="fa fa-window-close icon" title="discard changes" ng-click="abort()"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="panel-body">
+              <table>
+                <tbody>
+                  <tr ng-repeat="project in projects | orderBy:'$index':true">
+                    <td ng-attr-title="{{project.name}}">{{project.name}}</td>
+                    <td ng-attr-title="{{project.templateName}}">{{project.templateName}}</td>
+                    <td ng-attr-title="{{project.description}}">{{project.description}}</td>
+                    <td>
+                      <div class="project-menu-options">
+                        <i class="fa fa-clone icon" title="clone" ng-click="cloneProject(project)"></i>
+                        <i class="fa fa-edit icon" title="modify" ng-click="modifyProject(project)"></i>
+                        <i class="fa fa-trash-o icon" title="delete" ng-click="Delete(project)"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+              <label ng-show="alertmessage">
+                <strong>this project already exists</strong>
+              </label>
+              <label ng-show="incompletemessage">
+                <strong>enter project name and template name</strong>
+              </label>
+              <label ng-show="deletemessage">
+                <strong>delete project ( {{projectName}} ) ? </strong>
+                <i class="fa fa-check-square icon" ng-click="deleteProject()"></i>
+                <i class="fa fa-window-close icon" ng-click="clear()"></i>
+              </label>
             </div>
           </div>
+
         </li>
 
         <li>

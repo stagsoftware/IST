@@ -29,17 +29,6 @@ footer.footer-main {
     font-family: inherit;
 }
 
-#note {
-    width: 500px;
-    max-height: calc(100% - 100px);
-    background: #ccc;
-    position: absolute;
-    top: 300px;
-    left: 300px;
-    z-index: 100;
-    display: none;
-}
-
 #container {
     height: 100%;
 }

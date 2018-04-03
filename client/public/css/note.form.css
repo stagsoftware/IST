@@ -1,33 +1,35 @@
-#note>label {
-    width: 40%;
-    padding: 0 10px;
-    margin: 0;
-    line-height: 30px;
+#note>.modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
 }
 
-#note>input[type="text"], #note>input[type="number"] {
+#note label {
     width: 40%;
-    padding: 0 10px;
-    margin: 5px 0;
-    line-height: 25px;
+}
+
+#note input[type="text"], #note input[type="number"], #note select {
+    display: inline-block;
+    max-width: 60%;
     border: none;
+    box-shadow: none;
     outline: none !important;
 }
 
-#note>input[type="text"]:focus, #note>input[type="number"]:focus {
+#note input[type="text"]:focus, #note input[type="number"]:focus, #note select:focus {
     border: none;
+    box-shadow: none;
     outline: none !important;
 }
 
 #note .accordion {
     width: 100%;
     padding: 0 10px;
-    font-size: 14px;
     text-align: left;
     line-height: 30px;
-    color: #444;
-    background-color: #eee;
-    cursor: pointer;  
+    cursor: pointer;
     border: none;
     outline: none !important;
     transition: 0.4s;
@@ -42,9 +44,7 @@
     padding: 0;
     margin: 0;
     overflow-y: hidden;
-    border-radius: 0;
-    background-color: white;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.4s ease-out;
 }
 
 #note .panel>textarea {
@@ -52,16 +52,12 @@
     height: 100px;
     padding: 10px;
     border: none;
+    box-shadow: none;
     outline: none !important;
 }
 
 #note .panel>textarea:focus {
     border: none;
+    box-shadow: none;
     outline: none !important;
-}
-
-[contenteditable]:focus {
-    border-style: dashed;
-    border-color: black;
-    border-width: 3px;
 }

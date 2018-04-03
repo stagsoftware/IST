@@ -1,3 +1,4 @@
+
 class NoteForm {
     constructor() {
 
@@ -16,9 +17,17 @@ class NoteForm {
         var inputIDIndex = 0;
 
         var HTMLString = "";
+
+        HTMLString += '<div class="modal-dialog">';
+        HTMLString += '<div class="modal-content">';
+
+        HTMLString += '<div class="modal-header">';
         HTMLString += '<label>' + secName + '</label>';
-        HTMLString += '<input type="text" id="noteText" placeholder="enter note text" />';
+        HTMLString += '<input type="text" id="noteText" class="form-control" placeholder="enter note text" />';
         this.elementCollection['noteText'] = value;
+        HTMLString += '</div>';
+
+        HTMLString += '<div class="modal-body">';
 
         var noOfLines = noteTemplate.length;
         for (var i = 0; i < noOfLines; i++) {
@@ -36,19 +45,19 @@ class NoteForm {
                         break;
 
                     case "VALUE-CHARSTRING":
-                        HTMLString += '<input type="text" id="' + id + '" placeholder="' + value + '" />';
+                        HTMLString += '<input type="text" id="' + id + '" class="form-control" placeholder="' + value + '" />';
                         this.elementCollection[id] = value;
                         ++inputIDIndex;
                         break;
 
                     case "VALUE-NUMSTRING":
-                        HTMLString += '<input type="number" id="' + id + '" placeholder="' + value + '"/>';
+                        HTMLString += '<input type="number" id="' + id + '" class="form-control" placeholder="' + value + '"/>';
                         this.elementCollection[id] = value;
                         ++inputIDIndex;
                         break;
 
                     case "VALUE-LIST":
-                        HTMLString += '<select id="' + id + '">';
+                        HTMLString += '<select id="' + id + '" class="form-control">';
                         for (var k = 0; k < value.length; k++) {
                             HTMLString += '<option>' + value[k] + '</option>';
                         }
@@ -62,21 +71,19 @@ class NoteForm {
                         break;
 
                     case "ACCORDION-PANEL":
-                        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+                        HTMLString += '<div class="panel"><textarea id="' + id + '" class="form-control" placeholder="' + value + '"></textarea></div>';
                         this.elementCollection[id] = value;
                         break;
                 }
             }
         }
 
-        HTMLString += '<br />';
-
         // Accordion for Information Notes
         var id = "iNotes";
         var label = "iNotes";
         var value = "enter extra information";
         HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
-        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+        HTMLString += '<div class="panel"><textarea id="' + id + '" class="form-control" placeholder="' + value + '"></textarea></div>';
         this.elementCollection[id] = value;
 
         // Accordion for Links
@@ -84,16 +91,22 @@ class NoteForm {
         var label = "links";
         var value = "enter links (if any)";
         HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
-        HTMLString += '<div class="panel"><textarea id="' + id + '" placeholder="' + value + '"></textarea></div>';
+        HTMLString += '<div class="panel"><textarea id="' + id + '" class="form-control" placeholder="' + value + '"></textarea></div>';
         this.elementCollection[id] = value;
 
-        HTMLString += '<input type="button" value="OK" id="ok"/>';
-        HTMLString += '<input type="button" value="CANCEL" id="cancel"/>' + '<br />';
+        HTMLString += '</div>';
+
+        HTMLString += '<div class="modal-footer">';
+        HTMLString += '<button id="ok" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>';
+        HTMLString += '<button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+        HTMLString += '</div>';
+
+        HTMLString += '</div>';
+        HTMLString += '</div>';
 
         document.getElementById('note').innerHTML = HTMLString;
 
         document.getElementById('ok').addEventListener("click", this.submit.bind(this, updateHandlerCallBack));
-        document.getElementById('cancel').addEventListener("click", this.cancel.bind(this));
         var accordions = document.getElementsByClassName("accordion")
         for (var i = 0; i < accordions.length; i++) {
             accordions[i].addEventListener("click", function () {
@@ -107,18 +120,22 @@ class NoteForm {
             });
         }
 
-        document.getElementById('note').style.display = 'none';
     }
 
     show(note) {
+        // Get all note links available
+
+        var scope = angular.element($("#note")).scope();
+        var projectData = scope.project.save();
+        var tagCollection = projectData.workspaces[0].value;
+        
         // Populate the note details (if exists)
         if (note) {
             for (var inputID in note) {
                 document.getElementById(inputID).value = note[inputID];
             }
         }
-
-        document.getElementById('note').style.display = 'block';
+        $('#note').modal('show');
     }
 
     submit(updateHandlerCallBack) {
@@ -126,13 +143,7 @@ class NoteForm {
         for (var inputID in this.elementCollection) {
             this.elementCollection[inputID] = document.getElementById(inputID).value;
         }
-
-        document.getElementById('note').style.display = 'none';
         updateHandlerCallBack();
     }
 
-
-    cancel() {
-        document.getElementById('note').style.display = 'none';
-    }
 }
