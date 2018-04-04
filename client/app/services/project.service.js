@@ -3,9 +3,9 @@ var ist = angular.module('ist');
 ist.service('ProjectService', function ($http) {
     function getProjects() {
         // NOTE: Uncomment for no db connection
-        // return $http.get("/public/data/projects.json");
+        return $http.get("/public/data/projects.json");
         // NOTE: Uncomment for mongo db connection
-        return $http.get("/workspace/GetProject");
+        // return $http.get("/workspace/GetProject");
     };
 
     function getTemplates() {
@@ -33,9 +33,9 @@ ist.service('ProjectService', function ($http) {
     function loadProject(projectName) {
         return getValue(projectName).then(function (response) {
             // NOTE: Uncomment for no db connection
-            // var value = response.data[0].details;
+            var value = response.data[0].details;
             // NOTE: Uncomment for mongo db connection
-            var value = JSON.parse(response.data[0].details);
+            // var value = JSON.parsem(response.data[0].details);
 
             var templateName = response.data[0].templateName;
 
@@ -161,9 +161,9 @@ ist.service('ProjectService', function ($http) {
 
     function getValue(projectName) {
         // NOTE: Uncomment for no db connection
-        // return $http.get("/public/data/project.value.json");
+        return $http.get("/public/data/project.value.json");
         // NOTE: Uncomment for mongo db connection
-        return $http.get("/workspace/SearchProject/" + projectName);
+        // return $http.get("/workspace/SearchProject/" + projectName);
     };
 
     function saveProjectDetails(projectName, projectDetails) {

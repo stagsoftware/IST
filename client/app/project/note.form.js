@@ -128,7 +128,25 @@ class NoteForm {
         var scope = angular.element($("#note")).scope();
         var projectData = scope.project.save();
         var tagCollection = projectData.workspaces[0].value;
-        
+
+        $('#links').suggest('@', {
+            // or an external JSON data file
+            data: tagCollection,
+            // style the autocomplete/autusuggest list
+            map: function (section) {
+
+                return {
+                    value: section.name,
+                    text: '<strong>' + section.name + '</strong>'
+                }
+
+            },
+            onselect: function (e, item) {
+
+            }
+
+        });
+
         // Populate the note details (if exists)
         if (note) {
             for (var inputID in note) {
