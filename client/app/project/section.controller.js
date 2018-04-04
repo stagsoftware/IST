@@ -9,14 +9,17 @@ class SectionController {
         this.view;
 
         this.noteForm;
+
+        this.wsName;
         this.secName;
-        this.noteTemplate;     
+        this.noteTemplate;
     }
 
-    init(model, view, secName, noteTemplate) {
+    init(model, view, wsName, secName, noteTemplate) {
         this.model = model;
         this.view = view;
 
+        this.wsName = wsName;
         this.secName = secName;
         this.noteTemplate = noteTemplate;
 
@@ -57,7 +60,7 @@ class SectionController {
         // the note form, setup up the display coordinates of where to display,
         // keep it hidden!
         this.noteForm = new NoteForm();
-        this.noteForm.init(this.secName, this.noteTemplate, this.updateHandler.bind(this));
+        this.noteForm.init(this.wsName, this.secName, this.noteTemplate, this.updateHandler.bind(this));
 
         if (boardID !== -1) {
 

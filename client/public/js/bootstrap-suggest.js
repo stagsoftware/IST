@@ -550,7 +550,7 @@
 				var key = keyChar.toString().charAt(0);
 
 				// remove existing suggest
-				// $('.suggest.dropdown[data-key="'+key+'"]').remove();
+				// $('.suggest.dropdown[data-key="' + key + '"]').remove();
 				newData[key] = new Suggest(el, key, typeof options === 'object' && options);
 			});
 

@@ -69,7 +69,7 @@ class LevelBoardView {
 
         for (var i = 0; i < this.noOfSections; ++i) {
             this.sectionCollection[i] = new Section();
-            this.sectionCollection[i].init(layer, defaultSecX, defaultSecY, defaultSecW, defaultSecH, templateJSON[i], valueJSON[i], false);
+            this.sectionCollection[i].init(layer, defaultSecX, defaultSecY, defaultSecW, defaultSecH, wsName, templateJSON[i], valueJSON[i], false);
         }
 
         switch (wsName) {

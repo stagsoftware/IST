@@ -5,7 +5,7 @@ class NoteForm {
         this.elementCollection;
     }
 
-    init(secName, noteTemplate, updateHandlerCallBack) {
+    init(wsName, secName, noteTemplate, updateHandlerCallBack) {
 
         // 1. Build the HTML String for the 'note' div
         // 2. Assign ids to the input fields
@@ -97,8 +97,8 @@ class NoteForm {
         HTMLString += '</div>';
 
         HTMLString += '<div class="modal-footer">';
-        HTMLString += '<button id="ok" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>';
-        HTMLString += '<button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+        HTMLString += '<button id="ok" type="button" class="btn btn-default" data-dismiss="modal">ok</button>';
+        HTMLString += '<button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">close</button>';
         HTMLString += '</div>';
 
         HTMLString += '</div>';
@@ -120,33 +120,35 @@ class NoteForm {
             });
         }
 
-    }
-
-    show(note) {
-        // Get all note links available
+        // Get all note links available on the screen
 
         var scope = angular.element($("#note")).scope();
         var projectData = scope.project.save();
-        var tagCollection = projectData.workspaces[0].value;
+
+        var ws = projectData.workspaces.find(ws => ws.name === wsName);
+        var sectionCollection = ws.value.map(level => level.value);
+        var sections = [].concat(...sectionCollection);
+        var secWithNotes = sections.filter(sec => sec.value.length);
+
+        var secNoteTagCollection = secWithNotes.map(sec => sec.value.map(note => sec.name + " : " + note.noteText));
+        var secNoteTags = [].concat(...secNoteTagCollection);
 
         $('#links').suggest('@', {
-            // or an external JSON data file
-            data: tagCollection,
-            // style the autocomplete/autusuggest list
-            map: function (section) {
-
+            data: secNoteTags,
+            map: function (secNoteTag) {
                 return {
-                    value: section.name,
-                    text: '<strong>' + section.name + '</strong>'
+                    value: secNoteTag,
+                    text: '<strong>' + secNoteTag + '</strong>'
                 }
-
             },
-            onselect: function (e, item) {
-
+            filter: {
+                limit: 10
             }
-
         });
 
+    }
+
+    show(note) {
         // Populate the note details (if exists)
         if (note) {
             for (var inputID in note) {

@@ -10,17 +10,19 @@ class Section {
         this.view;
         this.controller;
 
+        this.wsName;
         this.secName;
         this.noteTemplate;
         this.noteCollection;
     }
 
-    init(layer, x, y, w, h, templateJSON, valueJSON = {}, isVisible) {
+    init(layer, x, y, w, h, wsName, templateJSON, valueJSON = {}, isVisible) {
 
         this.layer = layer;
         this.x = x;
         this.y = y;
 
+        this.wsName = wsName;
         this.secName = templateJSON.name;
         this.noteTemplate = templateJSON.lines;
         this.noteCollection = valueJSON.value || [];
@@ -36,7 +38,7 @@ class Section {
 
         // 3. Setup the controller to mediate between 'model' and 'view'
         this.controller = new SectionController();
-        this.controller.init(this.model, this.view, this.secName, this.noteTemplate);
+        this.controller.init(this.model, this.view, this.wsName, this.secName, this.noteTemplate);
 
         // 4. Now wire up the view events to be handled by this controller
         this.view.headerView.addButtonText.on("click", this.controller.displayNoteForm.bind(this.controller, -1));
