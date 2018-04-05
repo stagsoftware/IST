@@ -1,0 +1,84 @@
+<!Doctype html>
+<html ng-app="ist" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Immersive Session Testing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Immersive Session Testing Website">
+
+  <link href="./assets/styles/css/custom-main.css" rel="stylesheet" type="text/css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+
+  <link href="./assets/styles/css/main.css" rel="stylesheet">
+  <link href="./assets/styles/css/footer.css" rel="stylesheet">
+  <link href="./assets/styles/css/header.css" rel="stylesheet">
+  <link href="./assets/styles/css/note.form.css" rel="stylesheet">
+  <link href="./assets/styles/css/sidemenu.css" rel="stylesheet">
+  <link href="./assets/styles/css/bootstrap-suggest.css" rel="stylesheet">
+
+  <script src="https://cdn.rawgit.com/konvajs/konva/2.0.2/konva.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+  <script src="./scripts/common/angular.min.js"></script>
+  <script src="./scripts/common/angular-route.min.js"></script>
+  <script src="./scripts/common/angular-cookies.min.js"></script>
+  <script src="./scripts/common/bootstrap-suggest.js"></script>
+
+</head>
+
+<body>
+
+  <div ng-view></div>
+
+  <!-- JS files -->
+
+  <script src="./scripts/routes/config.js"></script>
+
+  <script src="./scripts/common/strings.js"></script>
+  <script src="./scripts/common/app.settings.js"></script>
+
+  <script src="./scripts/services/header.service.js"></script>
+  <script src="./scripts/services/project.service.js"></script>
+  <script src="./scripts/controllers/login.controller.js"></script>
+  <script src="./scripts/controllers/workspace.controller.js"></script>
+
+  <script src="./scripts/project/project.js"></script>
+
+  <script src="./scripts/project/session.js"></script>
+  <script src="./scripts/project/session.view.js"></script>
+  <script src="./scripts/project/session.header.view.js"></script>
+  <script src="./scripts/project/session.board.view.js"></script>
+  <script src="./scripts/project/session.controller.js"></script>
+
+  <script src="./scripts/project/workspace.js"></script>
+
+  <script src="./scripts/project/level.js"></script>
+  <script src="./scripts/project/level.view.js"></script>
+  <script src="./scripts/project/level.header.view.js"></script>
+  <script src="./scripts/project/level.board.view.js"></script>
+  <script src="./scripts/project/section.area.js"></script>
+  <script src="./scripts/project/level.controller.js"></script>
+
+  <script src="./scripts/project/section.js"></script>
+  <script src="./scripts/project/section.model.js"></script>
+  <script src="./scripts/project/section.view.js"></script>
+  <script src="./scripts/project/section.header.view.js"></script>
+  <script src="./scripts/project/section.board.view.js"></script>
+  <script src="./scripts/project/board.js"></script>
+  <script src="./scripts/project/note.form.js"></script>
+  <script src="./scripts/project/section.controller.js"></script>
+
+  <base href="/" />
+
+</body>
+
+</html>

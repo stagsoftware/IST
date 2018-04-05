@@ -1,0 +1,82 @@
+a {
+    color: #52565d;
+}
+
+.wrapper-main {
+    display: block;
+    width: 100%;
+}
+
+.header-main .nav>li>a:focus, .header-main .nav>li>a:hover {
+    text-decoration: none;
+    background: 0 0;
+    color: #a4a6aa;
+}
+
+@media only screen and (max-width:1024px) {
+    button.btn {
+        float: left;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+    img.tble-fltr-icn {
+        display: none;
+    }
+}
+
+/* login */
+
+.login {
+    height: 92.2vh;
+    background: url(../../images/Login-page-bg.png);
+    background-size: 100% 100%;
+}
+
+.loginwrapp {
+    background: #fff;
+    position: absolute;
+    right: 150px;
+    top: 200px;
+    padding: 20px;
+    padding-bottom: 40px;
+    box-shadow: 0 0 20px #333;
+}
+
+.color-red {
+    color: #eb807b;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+.text-danger {
+    text-align: center;
+}
+
+.collapsible-item .title {
+    background-image: none !important;
+    background-color: #eee !important;
+    border: 1px solid #ddd !important;
+    padding: 7px 10px !important;
+}
+
+a, a label {
+    cursor: pointer;
+}
