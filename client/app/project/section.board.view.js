@@ -75,13 +75,13 @@ class SectionBoardView {
         }
     }
 
-    displayNoteAt(boardID, newNoteID, newNoteText) {
+    displayNoteAt(boardID, newNoteID, newNoteName) {
         // Basically we are overwriting the note on this board
-        this.boardCollection[boardID].attachNote(newNoteID, newNoteText);
+        this.boardCollection[boardID].attachNote(newNoteID, newNoteName);
         this.boardCollection[boardID].makeVisible(true);
     }
 
-    displayNoteAtStart(newNoteID, newNoteText) {
+    displayNoteAtStart(newNoteID, newNoteName) {
         // Well, we are inserting a new note at the beginning
         // Move the note contents (if any) from the first board to second board and so on
         // Now attach this note to the first board
@@ -93,17 +93,17 @@ class SectionBoardView {
 
         if (this.noOfNotes === 0) {
             // 1. No boards are filled
-            this.displayNoteAt(0, newNoteID, newNoteText);
+            this.displayNoteAt(0, newNoteID, newNoteName);
             ++this.noOfNotes;
 
         } else if (this.noOfNotes < this.maxNoBoards) {
             // 2. Some boards are filled
             for (var i = this.noOfNotes - 1; i >= 0; --i) {
                 var currNote = this.boardCollection[i].getNote();
-                this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.noteText);
+                this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.name);
                 this.boardCollection[i + 1].makeVisible(true);
             }
-            this.displayNoteAt(0, newNoteID, newNoteText);
+            this.displayNoteAt(0, newNoteID, newNoteName);
             ++this.noOfNotes;
 
         } else if (this.noOfNotes === this.maxNoBoards) {
@@ -112,15 +112,15 @@ class SectionBoardView {
                 var currNote = this.boardCollection[i].getNote();
                 // Attach the note only if there is an adjacent board available 
                 if (this.boardCollection[i + 1]) {
-                    this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.noteText);
+                    this.boardCollection[i + 1].attachNote(currNote.noteID, currNote.name);
                     this.boardCollection[i + 1].makeVisible(true);
                 }
             }
-            this.displayNoteAt(0, newNoteID, newNoteText);
+            this.displayNoteAt(0, newNoteID, newNoteName);
         }
     }
 
-    displayNoteAtEnd(newNoteID, newNoteText) {
+    displayNoteAtEnd(newNoteID, newNoteName) {
         // Well, we are appending a new note to the end
         // Move the note contents (if any) from the last board to last but one and so on
         // Now attach this note to the last board
@@ -133,17 +133,17 @@ class SectionBoardView {
         if (this.noOfNotes < this.maxNoBoards) {
             // 1. No boards are filled
             // 2. Some boards are filled
-            this.displayNoteAt(this.noOfNotes, newNoteID, newNoteText);
+            this.displayNoteAt(this.noOfNotes, newNoteID, newNoteName);
             ++this.noOfNotes;
 
         } else if (this.noOfNotes === this.maxNoBoards) {
             // 3. All boards are filled 
             for (var i = 0; i < this.noOfNotes - 1; ++i) {
                 var nextNote = this.boardCollection[i + 1].getNote();
-                this.boardCollection[i].attachNote(nextNote.noteID, nextNote.noteText);
+                this.boardCollection[i].attachNote(nextNote.noteID, nextNote.name);
                 this.boardCollection[i].makeVisible(true);
             }
-            this.displayNoteAt(this.noOfNotes - 1, newNoteID, newNoteText);
+            this.displayNoteAt(this.noOfNotes - 1, newNoteID, newNoteName);
         }
     }
 
@@ -162,7 +162,7 @@ class SectionBoardView {
             // *warning*: The noteID is decremented to keep it in-sync with the (model.noteCollection) noteID
             --nextNote.noteID;
 
-            this.boardCollection[i].attachNote(nextNote.noteID, nextNote.noteText);
+            this.boardCollection[i].attachNote(nextNote.noteID, nextNote.name);
             this.boardCollection[i].makeVisible(true);
 
             this.boardCollection[i + 1].unattachNote();

@@ -23,8 +23,8 @@ class NoteForm {
 
         HTMLString += '<div class="modal-header">';
         HTMLString += '<label>' + secName + '</label>';
-        HTMLString += '<input type="text" id="noteText" class="form-control" placeholder="enter note text" />';
-        this.elementCollection['noteText'] = value;
+        HTMLString += '<input type="text" id="name" class="form-control" placeholder="enter note text" />';
+        this.elementCollection['name'] = value;
         HTMLString += '</div>';
 
         HTMLString += '<div class="modal-body">';
@@ -125,12 +125,12 @@ class NoteForm {
         var scope = angular.element($("#note")).scope();
         var projectData = scope.project.save();
 
-        var ws = projectData.workspaces.find(ws => ws.name === wsName);
-        var sectionCollection = ws.value.map(level => level.value);
-        var sections = [].concat(...sectionCollection);
-        var secWithNotes = sections.filter(sec => sec.value.length);
+        var currWS = projectData.workspaces.find(ws => ws.name === wsName);
+        var levels = currWS.value;
+        var sections = [].concat(...levels.map(level => level.value));
+        var secWithNotes = sections.filter(section => section.value.length);
 
-        var secNoteTagCollection = secWithNotes.map(sec => sec.value.map(note => sec.name + " : " + note.noteText));
+        var secNoteTagCollection = secWithNotes.map(sec => sec.value.map(note => sec.name + " : " + note.name));
         var secNoteTags = [].concat(...secNoteTagCollection);
 
         $('#links').suggest('@', {

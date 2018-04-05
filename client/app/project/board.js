@@ -44,13 +44,13 @@ class Board {
     getNote() {
         return {
             noteID: this.noteID,
-            noteText: this.konvaText.text()
+            name: this.konvaText.text()
         }
     }
 
-    attachNote(noteID, noteText) {
+    attachNote(noteID, name) {
         this.noteID = noteID;
-        this.konvaText.setText(noteText);
+        this.konvaText.setText(name);
     }
 
     unattachNote() {

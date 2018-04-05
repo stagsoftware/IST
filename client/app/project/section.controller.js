@@ -26,12 +26,12 @@ class SectionController {
         // If (model.noteCollection) != EMPTY, populate the boards with 'notes', and 
         // store #loaded notes into 'noOfNotes'
         // load up the (model.noteCollection) onto the view
-        var noteTextCollection = this.model.noteCollection.map(note => { return { noteText: note.noteText } });
-        var noOfNotesToBeDisplayed = (noteTextCollection.length > this.view.boardView.maxNoBoards) ?
-            this.view.boardView.maxNoBoards : noteTextCollection.length;
+        var noteNames = this.model.noteCollection.map(note => note.name);
+        var noOfNotesToBeDisplayed = (noteNames.length > this.view.boardView.maxNoBoards) ?
+            this.view.boardView.maxNoBoards : noteNames.length;
         for (var i = 0; i < noOfNotesToBeDisplayed; ++i) {
 
-            this.view.boardView.displayNoteAtEnd(i, noteTextCollection[i].noteText);
+            this.view.boardView.displayNoteAtEnd(i, noteNames[i]);
         }
 
         // Set the startNoteID and endNoteID based on the model and the view in-sync
@@ -107,7 +107,7 @@ class SectionController {
                 // 2. Insert the new note to the model
                 this.model.insertNote(this.noteForm.elementCollection, insertedNoteID);
                 // 3. Update the view with the new note added to the empty board (if any) or the last board
-                this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].noteText);
+                this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].name);
                 // 4. Update the startNoteID and endNoteID
                 this.startNoteID = 0;
                 this.endNoteID = 0;
@@ -121,7 +121,7 @@ class SectionController {
                     // 2. Insert the new note to the model
                     this.model.insertNote(this.noteForm.elementCollection, insertedNoteID);
                     // 3. Update the view with the new note added to the empty board (if any) or the last board
-                    this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].noteText);
+                    this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].name);
                     // 4. Update the startNoteID and endNoteID
                     ++this.endNoteID;
                     ++this.startNoteID;
@@ -134,7 +134,7 @@ class SectionController {
                     // 2. Insert the new note to the model
                     this.model.insertNote(this.noteForm.elementCollection, insertedNoteID);
                     // 3. Update the view with the new note added to the end of the noteCollection
-                    this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].noteText);
+                    this.view.boardView.displayNoteAtEnd(insertedNoteID, this.model.noteCollection[insertedNoteID].name);
                     // 4. Update the startNoteID and endNoteID    
                     ++this.endNoteID;
                 }
@@ -149,7 +149,7 @@ class SectionController {
 
             // 2. Update the note in the view
             var updatedNote = this.model.noteCollection[noteToBeUpdated.noteID];
-            this.view.boardView.displayNoteAt(selectedBoardID, noteToBeUpdated.noteID, updatedNote.noteText);
+            this.view.boardView.displayNoteAt(selectedBoardID, noteToBeUpdated.noteID, updatedNote.name);
         }
     }
 
@@ -181,12 +181,12 @@ class SectionController {
             } else if (this.endNoteID <= this.model.noteCollection.length - 1) {
                 // (a) Get the next note from the model to be displayed (if exists) from right
                 var nextNote = this.model.noteCollection[this.endNoteID];
-                this.view.boardView.displayNoteAtEnd(this.endNoteID, nextNote.noteText);
+                this.view.boardView.displayNoteAtEnd(this.endNoteID, nextNote.name);
 
             } else if (this.startNoteID > 0) {
                 // (a) Get the prev note from the mode to be displayed (if exists) from left
                 var prevNote = this.model.noteCollection[this.startNoteID - 1];
-                this.view.boardView.displayNoteAtStart(this.startNoteID - 1, prevNote.noteText);
+                this.view.boardView.displayNoteAtStart(this.startNoteID - 1, prevNote.name);
 
                 --this.startNoteID;
                 --this.endNoteID;
@@ -224,7 +224,7 @@ class SectionController {
             var prevNote = this.model.noteCollection[this.startNoteID];
 
             // 2. Update the view by adding the note at the start
-            this.view.boardView.displayNoteAtStart(this.startNoteID, prevNote.noteText);
+            this.view.boardView.displayNoteAtStart(this.startNoteID, prevNote.name);
 
             // 3. Update the endNoteID
             this.endNoteID = this.startNoteID + (this.view.boardView.noOfNotes - 1);
@@ -247,7 +247,7 @@ class SectionController {
             var nextNote = this.model.noteCollection[this.endNoteID];
 
             // 2. Update the view by adding the note at the end
-            this.view.boardView.displayNoteAtEnd(this.endNoteID, nextNote.noteText);
+            this.view.boardView.displayNoteAtEnd(this.endNoteID, nextNote.name);
 
             // 3. Update the startNoteID
             this.startNoteID = this.endNoteID - (this.view.boardView.noOfNotes - 1);
