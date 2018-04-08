@@ -42,7 +42,6 @@ class Section {
 
         // 4. Now wire up the view events to be handled by this controller
         this.view.headerView.addButtonText.on("click", this.controller.displayNoteForm.bind(this.controller, -1));
-        this.view.headerView.deleteButtonText.on("click", this.controller.deleteNote.bind(this.controller));
         this.view.headerView.scrollLeftButtonText.on("click", this.controller.scrollLeft.bind(this.controller));
         this.view.headerView.scrollRightButtonText.on("click", this.controller.scrollRight.bind(this.controller));
         for (var i = 0; i < this.view.boardView.maxNoBoards; ++i) {

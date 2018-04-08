@@ -6,8 +6,20 @@
     font-size: 14px;
 }
 
+#note .modal-header {
+    display: grid;
+    grid-template-columns: 0px 200px minmax(150px, auto) 16px 0px;
+    grid-auto-rows: auto;
+    align-items: center;
+}
+
 #note label {
     width: 40%;
+    margin: 0;
+}
+
+#note button label {
+    padding: 0 10px;
 }
 
 #note input[type="text"], #note input[type="number"], #note select {

@@ -2,13 +2,17 @@
 class Project {
     constructor() {
 
+        this.name;
+
         this.session;
         this.jottings;
         this.notes;
         this.questions;
     }
 
-    init(currWsName, templateJSON, valueJSON = {}) {
+    init(currWsName, projectName, templateJSON, valueJSON = {}) {
+
+        this.name = projectName;
 
         this.session = new Session();
         this.session.init(currWsName, templateJSON.workspaces, valueJSON.workspaces);

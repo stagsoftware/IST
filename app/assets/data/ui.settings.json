@@ -170,23 +170,6 @@
             "align": "center",
             "verticalAlign": "center"
           },
-          "deleteButtonRect": {
-            "fill": "#E4F4D8",
-            "stroke": "hsl(165, 53%, 81%)",
-            "strokeWidth": 0,
-            "strokeEnabled": false,
-            "shadowColor": "black",
-            "shadowBlur": 0,
-            "shadowEnabled": false
-          },
-          "deleteButtonText": {
-            "fontSize": 12,
-            "fontFamily": "FontAwesome",
-            "fill": "#555",
-            "text": "\uf00d",
-            "align": "center",
-            "verticalAlign": "center"
-          },
           "scrollLeftButtonRect": {
             "fill": "hsl(4, 3%, 76%)",
             "stroke": "hsl(165, 53%, 81%)",
@@ -473,11 +456,11 @@
         },
         "Section": {
           "secNameRect": {
-            "wPct": 84,
+            "wPct": 92,
             "hPct": 20
           },
           "secNameText": {
-            "wPct": 84,
+            "wPct": 92,
             "hPct": 20
           },
           "addButtonRect": {
@@ -485,14 +468,6 @@
             "hPct": 20
           },
           "addButtonText": {
-            "wPct": 8,
-            "hPct": 20
-          },
-          "deleteButtonRect": {
-            "wPct": 8,
-            "hPct": 20
-          },
-          "deleteButtonText": {
             "wPct": 8,
             "hPct": 20
           },

@@ -179,7 +179,7 @@
 				val = $el.val(),
 				currentPos = this.__getSelection($el.get(0)).start;
 			for (var i = currentPos; i >= 0; i--) {
-				var subChar = $.trim(val.substring(i - 1, i));
+				var subChar = val.substring(i - 1, i);
 				if (!subChar) {
 					this.hide();
 					break;
@@ -413,8 +413,8 @@
 			this.$items.addClass('hidden');
 			this.$items.filter(function (index) {
 
-				// return the limit if q is empty
-				if (q === '') return index < options.filter.limit;
+				// return true if q is empty
+				if (q === '') return true;
 
 				var $this = $(this),
 					value = $this.find('a:first').text();
@@ -423,8 +423,8 @@
 					value = value.toLowerCase();
 					q = q.toLowerCase();
 				}
-				return value.indexOf(q) != -1;
-			}).slice(0, options.filter.limit).removeClass('hidden active');
+				return value.indexOf(q) == 0;
+			}).removeClass('hidden active');
 			return this.__getVisibleItems();
 		},
 
@@ -615,8 +615,7 @@
 		data: [],
 		map: undefined,
 		filter: {
-			casesensitive: false,
-			limit: 5
+			casesensitive: false
 		},
 		dropdownClass: '',
 		position: 'caret',

@@ -84,32 +84,6 @@ class SectionHeaderView {
         this.layer.add(this.addButtonRect);
         this.layer.add(this.addButtonText);
 
-        //  Setup deleteButton display object in Konva
-        var manualConfig = {
-            x: this.x
-                + (this.w * (SectionSettings.secNameRect.wPct / 100))
-                + (this.w * (SectionSettings.addButtonRect.wPct / 100)),
-            y: this.y,
-            width: (this.w * (SectionSettings.deleteButtonRect.wPct / 100)),
-            height: (this.h * (SectionSettings.deleteButtonRect.hPct / 100))
-        };
-        var config = UISettings.getSectionConfig(manualConfig, "deleteButtonRect");
-        this.deleteButtonRect = new Konva.Rect(config);
-
-        var manualConfig = {
-            x: this.x
-                + (this.w * (SectionSettings.secNameRect.wPct / 100))
-                + (this.w * (SectionSettings.addButtonRect.wPct / 100)),
-            y: this.y,
-            width: (this.w * (SectionSettings.deleteButtonText.wPct / 100)),
-            height: (this.h * (SectionSettings.deleteButtonText.hPct / 100))
-        };
-        var config = UISettings.getSectionConfig(manualConfig, "deleteButtonText");
-        this.deleteButtonText = new Konva.Text(config);
-
-        this.layer.add(this.deleteButtonRect);
-        this.layer.add(this.deleteButtonText);
-
         //  Setup scrollLeftButton display object in Konva
         var manualConfig = {
             x: this.x,
@@ -189,11 +163,6 @@ class SectionHeaderView {
         this.addButtonText.setX(newX + (this.addButtonText.x() - this.x));
         this.addButtonText.setY(newY + (this.addButtonText.y() - this.y));
 
-        this.deleteButtonRect.setX(newX + (this.deleteButtonRect.x() - this.x));
-        this.deleteButtonRect.setY(newY + (this.deleteButtonRect.y() - this.y));
-        this.deleteButtonText.setX(newX + (this.deleteButtonText.x() - this.x));
-        this.deleteButtonText.setY(newY + (this.deleteButtonText.y() - this.y));
-
         this.scrollLeftButtonRect.setX(newX + (this.scrollLeftButtonRect.x() - this.x));
         this.scrollLeftButtonRect.setY(newY + (this.scrollLeftButtonRect.y() - this.y));
         this.scrollLeftButtonText.setX(newX + (this.scrollLeftButtonText.x() - this.x));
@@ -231,19 +200,6 @@ class SectionHeaderView {
     //     this.addButtonText.setY(newY);
     //     this.addButtonText.setWidth(newW * (SectionSettings.addButtonText.wPct / 100));
     //     this.addButtonText.setHeight(newH * (SectionSettings.addButtonText.hPct / 100));
-
-    //     this.deleteButtonRect.setX(newX
-    //         + (newW * (SectionSettings.secNameRect.wPct / 100))
-    //         + (newW * (SectionSettings.addButtonRect.wPct / 100)));
-    //     this.deleteButtonRect.setY(newY);
-    //     this.deleteButtonRect.setWidth(newW * (SectionSettings.deleteButtonRect.wPct / 100));
-    //     this.deleteButtonRect.setHeight(newH * (SectionSettings.deleteButtonRect.hPct / 100));
-    //     this.deleteButtonText.setX(newX
-    //         + (newW * (SectionSettings.secNameRect.wPct / 100))
-    //         + (newW * (SectionSettings.addButtonRect.wPct / 100)));
-    //     this.deleteButtonText.setY(newY);
-    //     this.deleteButtonText.setWidth(newW * (SectionSettings.deleteButtonText.wPct / 100));
-    //     this.deleteButtonText.setHeight(newH * (SectionSettings.deleteButtonText.hPct / 100));
 
     //     this.scrollLeftButtonRect.setX(newX);
     //     this.scrollLeftButtonRect.setY(newY 
@@ -295,9 +251,6 @@ class SectionHeaderView {
             this.addButtonRect.show();
             this.addButtonText.show();
 
-            this.deleteButtonRect.show();
-            this.deleteButtonText.show();
-
             this.scrollLeftButtonRect.show();
             this.scrollLeftButtonText.show();
 
@@ -312,9 +265,6 @@ class SectionHeaderView {
 
             this.addButtonRect.hide();
             this.addButtonText.hide();
-
-            this.deleteButtonRect.hide();
-            this.deleteButtonText.hide();
 
             this.scrollLeftButtonRect.hide();
             this.scrollLeftButtonText.hide();

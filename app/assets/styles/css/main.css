@@ -32,3 +32,30 @@ footer.footer-main {
 #container {
     height: 100%;
 }
+
+.icon {
+    font-size: 16px !important;
+    cursor: pointer;
+    line-height: inherit;
+    vertical-align: middle;
+}
+
+.icon.disabled {
+    color: #b1b2b4;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

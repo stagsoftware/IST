@@ -7,9 +7,12 @@
     text-align: center;
 }
 
-.main-menu>li {
+#myModal .modal-dialog {
+    display: table-cell;
     width: 150px;
-    min-width: 150px !important;
+}
+
+.main-menu>li {
     background-color: antiquewhite;
     border-bottom: 1px solid lightgrey;
 }
@@ -22,6 +25,7 @@
 .main-menu>li>a>label {
     padding: 0 10px;
     margin: 0;
+    vertical-align: middle;
 }
 
 .main-menu>li:hover, .main-menu>li>a:focus {
@@ -44,21 +48,13 @@
     overflow-x: hidden;
 }
 
-.icon {
-    font-size: 16px !important;
-    cursor: pointer;
-}
-
-.icon.disabled {
-    color: #b1b2b4;
-}
-
 .user-icon, .globe-icon {
     position: relative;
-    top: -12px;
+    height: 16px;
+    padding: 0px 3px;
     left: -12px;
     background-color: antiquewhite;
-    padding: 2px 3px;
+    vertical-align: super;
     border-radius: 50%;
     font-size: 12px!important;
 }
@@ -73,11 +69,13 @@
     top: 0;
     left: 100%;
     width: 600px;
+    padding: 0;
+    margin: 0;
     display: none;
 }
 
 .project-menu table thead td {
-    padding: 0 10px;
+    padding: 10px;
 }
 
 .project-menu table thead td:last-child, .project-menu table tbody td:last-child {
@@ -110,25 +108,13 @@
 }
 
 .project-menu table>tbody>tr>td {
-    padding: 10px 10px;
+    padding: 10px;
     border-bottom: 1px solid lightgrey;
 }
 
-.project-menu .panel-heading {
-    padding: 10px 0;
-    margin: 0px;
-    background-color: antiquewhite;
-}
-
-.project-menu .panel-body {
+.project-menu .panel-heading, .project-menu .panel-body, .project-menu .panel-footer {
     padding: 0;
-    margin: 0px;
-    background-color: antiquewhite;
-}
-
-.project-menu .panel-footer {
-    padding: 0;
-    margin: 0px;
+    margin: 0;
     background-color: antiquewhite;
 }
 

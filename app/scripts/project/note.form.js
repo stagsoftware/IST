@@ -5,7 +5,7 @@ class NoteForm {
         this.elementCollection;
     }
 
-    init(wsName, secName, noteTemplate, updateHandlerCallBack) {
+    init(wsName, secName, noteTemplate, updateHandlerCallBack, deleteNoteCallBack) {
 
         // 1. Build the HTML String for the 'note' div
         // 2. Assign ids to the input fields
@@ -25,6 +25,7 @@ class NoteForm {
         HTMLString += '<label>' + secName + '</label>';
         HTMLString += '<input type="text" id="name" class="form-control" placeholder="enter note text" />';
         this.elementCollection['name'] = value;
+        HTMLString += '<i id="deleteNote" class="fa fa-trash-o icon" title="delete note" data-dismiss="modal"></i>';
         HTMLString += '</div>';
 
         HTMLString += '<div class="modal-body">';
@@ -80,9 +81,9 @@ class NoteForm {
 
         // Accordion for Information Notes
         var id = "iNotes";
-        var label = "iNotes";
+        var label = "notes";
         var value = "enter extra information";
-        HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
+        HTMLString += '<button class="accordion"><i class="fa fa-info-circle icon"></i><label>' + label + '</label><i class="fa fa-angle-down down-icon"></i></button>';
         HTMLString += '<div class="panel"><textarea id="' + id + '" class="form-control" placeholder="' + value + '"></textarea></div>';
         this.elementCollection[id] = value;
 
@@ -90,15 +91,14 @@ class NoteForm {
         var id = "links";
         var label = "links";
         var value = "enter links (if any)";
-        HTMLString += '<button class="accordion">' + label + '<i class="fa fa-angle-down down-icon"></i></button>';
+        HTMLString += '<button class="accordion"><i class="fa fa-link icon"></i><label>' + label + '</label><i class="fa fa-angle-down down-icon"></i></button>';
         HTMLString += '<div class="panel"><textarea id="' + id + '" class="form-control" placeholder="' + value + '"></textarea></div>';
         this.elementCollection[id] = value;
 
         HTMLString += '</div>';
 
         HTMLString += '<div class="modal-footer">';
-        HTMLString += '<button id="ok" type="button" class="btn btn-default" data-dismiss="modal">ok</button>';
-        HTMLString += '<button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">close</button>';
+        HTMLString += '<button id="ok" type="button" class="btn btn-default" data-dismiss="modal">add/update</button>';
         HTMLString += '</div>';
 
         HTMLString += '</div>';
@@ -106,6 +106,7 @@ class NoteForm {
 
         document.getElementById('note').innerHTML = HTMLString;
 
+        document.getElementById('deleteNote').addEventListener("click", deleteNoteCallBack);
         document.getElementById('ok').addEventListener("click", this.submit.bind(this, updateHandlerCallBack));
         var accordions = document.getElementsByClassName("accordion")
         for (var i = 0; i < accordions.length; i++) {
@@ -140,9 +141,6 @@ class NoteForm {
                     value: secNoteTag,
                     text: '<strong>' + secNoteTag + '</strong>'
                 }
-            },
-            filter: {
-                limit: 10
             }
         });
     }

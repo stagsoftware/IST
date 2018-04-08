@@ -37,7 +37,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
     ProjectService.loadProject($scope.currProject.name).then(function (response) {
 
       $scope.project = new Project();
-      $scope.project.init($scope.currSession, response.templateJSON, response.valueJSON);
+      $scope.project.init($scope.currSession, $scope.currProject.name, response.templateJSON, response.valueJSON);
 
       HeaderService.startTimer();
       HeaderService.startCountDown($scope.currDuration);
@@ -81,7 +81,7 @@ ist.controller('WorkspaceController', function ($scope, $http, $window, $locatio
   var saveProjectDetails = function () {
     if ($scope.project) {
       var valueJSON = $scope.project.save();
-      ProjectService.saveProjectDetails($scope.currProject.name, valueJSON);
+      ProjectService.saveProjectDetails($scope.project.name, valueJSON);
     }
   };
 

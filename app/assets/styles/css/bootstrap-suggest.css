@@ -5,6 +5,8 @@
 .suggest>.dropdown-menu {
     margin-top: 15px;
     padding: 0;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 .suggest>.dropdown-menu>li {
